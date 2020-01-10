@@ -1,0 +1,321 @@
+{
+  "runConfigurations": [
+    {
+      "id": "build-all",
+      "name": "build-all",
+      "type": "colcon build",
+      "cfg": {
+        "workingDir": "/simulation_ws",
+        "cmdArgs": ""
+      }
+    },
+    {
+      "id": "bundle-all",
+      "name": "bundle-all",
+      "type": "colcon bundle",
+      "cfg": {
+        "workingDir": "/simulation_ws",
+        "cmdArgs": ""
+      }
+    },
+     {
+      "id": "training-grounds-no-rl",
+      "name": "training-grounds-no-rl",
+      "type": "simulation",
+      "cfg": {
+        "simulation": {
+          "maxJobDurationInSeconds": 300,
+          "failureBehavior": "Continue",
+          "iamRole": "[YOUR IAM ROLE]"
+          "outputLocation": "burnsca-training",
+          "tags": {}
+        },
+        "simulationApp": {
+          "name": "training-grounds-no-rl",
+          "sourceBundleFile": "/simulation_ws/bundle/output.tar",
+          "architecture": "X86_64",
+          "s3Bucket": "[YOUR_S3_BUCKET",
+          "launchConfig": {
+            "packageName": "training_grounds",
+            "launchFile": "training_env_only.launch",
+            "environmentVariables": {
+              "MARKOV_PRESET_FILE": "training_grounds.py",
+              "ROS_AWS_REGION": "[YOUR_AWS_REGION]",
+              "MODEL_S3_BUCKET": "[YOUR_S3_BUCKET]",
+              "MODEL_S3_PREFIX": "[YOUR_S3_BUCKET_SUBDIR]"
+            }
+          },
+          "simulationSoftwareSuite": {
+            "name": "Gazebo",
+            "version": "9"
+          },
+          "renderingEngine": {
+            "name": "OGRE",
+            "version": "1.x"
+          },
+          "robotSoftwareSuite": {
+            "name": "ROS",
+            "version": "Melodic"
+          }
+        }
+      }
+    },
+    {
+      "id": "mars-env-no-rl",
+      "name": "mars-env-no-rl",
+      "type": "simulation",
+      "cfg": {
+        "simulation": {
+          "maxJobDurationInSeconds": 86400,
+          "failureBehavior": "Continue",
+          "iamRole": "[YOUR_IAM_ROLE]",
+          "outputLocation": "[YOUR_OUTPUT_S3_BUCKET]",
+          "tags": {}
+        },
+        "simulationApp": {
+          "name": "mars-env-no-rl",
+          "sourceBundleFile": "/simulation_ws/bundle/output.tar",
+          "architecture": "X86_64",
+          "s3Bucket": "burnsca-mars",
+          "launchConfig": {
+            "packageName": "mars",
+            "launchFile": "mars_env_only.launch",
+            "environmentVariables": {
+              "MARKOV_PRESET_FILE": "mars_presets.py",
+              "ROS_AWS_REGION": "[YOUR_AWS_REGION]",
+              "MODEL_S3_BUCKET": "[YOUR_S3_BUCKET]",
+              "MODEL_S3_PREFIX": "[YOUR_S3_BUCKET_SUBDIR]"
+            }
+          },
+          "simulationSoftwareSuite": {
+            "name": "Gazebo",
+            "version": "9"
+          },
+          "renderingEngine": {
+            "name": "OGRE",
+            "version": "1.x"
+          },
+          "robotSoftwareSuite": {
+            "name": "ROS",
+            "version": "Melodic"
+          }
+        }
+      }
+    },
+    {
+      "id": "training-grounds-with-rl",
+      "name": "training-grounds-with-rl",
+      "type": "simulation",
+      "cfg": {
+        "simulation": {
+          "maxJobDurationInSeconds": 86400,
+          "failureBehavior": "Continue",
+          "iamRole": "[YOUR_IAM_ROLE]",
+          "outputLocation": "[YOUR_S3_BUCKET]",
+          "vpcConfig": {
+            "subnets": [
+              "[YOUR_SUBNET_A]",
+              "[YOUR_SUBNET_B]"
+            ],
+            "securityGroups": [
+              "[YOUR_SECURITY_GROUP]"
+            ],
+            "assignPublicIp": true
+          },
+          "tags": {}
+        },
+        "simulationApp": {
+          "name": "training-grounds-with-rl",
+          "sourceBundleFile": "/simulation_ws/bundle/output.tar",
+          "architecture": "X86_64",
+          "s3Bucket": "burnsca-training",
+          "launchConfig": {
+            "packageName": "training_grounds",
+            "launchFile": "training_full_sim.launch",
+            "environmentVariables": {
+              "MARKOV_PRESET_FILE": "training_grounds.py",
+              "MODEL_S3_BUCKET": "[YOUR_S3_BUCKET]",
+              "MODEL_S3_PREFIX": "[YOUR_S3_BUCKET_SUBDIR]",
+              "ROS_AWS_REGION": "[YOUR_AWS_REGION]"
+            }
+          },
+          "simulationSoftwareSuite": {
+            "name": "Gazebo",
+            "version": "9"
+          },
+          "renderingEngine": {
+            "name": "OGRE",
+            "version": "1.x"
+          },
+          "robotSoftwareSuite": {
+            "name": "ROS",
+            "version": "Melodic"
+          }
+        }
+      }
+    },
+    {
+      "id": "mars-env-with-rl",
+      "name": "mars-env-with-rl",
+      "type": "simulation",
+      "cfg": {
+        "simulation": {
+          "maxJobDurationInSeconds": 86400,
+          "failureBehavior": "Continue",
+          "iamRole": "[YOUR_IAM_ROLE]",
+          "outputLocation": "burnsca-mars",
+          "vpcConfig": {
+            "subnets": [
+              "[YOUR_SUBNET_A]",
+              "[YOUR_SUBNET_B]"
+            ],
+            "securityGroups": [
+              "[YOUR_SECURITY_GROUP]"
+            ],
+            "assignPublicIp": true
+          },
+          "tags": {}
+        },
+        "simulationApp": {
+          "name": "mars_env-with-rl",
+          "sourceBundleFile": "/simulation_ws/bundle/output.tar",
+          "architecture": "X86_64",
+          "s3Bucket": "burnsca-mars",
+          "launchConfig": {
+            "packageName": "mars",
+            "launchFile": "mars_full_sim.launch",
+            "environmentVariables": {
+              "MARKOV_PRESET_FILE": "mars_presets.py",
+              "MODEL_S3_BUCKET": "[YOUR_S3_BUCKET]",
+              "MODEL_S3_PREFIX": "[YOUR_S3_BUCKET_SUBDIR]",
+              "ROS_AWS_REGION": "[YOUR_AWS_REGION]"
+            }
+          },
+          "simulationSoftwareSuite": {
+            "name": "Gazebo",
+            "version": "9"
+          },
+          "renderingEngine": {
+            "name": "OGRE",
+            "version": "1.x"
+          },
+          "robotSoftwareSuite": {
+            "name": "ROS",
+            "version": "Melodic"
+          }
+        }
+      }
+    },
+    {
+      "id": "training-evaluation-sim",
+      "name": "training-evaluation-sim",
+      "type": "simulation",
+      "cfg": {
+        "simulation": {
+          "maxJobDurationInSeconds": 1800,
+          "failureBehavior": "Continue",
+          "iamRole": "[YOUR_IAM_ROLE]",
+          "outputLocation": "burnsca-training-output",
+          "vpcConfig": {
+            "subnets": [
+              "[YOUR_SUBNET_A]",
+              "[YOUR_SUBNET_B]"
+            ],
+            "securityGroups": [
+              "[YOUR_SECURITY_GROUP]"
+            ],
+            "assignPublicIp": true
+          },
+          "tags": {}
+        },
+        "simulationApp": {
+          "name": "training-evaluation-sim",
+          "sourceBundleFile": "/simulation_ws/bundle/output.tar",
+          "architecture": "X86_64",
+          "s3Bucket": "[YOUR_S3_BUCKET]",
+          "launchConfig": {
+            "packageName": "training_grounds",
+            "launchFile": "eval.launch",
+            "environmentVariables": {
+              "MARKOV_PRESET_FILE": "rover_evaluation.py",
+              "MODEL_S3_BUCKET": "[YOUR_S3_BUCKET]",
+              "MODEL_S3_PREFIX": "[YOUR_S3_BUCKET_SUBDIR]",
+              "ROS_AWS_REGION": "[YOUR_AWS_REGION]"
+            }
+          },
+          "simulationSoftwareSuite": {
+            "name": "Gazebo",
+            "version": "9"
+          },
+          "renderingEngine": {
+            "name": "OGRE",
+            "version": "1.x"
+          },
+          "robotSoftwareSuite": {
+            "name": "ROS",
+            "version": "Melodic"
+          }
+        }
+      }
+    },
+    {
+      "id": "build-and-bundle-only",
+      "name": "build-and-bundle-only",
+      "type": "workflow",
+      "runCfgIds": [
+        "build-all",
+        "bundle-all"
+      ]
+    },
+    {
+      "id": "training-grounds-env-only",
+      "name": "training-grounds-env-only",
+      "type": "workflow",
+      "runCfgIds": [
+        "build-all",
+        "bundle-all",
+        "training-grounds-no-rl"
+      ]
+    },
+    {
+      "id": "training-grounds-full-sim",
+      "name": "training-grounds-full-sim",
+      "type": "workflow",
+      "runCfgIds": [
+        "build-all",
+        "bundle-all",
+        "training-grounds-with-rl"
+      ]
+    },
+    {
+      "id": "training-grounds-eval",
+      "name": "training-grounds-eval",
+      "type": "workflow",
+      "runCfgIds": [
+        "build-all",
+        "bundle-all",
+        "training-evaluation-sim"
+      ]
+    },
+    {
+      "id": "mars-env-only",
+      "name": "mars-env-only",
+      "type": "workflow",
+      "runCfgIds": [
+        "build-all",
+        "bundle-all",
+        "mars-env-no-rl"
+      ]
+    },
+    {
+      "id": "mars-env-full-sim",
+      "name": "mars-env-full-sim",
+      "type": "workflow",
+      "runCfgIds": [
+        "build-all",
+        "bundle-all",
+        "mars-env-with-rl"
+      ]
+    }
+  ]
+}
