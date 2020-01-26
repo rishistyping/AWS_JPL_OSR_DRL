@@ -1,10 +1,10 @@
-import argparse
-import os
-import logging
-import sys
-import imp
+import argparse # https://docs.python.org/3/library/argparse.html // Makes it easy to write user-friendly command line interfaces
+import os # provides ways for python to interact with the OS // https://www.geeksforgeeks.org/os-module-python-examples/
+import logging # can log messages // DEBUG, INFO, WARNING, ERROR, CRITICAL // https://realpython.com/python-logging/
+import sys # System-specific parameters and functions. This module provides access to some variables used or maintained by the interpreter and to functions that interact strongly with the interpreter.
+import imp # This module provides an interface to the mechanisms used to implement the import statement.
 
-from rl_coach.core_types import EnvironmentEpisodes
+from rl_coach.core_types import EnvironmentEpisodes # From the coach for reinforcement learning, imports the environment episodes
 from rl_coach.base_parameters import TaskParameters
 from rl_coach.utils import short_dynamic_import
 
@@ -13,7 +13,7 @@ import markov.environments
 from markov import utils
 
 CUSTOM_FILES_PATH="robomaker"
-PRESET_LOCAL_PATH = os.path.join(CUSTOM_FILES_PATH, "presets/")
+PRESET_LOCAL_PATH = os.path.join(CUSTOM_FILES_PATH, "presets/") # put robomaker (aws) together with the presets
 ENVIRONMENT_LOCAL_PATH = os.path.join(CUSTOM_FILES_PATH, "environments/")
 
 if not os.path.exists(CUSTOM_FILES_PATH):

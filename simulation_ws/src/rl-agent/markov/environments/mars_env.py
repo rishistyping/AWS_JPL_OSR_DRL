@@ -21,7 +21,7 @@ from sensor_msgs.msg import LaserScan, Imu
 from geometry_msgs.msg import Point
 from std_msgs.msg import Float64
 from std_msgs.msg import String
-from PIL import Image
+from PIL import Image # importing these things from either packages or parts of other files in THIS directory/repo
 import queue
 
 
@@ -40,33 +40,33 @@ IMG_QUEUE_BUF_SIZE = 1
 # Prevent unknown "stuck" scenarios with a kill switch (MAX_STEPS)
 MAX_STEPS = 2000
 
-# Destination Point
-CHECKPOINT_X = 44.25
-CHECKPOINT_Y = -4
+# Destination Point // This is where we want to go.
+CHECKPOINT_X = 44.25 # x coord
+CHECKPOINT_Y = -4 # y coord
 
 # Initial position of the robot
-INITIAL_POS_X = -0.170505086911
+INITIAL_POS_X = -0.170505086911 # this is where we start at (x coord) 
 INITIAL_POS_Y = 0.114341186761
 INITIAL_POS_Z = -0.0418765865136
 
-INITIAL_ORIENT_X = 0.0135099011407
-INITIAL_ORIENT_Y = 0.040927747122
+INITIAL_ORIENT_X = 0.0135099011407 # this is the initial, or starting orientation of the rover. As this cant be changed (I believe), it wont be very useful. // See line below
+INITIAL_ORIENT_Y = 0.040927747122 ## however, if it can be changed (especially if it can be done through the reward function) it could be good for the rl-agent
 INITIAL_ORIENT_Z = 0.0365547169101
 INITIAL_ORIENT_W = 0.998401800258
 
 
 # Initial distance to checkpoint
 INITIAL_DISTANCE_TO_CHECKPOINT = abs(math.sqrt(((CHECKPOINT_X - INITIAL_POS_X) ** 2) +
-                                               ((CHECKPOINT_Y - INITIAL_POS_Y) ** 2)))
+                                               ((CHECKPOINT_Y - INITIAL_POS_Y) ** 2))) # this calculates how far away the checkpoint is from the initial location of the rover. The reward function will b calculated from this, and therefore it is useful (i think) in training the agent, however it is not changeable (unless the above "parameters" or variables are changeable as well)
 
 
 # SLEEP INTERVALS - a buffer to give Gazebo, RoS and the rl_agent to sync.
 SLEEP_AFTER_RESET_TIME_IN_SECOND = 0.3
-SLEEP_BETWEEN_ACTION_AND_REWARD_CALCULATION_TIME_IN_SECOND = 0.3 # LIDAR Scan is 5 FPS (0.2sec).
+SLEEP_BETWEEN_ACTION_AND_REWARD_CALCULATION_TIME_IN_SECOND = 0.3 # LIDAR Scan is 5 FPS (0.2sec). # does not need to be changed - don't worry about it!!?
 SLEEP_WAITING_FOR_IMAGE_TIME_IN_SECOND = 0.01
 
 
-class MarsEnv(gym.Env):
+class MarsEnv(gym.Env): # classes in python are blueprints for the object - python is an object-oriented language... // everything her is a set of data for the Mars Environment
     def __init__(self):
         self.x = INITIAL_POS_X                                                  # Current position of Rover 
         self.y = INITIAL_POS_Y                                                  # Current position of Rover
@@ -137,7 +137,7 @@ class MarsEnv(gym.Env):
     def step(self, action):
         # initialize rewards, next_state, done
         self.reward = None
-        self.done = False
+        self.done = False # done - an action. // When the agent hits an obstacle - https://github.com/EXYNOS-999/AWS_JPL_DRL#asset-manifest-and-descriptions - the sim is done. // Also when rover completes course?
         self.next_state = None
 
         steering = float(action[0])
@@ -156,14 +156,14 @@ class MarsEnv(gym.Env):
     '''
     DO NOT EDIT - Function called at the conclusion of each episode to reset episodic values
     '''
-    def reset(self):
+    def reset(self): # reset custom, episodic variables/params here
         print('Total Episodic Reward=%.2f' % self.reward_in_episode,
               'Total Episodic Steps=%.2f' % self.steps)
         self.send_reward_to_cloudwatch(self.reward_in_episode)
 
         # Reset global episodic values
         self.reward = None
-        self.done = False
+        self.done = False # after each sim env, the environment and sim resets, so the done variable resets as well.
         self.next_state = None
         self.ranges= None
         self.send_action(0, 0) # set the throttle to 0
@@ -176,7 +176,7 @@ class MarsEnv(gym.Env):
     '''
     DO NOT EDIT - Function called to send the agent's chosen action to the simulator (Gazebo)
     '''
-    def send_action(self, steering, throttle):
+    def send_action(self, steering, throttle): # will learn what to do via the reward_function*
         speed = Twist()
         speed.linear.x = throttle
         speed.angular.z = steering
@@ -329,9 +329,9 @@ class MarsEnv(gym.Env):
         '''
         
         # Corner boundaries of the world (in Meters)
-        STAGE_X_MIN = -44.0
+        STAGE_X_MIN = -44.0 # // corner part of reward function
         STAGE_Y_MIN = -25.0
-        STAGE_X_MAX = 15.0
+        STAGE_X_MAX = 15.0 # The distance that the agent (the rover) is from the corners does not matter directly. // What I mean is that while the agent may move closer to certain corners to avoid obstacles/complete the course, the distance from the corners, and the distance from the centre (AWS DeepRacer) does not matter to the reward function. A higher score will not be given if the agent is closer to the center or further away...
         STAGE_Y_MAX = 22.0
         
         
@@ -342,7 +342,7 @@ class MarsEnv(gym.Env):
         
         
         # WayPoints to checkpoint
-        WAYPOINT_1_X = -10
+        WAYPOINT_1_X = -10 # Helps out the reward function. // As it is a long distance for the rover to travel, it typically won't get the whole distance the first few times. The waypoint can act as a secondary/first coordinate to get to, and is therefore useful for the training with the reward function, especially early on.
         WAYPOINT_1_Y = -4
         
         WAYPOINT_2_X = -17
@@ -353,7 +353,7 @@ class MarsEnv(gym.Env):
         
         # REWARD Multipliers
         FINISHED_REWARD = 10000
-        WAYPOINT_1_REWARD = 1000
+        WAYPOINT_1_REWARD = 1000 # these can remain the same :)
         WAYPOINT_2_REWARD = 2000
         WAYPOINT_3_REWARD = 3000
 
@@ -370,16 +370,16 @@ class MarsEnv(gym.Env):
             
             # Has LIDAR registered a hit
             if self.collision_threshold <= CRASH_DISTANCE:
-                print("Rover has sustained sideswipe damage")
-                return 0, True # No reward
+                print("Rover has sustained sideswipe damage") # can we add a variable into this to say where? // ("text string" + variable)??
+                return 0, True # No reward // the rover can't continue so the reward is 0 - training 
             
             # Have the gravity sensors registered too much G-force
             if self.collision:
-                print("Rover has collided with an object")
+                print("Rover has collided with an object") # obstacle, same as above -
                 return 0, True # No reward
             
             # Has the rover reached the max steps
-            if self.power_supply_range < 1:
+            if self.power_supply_range < 1: # the min power supply - as in when the "tank" is empty - is 1...according to the agent
                 print("Rover's power supply has been drained (MAX Steps reached")
                 return 0, True # No reward
             
@@ -388,16 +388,16 @@ class MarsEnv(gym.Env):
                 print("Congratulations! The rover has reached the checkpoint!")
                 multiplier = FINISHED_REWARD
                 reward = (base_reward * multiplier) / self.steps # <-- incentivize to reach checkpoint in fewest steps
-                return reward, True
+                return reward, True # the base reward plus a bonus based on how it goes
             
             # If it has not reached the check point is it still on the map?
-            if self.x < (GUIDERAILS_X_MIN - .45) or self.x > (GUIDERAILS_X_MAX + .45):
+            if self.x < (GUIDERAILS_X_MIN - .45) or self.x > (GUIDERAILS_X_MAX + .45): # once the episode has ended, if the agent isn't on the map // for troubleshooting // line 368 as of commit on 19.1.20
                 print("Rover has left the mission map!")
                 return 0, True
                 
                 
             if self.y < (GUIDERAILS_Y_MIN - .45) or self.y > (GUIDERAILS_Y_MAX + .45):
-                print("Rover has left the mission map!")
+                print("Rover has left the mission map!") # same as above if statement py // uses coords
                 return 0, True
             
             
@@ -409,8 +409,8 @@ class MarsEnv(gym.Env):
                     self.reached_waypoint_1 = True
                     print("Congratulations! The rover has reached waypoint 1!")
                     multiplier = 1 
-                    reward = (WAYPOINT_1_REWARD * multiplier)/ self.steps # <-- incentivize to reach way-point in fewest steps
-                    return reward, False
+                    reward = (WAYPOINT_1_REWARD * multiplier)/ self.steps # <-- incentivize to reach way-point in fewest steps // the faster and better the agent does it, the higher the mumultiplier 
+                    return reward, False # doesn't return reward function as it is not an episode ending
             
             if self.last_position_x <= WAYPOINT_2_X and self.last_position_y >= WAYPOINT_2_Y: # Rover is past the midpoint
                 # Determine if Rover already received one time reward for reaching this waypoint

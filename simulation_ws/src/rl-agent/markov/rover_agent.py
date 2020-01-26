@@ -2,7 +2,7 @@
 This is single machine training worker. It starts a local training and stores the model in S3.
 """
 
-import argparse
+import argparse # check out https://github.com/EXYNOS-999/AWS_JPL_DRL/blob/master/simulation_ws/src/rl-agent/markov/model_evaluation.py for information on python modules used in this project
 import copy
 
 from markov.s3_boto_data_store import S3BotoDataStore, S3BotoDataStoreParameters
