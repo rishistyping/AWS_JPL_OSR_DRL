@@ -100,6 +100,10 @@ class RoverTrainingGroundsEnv(gym.Env):
         self.closer_to_checkpoint = False
         self.power_supply_range = MAX_STEPS
         self.reached_midpoint = False
+        
+        self.reached_waypoint_1 = False
+        self.reached_waypoint_2 = False
+        self.reached_waypoint_3 = False
 
 
         # action space -> steering angle, throttle
@@ -172,6 +176,10 @@ class RoverTrainingGroundsEnv(gym.Env):
         self.send_action(0, 0) # set the throttle to 0
         self.rover_reset()
         self.call_reward_function([0, 0])
+        
+        self.reached_waypoint_1 = False
+        self.reached_waypoint_2 = False
+        self.reached_waypoint_3 = False
 
         return self.next_state
 
@@ -287,6 +295,20 @@ class RoverTrainingGroundsEnv(gym.Env):
         # Accumulate reward for the episode
         self.reward_in_episode += reward
 
+        """  # Get average Imu reading
+        if self.max_lin_accel_x > 0 or self.max_lin_accel_y > 0 or self.max_lin_accel_z > 0:
+            avg_imu = (self.max_lin_accel_x + self.max_lin_accel_y + self.max_lin_accel_y) / 3
+        else:
+            avg_imu = 0 """
+            
+        def dist_increment(self):
+            distance = math.sqrt((self.x - self.last_position_x)**2 + (self.y - self.last_position_y)**2)
+            return distance
+         
+        # Test   
+        dist_test = dist_increment(self)
+        heading = math.atan2(self.y, self.x)
+        degrees = round(heading*180/math.pi,2)
     
         print('Step:%.2f' % self.steps,
               'Steering:%f' % action[0],
@@ -294,8 +316,20 @@ class RoverTrainingGroundsEnv(gym.Env):
               'DTCP:%f' % self.current_distance_to_checkpoint,  # Distance to Check Point
               'DT:%f' % self.distance_travelled,                # Distance Travelled
               'CT:%.2f' % self.collision_threshold,             # Collision Threshold
+              'LX:%.2f' % self.last_position_x,                 # Previous X
+              'LY:%.2f' % self.last_position_y,                 # Previous 
+#              'AX:%.2f' % self.max_lin_accel_x,                 # acc x
+#              'AY:%.2f' % self.max_lin_accel_y,                 # acc y
+#              'AZ:%.2f' % self.max_lin_accel_z,                 # acc z
+              'DI:%.2f' % dist_increment(self),                 # Distance Increment
+              'HD:%.2f' % heading,                              # Heading
+              'DG:%.2f' % degrees,                              # Heading in Degrees
+#             'AT:%.2f' % self.angular_trajectory.Degrees,      # Linear Trajectory
+#             'LT:%.2f' % self.linear_trajectory.Degrees,       # Angular Trajectory
               'CTCP:%f' % self.closer_to_checkpoint,            # Is closer to checkpoint
-              'PSR: %f' % self.power_supply_range)              # Steps remaining in Episode
+              'PSR: %f' % self.power_supply_range,              # Steps remaining in Episode
+#              'IMU: %f' % avg_imu
+              )
 
         self.reward = reward
         self.done = done
@@ -315,11 +349,46 @@ class RoverTrainingGroundsEnv(gym.Env):
         :return: reward as float
                  done as boolean
         '''
+        
+        # Corner boundaries of the world (in Meters)
+        STAGE_X_MIN = -44.0
+        STAGE_Y_MIN = -25.0
+        STAGE_X_MAX = 15.0
+        STAGE_Y_MAX = 22.0
+        
+        
+        GUIDERAILS_X_MIN = -46
+        GUIDERAILS_X_MAX = 1
+        GUIDERAILS_Y_MIN = -6
+        GUIDERAILS_Y_MAX = 4
+        
+        
+        # WayPoints to checkpoint
+        WAYPOINT_1_X = -10
+        WAYPOINT_1_Y = -4
+        
+        WAYPOINT_2_X = -17
+        WAYPOINT_2_Y = 3
+        
+        WAYPOINT_3_X = -34
+        WAYPOINT_3_Y = 3
+        
+        # REWARD Multipliers
+        FINISHED_REWARD = 10000
+        WAYPOINT_1_REWARD = 1000
+        WAYPOINT_2_REWARD = 2000
+        WAYPOINT_3_REWARD = 3000
+
         reward = 0
         base_reward = 2
         multiplier = 0
         done = False
         
+        def dist_increment(self):
+            distance = math.sqrt((self.x - self.last_position_x)**2 + (self.y - self.last_position_y)**2)
+            return round(distance,2)
+        
+    
         
         if self.steps > 0:
             
@@ -327,8 +396,13 @@ class RoverTrainingGroundsEnv(gym.Env):
             # ###########################################
             
             # Has LIDAR registered a hit
-            if self.collision_threshold <= CRASH_DISTANCE:
+            if self.collision_threshold <= CRASH_DISTANCE + 0.50:   # Eliminates the stuck wheel episodes  < 0.99 
                 print("Rover has sustained sideswipe damage")
+                return 0, True # No reward
+            
+            # if the rover is stuck and not moving
+            if dist_increment(self) < 0.01 and self.distance_travelled > 10 :
+                print("Rover seems to be stuck on a rock. Distance inc", dist_increment(self))
                 return 0, True # No reward
             
             # Have the gravity sensors registered too much G-force
@@ -341,7 +415,7 @@ class RoverTrainingGroundsEnv(gym.Env):
                 print("Rover's power supply has been drained (MAX Steps reached")
                 return 0, True # No reward
             
-            # Has the Rover reached the Checkpoint
+            # Has the Rover reached the destination
             if self.last_position_x >= CHECKPOINT_X and self.last_position_y >= CHECKPOINT_Y:
                 print("Congratulations! The rover has reached the checkpoint!")
                 multiplier = FINISHED_REWARD
@@ -349,29 +423,47 @@ class RoverTrainingGroundsEnv(gym.Env):
                 return reward, True
             
             # If it has not reached the check point is it still on the map?
-            if self.x < (STAGE_X_MIN - .45) or self.x > (STAGE_X_MAX + .45):
+            if self.x < (GUIDERAILS_X_MIN - .45) or self.x > (GUIDERAILS_X_MAX + .45):
                 print("Rover has left the mission map!")
                 return 0, True
                 
                 
-            if self.y < (STAGE_Y_MIN - .45) or self.y > (STAGE_Y_MAX + .45):
+            if self.y < (GUIDERAILS_Y_MIN - .45) or self.y > (GUIDERAILS_Y_MAX + .45):
                 print("Rover has left the mission map!")
                 return 0, True
             
             
             # No Episode ending events - continue to calculate reward
             
-            if self.last_position_x >= MIDPOINT_X and self.last_position_y >= MIDPOINT_Y: # Rover is past the midpoint
-                # Determine if Rover already received one time reward for reaching the midpoint
-                if not self.reached_midpoint:  
-                    self.reached_midpoint = True
-                    print("Congratulations! The rover has reached the midpoint!")
-                    multiplier = MIDPOINT_REWARD 
-                    reward = (base_reward * multiplier)/ self.steps # <-- incentivize to reach mid-point in fewest steps
+            if self.last_position_x <= WAYPOINT_1_X and self.last_position_y <= WAYPOINT_1_Y: # Rover is past the midpoint
+                # Determine if Rover already received one time reward for reaching this waypoint
+                if not self.reached_waypoint_1:  
+                    self.reached_waypoint_1 = True
+                    print("Congratulations! The rover has reached waypoint 1!")
+                    multiplier = 1 
+                    reward = (WAYPOINT_1_REWARD * multiplier)/ self.steps # <-- incentivize to reach way-point in fewest steps
                     return reward, False
-                
             
-            # To reach this point in the function the Rover has either not yet reached the mid-point OR has already gotten the one time reward for reaching midpoint
+            if self.last_position_x <= WAYPOINT_2_X and self.last_position_y >= WAYPOINT_2_Y: # Rover is past the midpoint
+                # Determine if Rover already received one time reward for reaching this waypoint
+                if not self.reached_waypoint_2:  
+                    self.reached_waypoint_2 = True
+                    print("Congratulations! The rover has reached waypoint 2!")
+                    multiplier = 1 
+                    reward = (WAYPOINT_2_REWARD * multiplier)/ self.steps # <-- incentivize to reach way-point in fewest steps
+                    return reward, False
+                    
+            if self.last_position_x <= WAYPOINT_3_X and self.last_position_y >= WAYPOINT_3_Y: # Rover is past the midpoint
+                # Determine if Rover already received one time reward for reaching this waypoint
+                if not self.reached_waypoint_3:  
+                    self.reached_waypoint_3 = True
+                    print("Congratulations! The rover has reached waypoint 3!")
+                    multiplier = 1 
+                    reward = (WAYPOINT_3_REWARD * multiplier)/ self.steps # <-- incentivize to reach way-point in fewest steps
+                    return reward, False
+                    
+            
+            # To reach this point in the function the Rover has either not yet reached the way-points OR has already gotten the one time reward for reaching the waypoint(s)
                
             # multiply the reward based on the Rover's proximity to the Checkpoint
             waypoint_interval = INITIAL_DISTANCE_TO_CHECKPOINT / 5 
@@ -390,15 +482,21 @@ class RoverTrainingGroundsEnv(gym.Env):
             else:
                 multiplier = 1
             
-            # Incentivize the rover to stay away from objects
+            
+             # Incentivize the rover to stay away from objects
             if self.collision_threshold >= 2.0:      # very safe distance
-                multiplier = multiplier + 1
+                multiplier = multiplier + 1  
             elif self.collision_threshold < 2.0 and self.collision_threshold >= 1.5: # pretty safe
                 multiplier = multiplier + .5
             elif self.collision_threshold < 1.5 and self.collision_threshold >= 1.0: # just enough time to turn
                 multiplier = multiplier + .25
             else:
-                multiplier = multiplier # probably going to hit something and get a zero reward
+                multiplier = multiplier # probably going to hit something and get a zero reward 
+                
+            #If we pull away from an object, that should be an extra reward
+            #last collision threshold is not changing
+            #if self.collision_threshold > self.last_collision_threshold :
+            #    multiplier = multiplier + 1
             
             # Incentize the rover to move towards the Checkpoint and not away from the checkpoint
             if not self.closer_to_checkpoint:
@@ -406,10 +504,26 @@ class RoverTrainingGroundsEnv(gym.Env):
                     # Cut the multiplier in half
                     multiplier = multiplier/2
                     
-            reward = base_reward * multiplier
+            # Power Remaing Reward Discount   
+            power_reward  = self.power_supply_range/MAX_STEPS  # or should these be 1 - powerratio ^0.4
+                    
+            
+            """
+            # IMU Reward
+            # Get average Imu reading
+            if self.max_lin_accel_x > 0 or self.max_lin_accel_y > 0 or self.max_lin_accel_z > 0:
+                avg_imu = (self.max_lin_accel_x + self.max_lin_accel_y + self.max_lin_accel_y) / 3
+            else:
+                avg_imu = 0
+                
+            imu_reward = 1 - math.pow(avg_imu/11.0,4)  # is this helping ?? """
+    
+            
+            reward = base_reward * multiplier * power_reward  # * imu_reward
             
         
         return reward, done
+        
     
         
     '''
