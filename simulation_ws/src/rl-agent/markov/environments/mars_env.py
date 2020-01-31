@@ -41,7 +41,7 @@ IMG_QUEUE_BUF_SIZE = 1
 MAX_STEPS = 2000
 
 # Destination Point
-CHECKPOINT_X = 44.25
+CHECKPOINT_X = -44.25
 CHECKPOINT_Y = -4
 
 # Initial position of the robot
@@ -76,8 +76,8 @@ class MarsEnv(gym.Env):
         self.aws_region = os.environ.get("AWS_REGION", "us-east-1")             # Region for CloudWatch Metrics
         self.reward_in_episode = 0                                              # Global episodic reward variable
         self.steps = 0                                                          # Global episodic step counter
-        self.collision_threshold = sys.maxsize                                  # current collision distance
-        self.last_collision_threshold = sys.maxsize                             # previous collision distance
+        self.collision_threshold = 4.5   #was sys.maxsize                           # current collision distance
+        self.last_collision_threshold = 4.5  # sys.maxsize                      # previous collision distance
         self.collision = False                                                  # Episodic collision detector
         self.distance_travelled = 0                                             # Global episodic distance counter
         self.current_distance_to_checkpoint = INITIAL_DISTANCE_TO_CHECKPOINT    # current distance to checkpoint
@@ -157,9 +157,10 @@ class MarsEnv(gym.Env):
     DO NOT EDIT - Function called at the conclusion of each episode to reset episodic values
     '''
     def reset(self):
+        score = 10000 - self.steps - self.distance_travelled - round(self.max_lin_accel_x,2)
         print('Total Episodic Reward=%.2f' % self.reward_in_episode,
-              'Total Episodic Steps=%.2f' % self.steps)
-        self.send_reward_to_cloudwatch(self.reward_in_episode)
+              'Total Episodic Steps=%.2f' % self.steps, ' Episode_Score=%.2f' % score)
+        self.send_reward_to_cloudwatch(self.reward_in_episode, round(score,2))
 
         # Reset global episodic values
         self.reward = None
@@ -213,7 +214,7 @@ class MarsEnv(gym.Env):
 
         self.gazebo_model_state_service(model_state)
 
-        self.last_collision_threshold = sys.maxsize
+        self.last_collision_threshold = self.collision_threshold #fix instead of  sys.maxsize
         self.last_position_x = self.x
         self.last_position_y = self.y
 
@@ -277,6 +278,8 @@ class MarsEnv(gym.Env):
     '''
     DO NOT EDIT - Reward Function buffer
     '''
+    
+    
     def call_reward_function(self, action):
         self.get_distance_to_object() #<-- Also evaluate for sideswipe and collistion damage
         
@@ -297,6 +300,12 @@ class MarsEnv(gym.Env):
             avg_imu = (self.max_lin_accel_x + self.max_lin_accel_y + self.max_lin_accel_y) / 3
         else:
             avg_imu = 0
+        
+        distance = math.sqrt((self.x - self.last_position_x)**2 + (self.y - self.last_position_y)**2)
+        dist_increment = round(distance,2)
+        
+        heading = math.atan2(self.y, self.x)
+        degrees = round(heading*180/math.pi,2)
     
         print('Step:%.2f' % self.steps,
               'Steering:%f' % action[0],
@@ -304,6 +313,17 @@ class MarsEnv(gym.Env):
               'DTCP:%f' % self.current_distance_to_checkpoint,  # Distance to Check Point
               'DT:%f' % self.distance_travelled,                # Distance Travelled
               'CT:%.2f' % self.collision_threshold,             # Collision Threshold
+              'LCT:%.2f' % self.last_collision_threshold,             # Last Collision Threshold
+              'LX:%.2f' % self.last_position_x,                 # Previous X
+              'LY:%.2f' % self.last_position_y,                 # Previous 
+              'AX:%.2f' % self.max_lin_accel_x,                 # acc x
+              'AY:%.2f' % self.max_lin_accel_y,                 # acc y
+              'AZ:%.2f' % self.max_lin_accel_z,                 # acc z
+              'DI:%.2f' % dist_increment,                 # Distance Increment
+              'HD:%.2f' % heading,                              # Heading
+              'DG:%.2f' % degrees,                              # Heading in Degrees
+#             'AT:%.2f' % self.angular_trajectory.Degrees,      # Linear Trajectory
+#             'LT:%.2f' % self.linear_trajectory.Degrees,       # Angular Trajectory
               'CTCP:%f' % self.closer_to_checkpoint,            # Is closer to checkpoint
               'PSR: %f' % self.power_supply_range,              # Steps remaining in Episode
               'IMU: %f' % avg_imu)
@@ -313,6 +333,7 @@ class MarsEnv(gym.Env):
 
         self.last_position_x = self.x
         self.last_position_y = self.y
+        self.last_collision_threshold = self.collision_threshold
 
 
 
@@ -322,14 +343,16 @@ class MarsEnv(gym.Env):
     Must return a boolean value indicating if episode is complete
     Must be returned in order of reward, done
     '''
+    
     def reward_function(self):
+        import gc
         '''
         :return: reward as float
                  done as boolean
         '''
         
         # Corner boundaries of the world (in Meters)
-        STAGE_X_MIN = -44.0
+        STAGE_X_MIN = -47.0
         STAGE_Y_MIN = -25.0
         STAGE_X_MAX = 15.0
         STAGE_Y_MAX = 22.0
@@ -361,7 +384,9 @@ class MarsEnv(gym.Env):
         base_reward = 2
         multiplier = 0
         done = False
-        
+     
+        distance = math.sqrt((self.x - self.last_position_x)**2 + (self.y - self.last_position_y)**2)
+        dist_increment = round(distance,2)
         
         if self.steps > 0:
             
@@ -369,8 +394,13 @@ class MarsEnv(gym.Env):
             # ###########################################
             
             # Has LIDAR registered a hit
-            if self.collision_threshold <= CRASH_DISTANCE:
+            if self.collision_threshold <= CRASH_DISTANCE + 0.50:   # Eliminates the stuck wheel episodes  < 0.99 
                 print("Rover has sustained sideswipe damage")
+                return 0, True # No reward
+            
+            # if the rover is stuck and not moving
+            if dist_increment < 0.01 and self.distance_travelled > 10 :
+                print("Rover seems to be stuck on a rock. Distance inc", dist_increment)
                 return 0, True # No reward
             
             # Have the gravity sensors registered too much G-force
@@ -384,7 +414,7 @@ class MarsEnv(gym.Env):
                 return 0, True # No reward
             
             # Has the Rover reached the destination
-            if self.last_position_x >= CHECKPOINT_X and self.last_position_y >= CHECKPOINT_Y:
+            if self.last_position_x <= CHECKPOINT_X and self.last_position_y <= CHECKPOINT_Y:
                 print("Congratulations! The rover has reached the checkpoint!")
                 multiplier = FINISHED_REWARD
                 reward = (base_reward * multiplier) / self.steps # <-- incentivize to reach checkpoint in fewest steps
@@ -450,15 +480,21 @@ class MarsEnv(gym.Env):
             else:
                 multiplier = 1
             
-            # Incentivize the rover to stay away from objects
+            
+             # Incentivize the rover to stay away from objects
             if self.collision_threshold >= 2.0:      # very safe distance
-                multiplier = multiplier + 1
+                multiplier = multiplier + 1  
             elif self.collision_threshold < 2.0 and self.collision_threshold >= 1.5: # pretty safe
                 multiplier = multiplier + .5
             elif self.collision_threshold < 1.5 and self.collision_threshold >= 1.0: # just enough time to turn
                 multiplier = multiplier + .25
             else:
-                multiplier = multiplier # probably going to hit something and get a zero reward
+                multiplier = multiplier # probably going to hit something and get a zero reward 
+                
+            #If we pull away from an object, that should be an extra reward
+            #last collision threshold is not changing
+            if self.collision_threshold > self.last_collision_threshold :
+                multiplier = multiplier + 1
             
             # Incentize the rover to move towards the Checkpoint and not away from the checkpoint
             if not self.closer_to_checkpoint:
@@ -466,10 +502,27 @@ class MarsEnv(gym.Env):
                     # Cut the multiplier in half
                     multiplier = multiplier/2
                     
-            reward = base_reward * multiplier
+            # Power Remaing Reward Discount   
+            power_reward  = self.power_supply_range/MAX_STEPS  # or should these be 1 - powerratio ^0.4
+           
+            """
+            # IMU Reward
+            # Get average Imu reading
+            if self.max_lin_accel_x > 0 or self.max_lin_accel_y > 0 or self.max_lin_accel_z > 0:
+                avg_imu = (self.max_lin_accel_x + self.max_lin_accel_y + self.max_lin_accel_y) / 3
+            else:
+                avg_imu = 0
+                
+            imu_reward = 1 - math.pow(avg_imu/11.0,4)  # is this helping ?? """
             
-        
+            reward = base_reward * multiplier * power_reward  # * imu_reward
+            
+            gc.collect()
+            
         return reward, done
+        
+    
+    
     
         
     '''
@@ -560,7 +613,7 @@ class MarsEnv(gym.Env):
     '''
     DO NOT EDIT - Function to wrote episodic rewards to CloudWatch
     '''
-    def send_reward_to_cloudwatch(self, reward):
+    def send_reward_to_cloudwatch(self, reward, score):  #temp
         try:
             session = boto3.session.Session()
             cloudwatch_client = session.client('cloudwatch', region_name=self.aws_region)
@@ -575,6 +628,11 @@ class MarsEnv(gym.Env):
                         'MetricName': 'Episode_Steps',
                         'Unit': 'None',
                         'Value': self.steps,
+                    },
+                    {
+                        'MetricName': 'Episode_Score',
+                        'Unit': 'None',
+                        'Value': score,
                     },
                     {
                         'MetricName': 'DistanceToCheckpoint',
