@@ -304,8 +304,12 @@ class MarsEnv(gym.Env):
         distance = math.sqrt((self.x - self.last_position_x)**2 + (self.y - self.last_position_y)**2)
         dist_increment = round(distance,2)
         
-        heading = math.atan2(self.y, self.x)
-        degrees = round(heading*180/math.pi,2)
+        # current heading 
+        current_heading = math.atan2(self.y - self.last_position_y, self.x - self.last_position_x)
+        # checkpoint heading 
+        checkpoint_heading = math.atan2(CHECKPOINT_Y - self.y, CHECKPOINT_X - self.x)
+        # Delta between Heading and Destination
+        bearing = round((checkpoint_heading - current_heading)*180/math.pi,2)
     
         print('Step:%.2f' % self.steps,
               'Steering:%f' % action[0],
@@ -313,17 +317,6 @@ class MarsEnv(gym.Env):
               'DTCP:%f' % self.current_distance_to_checkpoint,  # Distance to Check Point
               'DT:%f' % self.distance_travelled,                # Distance Travelled
               'CT:%.2f' % self.collision_threshold,             # Collision Threshold
-              'LCT:%.2f' % self.last_collision_threshold,             # Last Collision Threshold
-              'LX:%.2f' % self.last_position_x,                 # Previous X
-              'LY:%.2f' % self.last_position_y,                 # Previous 
-              'AX:%.2f' % self.max_lin_accel_x,                 # acc x
-              'AY:%.2f' % self.max_lin_accel_y,                 # acc y
-              'AZ:%.2f' % self.max_lin_accel_z,                 # acc z
-              'DI:%.2f' % dist_increment,                 # Distance Increment
-              'HD:%.2f' % heading,                              # Heading
-              'DG:%.2f' % degrees,                              # Heading in Degrees
-#             'AT:%.2f' % self.angular_trajectory.Degrees,      # Linear Trajectory
-#             'LT:%.2f' % self.linear_trajectory.Degrees,       # Angular Trajectory
               'CTCP:%f' % self.closer_to_checkpoint,            # Is closer to checkpoint
               'PSR: %f' % self.power_supply_range,              # Steps remaining in Episode
               'IMU: %f' % avg_imu)
@@ -357,10 +350,11 @@ class MarsEnv(gym.Env):
         STAGE_X_MAX = 15.0
         STAGE_Y_MAX = 22.0
         
+        # checkpoint -44,-4
         
-        GUIDERAILS_X_MIN = -46
+        GUIDERAILS_X_MIN = -48
         GUIDERAILS_X_MAX = 1
-        GUIDERAILS_Y_MIN = -6
+        GUIDERAILS_Y_MIN = -8
         GUIDERAILS_Y_MAX = 4
         
         
@@ -493,7 +487,7 @@ class MarsEnv(gym.Env):
                 
             #If we pull away from an object, that should be an extra reward
             #last collision threshold is not changing
-            if self.collision_threshold > self.last_collision_threshold :
+            # if self.collision_threshold > self.last_collision_threshold :
                 multiplier = multiplier + 1
             
             # Incentize the rover to move towards the Checkpoint and not away from the checkpoint
@@ -505,17 +499,32 @@ class MarsEnv(gym.Env):
             # Power Remaing Reward Discount   
             power_reward  = self.power_supply_range/MAX_STEPS  # or should these be 1 - powerratio ^0.4
            
-            """
-            # IMU Reward
-            # Get average Imu reading
-            if self.max_lin_accel_x > 0 or self.max_lin_accel_y > 0 or self.max_lin_accel_z > 0:
-                avg_imu = (self.max_lin_accel_x + self.max_lin_accel_y + self.max_lin_accel_y) / 3
-            else:
-                avg_imu = 0
-                
-            imu_reward = 1 - math.pow(avg_imu/11.0,4)  # is this helping ?? """
             
-            reward = base_reward * multiplier * power_reward  # * imu_reward
+            # Reward for being pointed in the correct direction
+            # current heading 
+            current_heading = math.atan2(self.y - self.last_position_y, self.x - self.last_position_x)*180/math.pi
+            # checkpoint heading 
+            checkpoint_heading = math.atan2(CHECKPOINT_Y - self.y, CHECKPOINT_X - self.x)*180/math.pi
+            # Delta between Heading and Destination in degrees
+            bearing = round((checkpoint_heading - current_heading),4)
+            
+            #If heading in wrong direction , slice the muliplier
+            if (bearing > 90):
+                muliplier = muliplier / 2
+            
+            heading_reward  = 1 - math.pow(bearing/360,2)  # not enough
+
+            print ('LCT:%.2f' % self.last_collision_threshold,  # Last Collision Threshold
+              'LX:%.2f' % self.last_position_x,                 # Previous X
+              'LY:%.2f' % self.last_position_y,                 # Previous 
+              'DI:%.2f' % dist_increment,                       # Distance Increment
+              'CD:%.4f' % current_heading,                      # Current Heading
+              'CHKD:%.4f' % checkpoint_heading,                 # Checkpoint Heading
+              'BE:%.4f' % bearing,                              # Bearing in Degrees
+              'Heading Reward:%.4f' % heading_reward            # Heading Reward
+              )
+            
+            reward = base_reward * multiplier * power_reward  # * heading_reward  # * imu_reward
             
             gc.collect()
             
