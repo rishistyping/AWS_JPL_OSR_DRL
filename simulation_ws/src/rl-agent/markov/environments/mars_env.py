@@ -382,6 +382,7 @@ class MarsEnv(gym.Env):
         distance = math.sqrt((self.x - self.last_position_x)**2 + (self.y - self.last_position_y)**2)
         dist_increment = round(distance,2)
         
+        
         if self.steps > 0:
             
             # Check for episode ending events first
@@ -499,29 +500,46 @@ class MarsEnv(gym.Env):
             # Power Remaing Reward Discount   
             power_reward  = self.power_supply_range/MAX_STEPS  # or should these be 1 - powerratio ^0.4
            
+            #Get the next destination
+            next_point_x = WAYPOINT_1_X
+            next_point_y = WAYPOINT_1_Y
+            
+            if self.reached_waypoint_1:
+                next_point_x = WAYPOINT_2_X
+                next_point_y = WAYPOINT_2_Y
+                
+            if self.reached_waypoint_2:
+                next_point_x = WAYPOINT_3_X
+                next_point_y = WAYPOINT_3_Y
+                
+            if self.reached_waypoint_3:
+                next_point_x = CHECKPOINT_X
+                next_point_y = CHECKPOINT_Y
+            
             
             # Reward for being pointed in the correct direction
             # current heading 
             current_heading = math.atan2(self.y - self.last_position_y, self.x - self.last_position_x)*180/math.pi
-            # checkpoint heading 
-            checkpoint_heading = math.atan2(CHECKPOINT_Y - self.y, CHECKPOINT_X - self.x)*180/math.pi
+            # nextpoint heading 
+            nextpoint_heading = math.atan2(next_point_x - self.y, next_point_y - self.x)*180/math.pi
             # Delta between Heading and Destination in degrees
-            bearing = round((checkpoint_heading - current_heading),4)
+            bearing = round((nextpoint_heading - current_heading),4)
             
             #If heading in wrong direction , slice the muliplier
-            if (bearing > 90):
-                muliplier = muliplier / 2
+            if (abs(bearing) > 90):
+                multiplier = multiplier / 2
             
-            heading_reward  = 1 - math.pow(bearing/360,2)  # not enough
+            # heading_reward  = 1 - math.pow(bearing/360,2)  # not enough
 
             print ('LCT:%.2f' % self.last_collision_threshold,  # Last Collision Threshold
               'LX:%.2f' % self.last_position_x,                 # Previous X
               'LY:%.2f' % self.last_position_y,                 # Previous 
               'DI:%.2f' % dist_increment,                       # Distance Increment
               'CD:%.4f' % current_heading,                      # Current Heading
-              'CHKD:%.4f' % checkpoint_heading,                 # Checkpoint Heading
+              'CHKD:%.4f' % nextpoint_heading,                  # Next point Heading (Waypoint 1,2,3 Checkpoint)
               'BE:%.4f' % bearing,                              # Bearing in Degrees
-              'Heading Reward:%.4f' % heading_reward            # Heading Reward
+              'NP_X:%.2f' % next_point_x,                       # next destination x
+              'NP_Y:%.2f' % next_point_y                        # next destination y
               )
             
             reward = base_reward * multiplier * power_reward  # * heading_reward  # * imu_reward
