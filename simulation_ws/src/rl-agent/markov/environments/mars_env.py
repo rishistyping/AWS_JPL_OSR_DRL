@@ -158,10 +158,9 @@ class MarsEnv(gym.Env):
     DO NOT EDIT - Function called at the conclusion of each episode to reset episodic values
     '''
     def reset(self):
-        score = 10000 - self.steps - self.distance_travelled - round(self.max_lin_accel_x,2)
         print('Total Episodic Reward=%.2f' % self.reward_in_episode,
-              'Total Episodic Steps=%.2f' % self.steps, ' Episode_Score=%.2f' % score)
-        self.send_reward_to_cloudwatch(self.reward_in_episode, round(score,2))
+              'Total Episodic Steps=%.2f' % self.steps)
+        self.send_reward_to_cloudwatch(self.reward_in_episode)
 
         # Reset global episodic values
         self.reward = None
@@ -327,15 +326,6 @@ class MarsEnv(gym.Env):
         else:
             avg_imu = 0
         
-        distance = math.sqrt((self.x - self.last_position_x)**2 + (self.y - self.last_position_y)**2)
-        dist_increment = round(distance,2)
-        
-        # current heading 
-        current_heading = math.atan2(self.y - self.last_position_y, self.x - self.last_position_x)
-        # checkpoint heading 
-        checkpoint_heading = math.atan2(CHECKPOINT_Y - self.y, CHECKPOINT_X - self.x)
-        # Delta between Heading and Destination
-        bearing = round((checkpoint_heading - current_heading)*180/math.pi,2)
     
         print('Step:%.2f' % self.steps,
               'Steering:%f' % action[0],
@@ -352,7 +342,7 @@ class MarsEnv(gym.Env):
 
         self.last_position_x = self.x
         self.last_position_y = self.y
-        self.last_collision_threshold = self.collision_threshold
+        # self.last_collision_threshold = self.collision_threshold
 
 
 
@@ -515,7 +505,7 @@ class MarsEnv(gym.Env):
             #If we pull away from an object, that should be an extra reward
             #last collision threshold is not changing
             # if self.collision_threshold > self.last_collision_threshold :
-                multiplier = multiplier + 1
+            #    multiplier = multiplier + 1
             
             # Incentize the rover to move towards the Checkpoint and not away from the checkpoint
             if not self.closer_to_checkpoint:
@@ -557,7 +547,9 @@ class MarsEnv(gym.Env):
             
             # heading_reward  = 1 - math.pow(bearing/360,2)  # not enough
 
-            print ('LCT:%.2f' % self.last_collision_threshold,  # Last Collision Threshold
+            print('LCT:%.2f' % self.last_collision_threshold,   # Last Collision Threshold
+              'X:%.2f' % self.x,                                # X
+              'Y:%.2f' % self.y,                                # Y 
               'LX:%.2f' % self.last_position_x,                 # Previous X
               'LY:%.2f' % self.last_position_y,                 # Previous 
               'DI:%.2f' % dist_increment,                       # Distance Increment
@@ -567,6 +559,10 @@ class MarsEnv(gym.Env):
               'NP_X:%.2f' % next_point_x,                       # next destination x
               'NP_Y:%.2f' % next_point_y                        # next destination y
               )
+              
+            # self.last_position_x = self.x
+            # self.last_position_y = self.y
+            self.last_collision_threshold = self.collision_threshold
             
             reward = base_reward * multiplier * power_reward  # * heading_reward  # * imu_reward
             
@@ -666,7 +662,7 @@ class MarsEnv(gym.Env):
     '''
     DO NOT EDIT - Function to wrote episodic rewards to CloudWatch
     '''
-    def send_reward_to_cloudwatch(self, reward, score):  #temp
+    def send_reward_to_cloudwatch(self, reward):
         try:
             session = boto3.session.Session()
             cloudwatch_client = session.client('cloudwatch', region_name=self.aws_region)
@@ -681,11 +677,6 @@ class MarsEnv(gym.Env):
                         'MetricName': 'Episode_Steps',
                         'Unit': 'None',
                         'Value': self.steps,
-                    },
-                    {
-                        'MetricName': 'Episode_Score',
-                        'Unit': 'None',
-                        'Value': score,
                     },
                     {
                         'MetricName': 'DistanceToCheckpoint',
