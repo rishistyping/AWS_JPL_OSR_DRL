@@ -539,7 +539,7 @@ class MarsEnv(gym.Env):
             prevdist_next_point = math.sqrt((self.last_position_x - next_point_x)**2 + (self.last_position_y - next_point_y)**2)
             
             #Should be getting closer to way point and checkpoints
-            if prevdist_next_point < dist_next_point:
+            if prevdist_next_point > dist_next_point:
                 if multiplier > 0:
                     # Cut the multiplier in half
                     multiplier = multiplier/2
