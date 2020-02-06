@@ -331,6 +331,8 @@ class MarsEnv(gym.Env):
               'Steering:%f' % action[0],
               'R:%.2f' % reward,                                # Reward
               'DTCP:%f' % self.current_distance_to_checkpoint,  # Distance to Check Point
+              'X:%.2f' % self.x,                                # X
+              'Y:%.2f' % self.y,                                # Y 
               'DT:%f' % self.distance_travelled,                # Distance Travelled
               'CT:%.2f' % self.collision_threshold,             # Collision Threshold
               'CTCP:%f' % self.closer_to_checkpoint,            # Is closer to checkpoint
@@ -508,10 +510,10 @@ class MarsEnv(gym.Env):
             #    multiplier = multiplier + 1
             
             # Incentize the rover to move towards the Checkpoint and not away from the checkpoint
-            if not self.closer_to_checkpoint:
-                if multiplier > 0:
-                    # Cut the multiplier in half
-                    multiplier = multiplier/2
+            # if not self.closer_to_checkpoint:
+            #    if multiplier > 0:
+            #        # Cut the multiplier in half
+            #        multiplier = multiplier/2
                     
             # Power Remaing Reward Discount   
             power_reward  = self.power_supply_range/MAX_STEPS  # or should these be 1 - powerratio ^0.4
@@ -531,8 +533,18 @@ class MarsEnv(gym.Env):
             if self.reached_waypoint_3:
                 next_point_x = CHECKPOINT_X
                 next_point_y = CHECKPOINT_Y
+                
+                
+            dist_next_point = math.sqrt((self.x - next_point_x)**2 + (self.y - next_point_y)**2)
+            prevdist_next_point = math.sqrt((self.last_position_x - next_point_x)**2 + (self.last_position_y - next_point_y)**2)
             
-            
+            #Should be getting closer to way point and checkpoints
+            if prevdist_next_point < dist_next_point:
+                if multiplier > 0:
+                    # Cut the multiplier in half
+                    multiplier = multiplier/2
+                    
+                    
             # Reward for being pointed in the correct direction
             # current heading 
             current_heading = math.atan2(self.y - self.last_position_y, self.x - self.last_position_x)*180/math.pi
@@ -542,10 +554,10 @@ class MarsEnv(gym.Env):
             bearing = round((nextpoint_heading - current_heading),4)
             
             #If heading in wrong direction , slice the muliplier
-            if (abs(bearing) > 90):
-                multiplier = multiplier / 2
+            #if (abs(bearing) > 90):
+            #    multiplier = multiplier / 2
             
-            # heading_reward  = 1 - math.pow(bearing/360,2)  # not enough
+            
 
             print('LCT:%.2f' % self.last_collision_threshold,   # Last Collision Threshold
               'X:%.2f' % self.x,                                # X
@@ -556,6 +568,8 @@ class MarsEnv(gym.Env):
               'CD:%.4f' % current_heading,                      # Current Heading
               'CHKD:%.4f' % nextpoint_heading,                  # Next point Heading (Waypoint 1,2,3 Checkpoint)
               'BE:%.4f' % bearing,                              # Bearing in Degrees
+              'DNP:%.2f' % dist_next_point,                   # distance to next destination
+              'PNP:%.2f' % prevdist_next_point,               # previous distance to next destination x
               'NP_X:%.2f' % next_point_x,                       # next destination x
               'NP_Y:%.2f' % next_point_y                        # next destination y
               )
