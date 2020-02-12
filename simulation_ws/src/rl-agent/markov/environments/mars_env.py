@@ -497,23 +497,27 @@ class MarsEnv(gym.Env):
             # To reach this point in the function the Rover has either not yet reached the way-points OR has already gotten the one time reward for reaching the waypoint(s)
                
             # multiply the reward based on the Rover's proximity to the Checkpoint
-            waypoint_interval = INITIAL_DISTANCE_TO_CHECKPOINT / 5 
-           
-            marker = [waypoint_interval,(waypoint_interval * 2),(waypoint_interval * 3),(waypoint_interval * 4)]
                 
-            # Get the Base multiplier
-            if self.current_distance_to_checkpoint <= marker[0]:
-                multiplier = 5
-            elif self.current_distance_to_checkpoint <= marker[1] and self.current_distance_to_checkpoint > marker[0]:
-                multiplier = 4
-            elif self.current_distance_to_checkpoint <= marker[2] and self.current_distance_to_checkpoint > marker[1]:
-                multiplier = 3
-            elif self.current_distance_to_checkpoint <= marker[3] and self.current_distance_to_checkpoint > marker[2]:
+             #Get the next destination
+            next_point_x = WAYPOINT_1_X
+            next_point_y = WAYPOINT_1_Y
+            multiplier = 1
+            
+            if self.reached_waypoint_1:
                 multiplier = 2
-            else:
-                multiplier = 1
-            
-            
+                next_point_x = WAYPOINT_2_X
+                next_point_y = WAYPOINT_2_Y
+                
+            if self.reached_waypoint_2:
+                multiplier = 3
+                next_point_x = WAYPOINT_3_X
+                next_point_y = WAYPOINT_3_Y
+                
+            if self.reached_waypoint_3:
+                multiplier = 4
+                next_point_x = CHECKPOINT_X
+                next_point_y = CHECKPOINT_Y
+           
              # Incentivize the rover to stay away from objects
             if self.collision_threshold >= 2.0:      # very safe distance
                 multiplier = multiplier + 1  
@@ -535,27 +539,7 @@ class MarsEnv(gym.Env):
             #    if multiplier > 0:
             #        # Cut the multiplier in half
             #        multiplier = multiplier/2
-                    
-            # Power Remaing Reward Discount   
-            power_reward  = self.power_supply_range/MAX_STEPS  # or should these be 1 - powerratio ^0.4
            
-            #Get the next destination
-            next_point_x = WAYPOINT_1_X
-            next_point_y = WAYPOINT_1_Y
-            
-            if self.reached_waypoint_1:
-                next_point_x = WAYPOINT_2_X
-                next_point_y = WAYPOINT_2_Y
-                
-            if self.reached_waypoint_2:
-                next_point_x = WAYPOINT_3_X
-                next_point_y = WAYPOINT_3_Y
-                
-            if self.reached_waypoint_3:
-                next_point_x = CHECKPOINT_X
-                next_point_y = CHECKPOINT_Y
-                
-                
             dist_next_point = math.sqrt((self.x - next_point_x)**2 + (self.y - next_point_y)**2)
             prevdist_next_point = math.sqrt((self.last_position_x - next_point_x)**2 + (self.last_position_y - next_point_y)**2)
             
@@ -575,11 +559,7 @@ class MarsEnv(gym.Env):
             # Delta between Heading and Destination in degrees
             bearing = round((nextpoint_heading - current_heading),4)
             
-            #If heading in wrong direction , slice the muliplier
-            #if (abs(bearing) > 90):
-            #    multiplier = multiplier / 2
-            
-            
+           
 
             print('LCT:%.2f' % self.last_collision_threshold,   # Last Collision Threshold
               'X:%.2f' % self.x,                                # X
