@@ -237,9 +237,9 @@
             "packageName": "training_grounds",
             "launchFile": "eval.launch",
             "environmentVariables": {
-              "MARKOV_PRESET_FILE": "rover_evaluation.py",
+              "MARKOV_PRESET_FILE": "training_grounds.py",
               "MODEL_S3_BUCKET": "awsrobotmakerjpl",
-              "MODEL_S3_PREFIX": "trainingeval",
+              "MODEL_S3_PREFIX": "mars",
               "ROS_AWS_REGION": "us-east-1"
             }
           },

@@ -519,7 +519,7 @@ class RoverTrainingGroundsEnv(gym.Env):
             imu_reward = 1 - math.pow(avg_imu/11.0,4)  # is this helping ?? """
     
             
-            reward = base_reward * multiplier * power_reward  # * imu_reward
+            reward = base_reward * multiplier # * power_reward  # * imu_reward
             
         
         return reward, done

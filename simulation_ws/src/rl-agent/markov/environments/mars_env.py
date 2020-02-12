@@ -421,6 +421,26 @@ class MarsEnv(gym.Env):
                 print("Rover has collided with an object")
                 return 0, True # No reward
             
+            """
+            # Get average Imu reading
+            if self.max_lin_accel_x > 0 or self.max_lin_accel_y > 0 or self.max_lin_accel_z > 0:
+                avg_imu = (self.max_lin_accel_x + self.max_lin_accel_y + self.max_lin_accel_y) / 3
+            else:
+                avg_imu = 0
+                
+            #if the IMU show too much impact but less than a collision
+            if self.distance_travelled <5:
+                prev_imu = 0
+            
+                
+            if avg_imu - prev_imu > 1.5 and prev_imu != 0:
+                print('Rover hit rough terrain : Prev imu: %f' % prev_imu,'Avg imu: %f' % avg_imu)
+                return 0, True # No Reward
+                
+            prev_imu = avg_imu
+            """   
+                
+           
             # Has the rover reached the max steps
             if self.power_supply_range < 1:
                 print("Rover's power supply has been drained (MAX Steps reached")
@@ -510,6 +530,7 @@ class MarsEnv(gym.Env):
             #    multiplier = multiplier + 1
             
             # Incentize the rover to move towards the Checkpoint and not away from the checkpoint
+            # original  did a 3 hr run Feb 8 12:47pm
             # if not self.closer_to_checkpoint:
             #    if multiplier > 0:
             #        # Cut the multiplier in half
@@ -539,6 +560,7 @@ class MarsEnv(gym.Env):
             prevdist_next_point = math.sqrt((self.last_position_x - next_point_x)**2 + (self.last_position_y - next_point_y)**2)
             
             #Should be getting closer to way point and checkpoints
+            # Test Sat Feb 8 - 3 hour run 3:00pm
             if prevdist_next_point > dist_next_point:
                 if multiplier > 0:
                     # Cut the multiplier in half
@@ -578,7 +600,7 @@ class MarsEnv(gym.Env):
             # self.last_position_y = self.y
             self.last_collision_threshold = self.collision_threshold
             
-            reward = base_reward * multiplier * power_reward  # * heading_reward  # * imu_reward
+            reward = base_reward * multiplier # * power_reward  # * heading_reward  # * imu_reward
             
             gc.collect()
             

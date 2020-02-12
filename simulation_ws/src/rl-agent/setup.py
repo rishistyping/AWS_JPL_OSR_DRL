@@ -28,6 +28,7 @@ setup(
     entry_points = {
         'console_scripts': [
             'run_local_rl_agent=markov.rover_agent:main'
+            'run_model_evaluation=markov.run_model_evaluation:main'
         ],
     }
 )
