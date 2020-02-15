@@ -41,7 +41,7 @@ IMG_QUEUE_BUF_SIZE = 1
 MAX_STEPS = 2000
 
 # Destination Point
-CHECKPOINT_X = -44.25
+CHECKPOINT_X = 44.25
 CHECKPOINT_Y = -4
 
 # Initial position of the robot
@@ -76,8 +76,8 @@ class MarsEnv(gym.Env):
         self.aws_region = os.environ.get("AWS_REGION", "us-east-1")             # Region for CloudWatch Metrics
         self.reward_in_episode = 0                                              # Global episodic reward variable
         self.steps = 0                                                          # Global episodic step counter
-        self.collision_threshold = 4.5   #was sys.maxsize                           # current collision distance
-        self.last_collision_threshold = 4.5  # sys.maxsize                      # previous collision distance
+        self.collision_threshold = sys.maxsize                                  # current collision distance
+        self.last_collision_threshold = sys.maxsize                             # previous collision distance
         self.collision = False                                                  # Episodic collision detector
         self.distance_travelled = 0                                             # Global episodic distance counter
         self.current_distance_to_checkpoint = INITIAL_DISTANCE_TO_CHECKPOINT    # current distance to checkpoint
@@ -211,35 +211,35 @@ class MarsEnv(gym.Env):
         model_state.twist.angular.y = 0
         model_state.twist.angular.z = 0
         model_state.model_name = 'rover'
-        
+
         # List of joints to reset (this is all of them)
         joint_names_list = ["rocker_left_corner_lb",
-                             "rocker_right_corner_rb",
-                             "body_rocker_left",
-                             "body_rocker_right",
-                             "rocker_right_bogie_right",
-                             "rocker_left_bogie_left",
-                             "bogie_left_corner_lf",
-                             "bogie_right_corner_rf",
-                             "corner_lf_wheel_lf",
-                             "imu_wheel_lf_joint",
-                             "bogie_left_wheel_lm",
-                             "imu_wheel_lm_joint",
-                             "corner_lb_wheel_lb",
-                             "imu_wheel_lb_joint",
-                             "corner_rf_wheel_rf",
-                             "imu_wheel_rf_joint",
-                             "bogie_right_wheel_rm",
-                             "imu_wheel_rm_joint",
-                             "corner_rb_wheel_rb",
-                             "imu_wheel_rb_joint"]
+                            "rocker_right_corner_rb",
+                            "body_rocker_left",
+                            "body_rocker_right",
+                            "rocker_right_bogie_right",
+                            "rocker_left_bogie_left",
+                            "bogie_left_corner_lf",
+                            "bogie_right_corner_rf",
+                            "corner_lf_wheel_lf",
+                            "imu_wheel_lf_joint",
+                            "bogie_left_wheel_lm",
+                            "imu_wheel_lm_joint",
+                            "corner_lb_wheel_lb",
+                            "imu_wheel_lb_joint",
+                            "corner_rf_wheel_rf",
+                            "imu_wheel_rf_joint",
+                            "bogie_right_wheel_rm",
+                            "imu_wheel_rm_joint",
+                            "corner_rb_wheel_rb",
+                            "imu_wheel_rb_joint"]
         # Angle to reset joints to
         joint_positions_list = [0 for _ in range(len(joint_names_list))]
 
         self.gazebo_model_state_service(model_state)
         self.gazebo_model_configuration_service(model_name='rover', urdf_param_name='rover_description', joint_names=joint_names_list, joint_positions=joint_positions_list)
 
-        self.last_collision_threshold = self.collision_threshold #fix instead of  sys.maxsize
+        self.last_collision_threshold = sys.maxsize
         self.last_position_x = self.x
         self.last_position_y = self.y
 
@@ -303,8 +303,6 @@ class MarsEnv(gym.Env):
     '''
     DO NOT EDIT - Reward Function buffer
     '''
-    
-    
     def call_reward_function(self, action):
         self.get_distance_to_object() #<-- Also evaluate for sideswipe and collistion damage
         
@@ -325,7 +323,6 @@ class MarsEnv(gym.Env):
             avg_imu = (self.max_lin_accel_x + self.max_lin_accel_y + self.max_lin_accel_y) / 3
         else:
             avg_imu = 0
-        
     
         print('Step:%.2f' % self.steps,
               'Steering:%f' % action[0],
@@ -342,7 +339,6 @@ class MarsEnv(gym.Env):
 
         self.last_position_x = self.x
         self.last_position_y = self.y
-        # self.last_collision_threshold = self.collision_threshold
 
 
 
@@ -352,25 +348,22 @@ class MarsEnv(gym.Env):
     Must return a boolean value indicating if episode is complete
     Must be returned in order of reward, done
     '''
-    
     def reward_function(self):
-        import gc
         '''
         :return: reward as float
                  done as boolean
         '''
         
         # Corner boundaries of the world (in Meters)
-        STAGE_X_MIN = -47.0
+        STAGE_X_MIN = -44.0
         STAGE_Y_MIN = -25.0
         STAGE_X_MAX = 15.0
         STAGE_Y_MAX = 22.0
         
-        # checkpoint -44,-4
         
-        GUIDERAILS_X_MIN = -48
+        GUIDERAILS_X_MIN = -46
         GUIDERAILS_X_MAX = 1
-        GUIDERAILS_Y_MIN = -8
+        GUIDERAILS_Y_MIN = -6
         GUIDERAILS_Y_MAX = 4
         
         
@@ -394,9 +387,6 @@ class MarsEnv(gym.Env):
         base_reward = 2
         multiplier = 0
         done = False
-     
-        distance = math.sqrt((self.x - self.last_position_x)**2 + (self.y - self.last_position_y)**2)
-        dist_increment = round(distance,2)
         
         
         if self.steps > 0:
@@ -405,13 +395,8 @@ class MarsEnv(gym.Env):
             # ###########################################
             
             # Has LIDAR registered a hit
-            if self.collision_threshold <= CRASH_DISTANCE + 0.50:   # Eliminates the stuck wheel episodes  < 0.99 
+            if self.collision_threshold <= CRASH_DISTANCE:
                 print("Rover has sustained sideswipe damage")
-                return 0, True # No reward
-            
-            # if the rover is stuck and not moving
-            if dist_increment < 0.01 and self.distance_travelled > 10 :
-                print("Rover seems to be stuck on a rock. Distance inc", dist_increment)
                 return 0, True # No reward
             
             # Have the gravity sensors registered too much G-force
@@ -425,7 +410,7 @@ class MarsEnv(gym.Env):
                 return 0, True # No reward
             
             # Has the Rover reached the destination
-            if self.last_position_x <= CHECKPOINT_X and self.last_position_y <= CHECKPOINT_Y:
+            if self.last_position_x >= CHECKPOINT_X and self.last_position_y >= CHECKPOINT_Y:
                 print("Congratulations! The rover has reached the checkpoint!")
                 multiplier = FINISHED_REWARD
                 reward = (base_reward * multiplier) / self.steps # <-- incentivize to reach checkpoint in fewest steps
@@ -491,21 +476,15 @@ class MarsEnv(gym.Env):
             else:
                 multiplier = 1
             
-            
-             # Incentivize the rover to stay away from objects
+            # Incentivize the rover to stay away from objects
             if self.collision_threshold >= 2.0:      # very safe distance
-                multiplier = multiplier + 1  
+                multiplier = multiplier + 1
             elif self.collision_threshold < 2.0 and self.collision_threshold >= 1.5: # pretty safe
                 multiplier = multiplier + .5
             elif self.collision_threshold < 1.5 and self.collision_threshold >= 1.0: # just enough time to turn
                 multiplier = multiplier + .25
             else:
-                multiplier = multiplier # probably going to hit something and get a zero reward 
-                
-            #If we pull away from an object, that should be an extra reward
-            #last collision threshold is not changing
-            # if self.collision_threshold > self.last_collision_threshold :
-            #    multiplier = multiplier + 1
+                multiplier = multiplier # probably going to hit something and get a zero reward
             
             # Incentize the rover to move towards the Checkpoint and not away from the checkpoint
             if not self.closer_to_checkpoint:
@@ -513,65 +492,10 @@ class MarsEnv(gym.Env):
                     # Cut the multiplier in half
                     multiplier = multiplier/2
                     
-            # Power Remaing Reward Discount   
-            power_reward  = self.power_supply_range/MAX_STEPS  # or should these be 1 - powerratio ^0.4
-           
-            #Get the next destination
-            next_point_x = WAYPOINT_1_X
-            next_point_y = WAYPOINT_1_Y
+            reward = base_reward * multiplier
             
-            if self.reached_waypoint_1:
-                next_point_x = WAYPOINT_2_X
-                next_point_y = WAYPOINT_2_Y
-                
-            if self.reached_waypoint_2:
-                next_point_x = WAYPOINT_3_X
-                next_point_y = WAYPOINT_3_Y
-                
-            if self.reached_waypoint_3:
-                next_point_x = CHECKPOINT_X
-                next_point_y = CHECKPOINT_Y
-            
-            
-            # Reward for being pointed in the correct direction
-            # current heading 
-            current_heading = math.atan2(self.y - self.last_position_y, self.x - self.last_position_x)*180/math.pi
-            # nextpoint heading 
-            nextpoint_heading = math.atan2(next_point_x - self.y, next_point_y - self.x)*180/math.pi
-            # Delta between Heading and Destination in degrees
-            bearing = round((nextpoint_heading - current_heading),4)
-            
-            #If heading in wrong direction , slice the muliplier
-            if (abs(bearing) > 90):
-                multiplier = multiplier / 2
-            
-            # heading_reward  = 1 - math.pow(bearing/360,2)  # not enough
-
-            print('LCT:%.2f' % self.last_collision_threshold,   # Last Collision Threshold
-              'X:%.2f' % self.x,                                # X
-              'Y:%.2f' % self.y,                                # Y 
-              'LX:%.2f' % self.last_position_x,                 # Previous X
-              'LY:%.2f' % self.last_position_y,                 # Previous 
-              'DI:%.2f' % dist_increment,                       # Distance Increment
-              'CD:%.4f' % current_heading,                      # Current Heading
-              'CHKD:%.4f' % nextpoint_heading,                  # Next point Heading (Waypoint 1,2,3 Checkpoint)
-              'BE:%.4f' % bearing,                              # Bearing in Degrees
-              'NP_X:%.2f' % next_point_x,                       # next destination x
-              'NP_Y:%.2f' % next_point_y                        # next destination y
-              )
-              
-            # self.last_position_x = self.x
-            # self.last_position_y = self.y
-            self.last_collision_threshold = self.collision_threshold
-            
-            reward = base_reward * multiplier * power_reward  # * heading_reward  # * imu_reward
-            
-            gc.collect()
-            
-        return reward, done
         
-    
-    
+        return reward, done
     
         
     '''
