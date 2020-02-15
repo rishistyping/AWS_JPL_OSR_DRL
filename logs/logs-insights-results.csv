@@ -1,0 +1,1001 @@
+@timestamp,@message
+2020-02-15 03:45:30.912,RoboMaker Log Recorder Starting...
+2020-02-15 03:46:10.348,+ exec stdbuf -oL -eL roslaunch mars mars_full_sim.launch
+2020-02-15 03:46:11.405,"WARNING: Could not change permissions for folder [/home/robomaker/.ros/log/b4b728da-4fa5-11ea-97ba-0242a9fe0103], make sure that the parent folder has correct permissions."
+2020-02-15 03:46:11.405,Checking log directory for disk usage. This may take awhile.
+2020-02-15 03:46:11.405,Press Ctrl-C to interrupt
+2020-02-15 03:46:11.405,Done checking log file disk usage. Usage is <1GB.
+2020-02-15 03:46:11.405,]2;/home/robomaker/workspace/applications/simulation-application/workspace/opt/built_workspace/mars/share/mars/launch/mars_full_sim.launch
+2020-02-15 03:46:12.449,process[rover_ns/controller_spawner-6]: started with pid [166]
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_left_wheel_lm/has_position_limits: False
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_left_wheel_lm/has_jerk_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_left_wheel_lm/has_effort_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_left_wheel_lm/has_acceleration_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_left_corner_lf/max_velocity: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_left_corner_lf/max_jerk: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_left_corner_lf/max_effort: 0.5
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_left_corner_lf/max_acceleration: 1
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_left_corner_lf/has_velocity_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_left_corner_lf/has_position_limits: False
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_left_corner_lf/has_jerk_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_left_corner_lf/has_effort_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_left_corner_lf/has_acceleration_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/body_rocker_right/max_velocity: 100.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/body_rocker_right/max_jerk: 100.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/body_rocker_right/max_effort: 10
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/body_rocker_right/max_acceleration: 10
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/body_rocker_right/has_velocity_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/body_rocker_right/has_position_limits: False
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_elbow_arm_hand_left/max_effort: 0.5
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_elbow_arm_hand_left/max_acceleration: 1
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_elbow_arm_hand_left/has_velocity_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_elbow_arm_hand_left/has_position_limits: False
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_elbow_arm_hand_left/has_jerk_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_elbow_arm_hand_left/has_effort_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_elbow_arm_hand_left/has_acceleration_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/corner_rf_wheel_rf_controller/type: effort_controller...
+2020-02-15 03:46:12.449, * /rover_ns/corner_rf_wheel_rf_controller/pid/p: 0.2
+2020-02-15 03:46:12.449, * /rover_ns/corner_rf_wheel_rf_controller/pid/i: 0.05
+2020-02-15 03:46:12.449, * /rover_ns/corner_rf_wheel_rf_controller/pid/d: 0
+2020-02-15 03:46:12.449, * /rover_ns/corner_rf_wheel_rf_controller/joint: corner_rf_wheel_rf
+2020-02-15 03:46:12.449, * /rover_ns/corner_rb_wheel_rb_controller/type: effort_controller...
+2020-02-15 03:46:12.449, * /rover_ns/corner_rb_wheel_rb_controller/pid/p: 0.2
+2020-02-15 03:46:12.449, * /rover_ns/corner_rb_wheel_rb_controller/pid/i: 0.05
+2020-02-15 03:46:12.449, * /rover_ns/corner_rb_wheel_rb_controller/pid/d: 0
+2020-02-15 03:46:12.449, * /rover_ns/corner_rb_wheel_rb_controller/joint: corner_rb_wheel_rb
+2020-02-15 03:46:12.449, * /rover_ns/corner_lf_wheel_lf_controller/type: effort_controller...
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_left_wheel_lm/has_velocity_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/body_rocker_right/has_jerk_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/body_rocker_right/has_effort_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/body_rocker_right/has_acceleration_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/body_rocker_left/max_velocity: 100.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/body_rocker_left/max_jerk: 100.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/body_rocker_left/max_effort: 10
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/body_rocker_left/max_acceleration: 10
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/body_rocker_left/has_velocity_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/body_rocker_left/has_position_limits: False
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/body_rocker_left/has_jerk_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/body_rocker_left/has_effort_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/body_rocker_left/has_acceleration_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/body_arm_shoulder_1/max_velocity: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/body_arm_shoulder_1/max_jerk: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/body_arm_shoulder_1/max_effort: 0.5
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/body_arm_shoulder_1/max_acceleration: 1
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/body_arm_shoulder_1/has_velocity_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/body_arm_shoulder_1/has_position_limits: False
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/body_arm_shoulder_1/has_jerk_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/body_arm_shoulder_1/has_effort_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/body_arm_shoulder_1/has_acceleration_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_shoulder_2_arm_elbow/max_velocity: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_shoulder_2_arm_elbow/max_jerk: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_shoulder_2_arm_elbow/max_effort: 0.5
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_shoulder_2_arm_elbow/max_acceleration: 1
+2020-02-15 03:46:12.449, * /rover_ns/bogie_left_wheel_lm_controller/type: effort_controller...
+2020-02-15 03:46:12.449, * /rover_ns/bogie_left_wheel_lm_controller/pid/p: 0.2
+2020-02-15 03:46:12.449, * /rover_ns/bogie_left_wheel_lm_controller/pid/i: 0.05
+2020-02-15 03:46:12.449, * /rover_ns/bogie_left_wheel_lm_controller/pid/d: 0
+2020-02-15 03:46:12.449, * /rover_ns/bogie_left_wheel_lm_controller/joint: bogie_left_wheel_lm
+2020-02-15 03:46:12.449, * /rover_ns/bogie_left_corner_lf_controller/type: effort_controller...
+2020-02-15 03:46:12.449, * /rover_ns/bogie_left_corner_lf_controller/pid/p: 1
+2020-02-15 03:46:12.449, * /rover_ns/bogie_left_corner_lf_controller/pid/i: 1
+2020-02-15 03:46:12.449, * /rover_ns/bogie_left_corner_lf_controller/pid/d: 1
+2020-02-15 03:46:12.449, * /rover_ns/bogie_left_corner_lf_controller/joint: bogie_left_corner_lf
+2020-02-15 03:46:12.449, * /rover_ns/body_rocker_right_controller/type: effort_controller...
+2020-02-15 03:46:12.449, * /rover_ns/body_rocker_right_controller/pid/p: 100
+2020-02-15 03:46:12.449, * /rover_ns/body_rocker_right_controller/pid/i: 0.1
+2020-02-15 03:46:12.449, * /rover_ns/body_rocker_right_controller/pid/d: 10
+2020-02-15 03:46:12.449, * /rover_ns/body_rocker_right_controller/joint: body_rocker_right
+2020-02-15 03:46:12.449, * /rover_ns/body_rocker_left_controller/type: effort_controller...
+2020-02-15 03:46:12.449, * /rover_ns/body_rocker_left_controller/pid/p: 100
+2020-02-15 03:46:12.449, * /rover_ns/body_rocker_left_controller/pid/i: 0.1
+2020-02-15 03:46:12.449, * /rover_ns/body_rocker_left_controller/pid/d: 10
+2020-02-15 03:46:12.449, * /rover_ns/body_rocker_left_controller/joint: body_rocker_left
+2020-02-15 03:46:12.449, * /rover_ns/body_arm_shoulder_1_controller/type: effort_controller...
+2020-02-15 03:46:12.449, * /rover_ns/body_arm_shoulder_1_controller/pid/p: 1
+2020-02-15 03:46:12.449, * /rover_ns/body_arm_shoulder_1_controller/pid/i: 1
+2020-02-15 03:46:12.449, * /rover_ns/body_arm_shoulder_1_controller/pid/d: 1
+2020-02-15 03:46:12.449, * /rover_ns/body_arm_shoulder_1_controller/joint: body_arm_shoulder_1
+2020-02-15 03:46:12.449, * /rover_ns/arm_shoulder_2_arm_elbow_controller/type: effort_controller...
+2020-02-15 03:46:12.449, * /rover_ns/arm_shoulder_2_arm_elbow_controller/pid/p: 1
+2020-02-15 03:46:12.449, * /rover_ns/arm_shoulder_2_arm_elbow_controller/pid/i: 1
+2020-02-15 03:46:12.449, * /rover_ns/arm_shoulder_2_arm_elbow_controller/pid/d: 1
+2020-02-15 03:46:12.449, * /rover_ns/arm_shoulder_2_arm_elbow_controller/joint: arm_shoulder_2_ar...
+2020-02-15 03:46:12.449, * /rover_ns/arm_shoulder_1_arm_shoulder_2_controller/type: effort_controller...
+2020-02-15 03:46:12.449, * /rover_ns/arm_shoulder_1_arm_shoulder_2_controller/pid/p: 1
+2020-02-15 03:46:12.449, * /rover_ns/arm_shoulder_1_arm_shoulder_2_controller/pid/i: 1
+2020-02-15 03:46:12.449, * /rover_ns/corner_lf_wheel_lf_controller/pid/p: 0.2
+2020-02-15 03:46:12.449, * /rover_ns/corner_lf_wheel_lf_controller/pid/i: 0.05
+2020-02-15 03:46:12.449, * /rover_ns/corner_lf_wheel_lf_controller/pid/d: 0
+2020-02-15 03:46:12.449, * /rover_ns/corner_lf_wheel_lf_controller/joint: corner_lf_wheel_lf
+2020-02-15 03:46:12.449, * /rover_ns/corner_lb_wheel_lb_controller/type: effort_controller...
+2020-02-15 03:46:12.449, * /rover_ns/corner_lb_wheel_lb_controller/pid/p: 0.2
+2020-02-15 03:46:12.449, * /rover_ns/corner_lb_wheel_lb_controller/pid/i: 0.05
+2020-02-15 03:46:12.449, * /rover_ns/corner_lb_wheel_lb_controller/pid/d: 0
+2020-02-15 03:46:12.449, * /rover_ns/corner_lb_wheel_lb_controller/joint: corner_lb_wheel_lb
+2020-02-15 03:46:12.449, * /rover_ns/bogie_right_wheel_rm_controller/type: effort_controller...
+2020-02-15 03:46:12.449, * /rover_ns/bogie_right_wheel_rm_controller/pid/p: 0.2
+2020-02-15 03:46:12.449, * /rover_ns/bogie_right_wheel_rm_controller/pid/i: 0.05
+2020-02-15 03:46:12.449, * /rover_ns/bogie_right_wheel_rm_controller/pid/d: 0
+2020-02-15 03:46:12.449, * /rover_ns/bogie_right_wheel_rm_controller/joint: bogie_right_wheel_rm
+2020-02-15 03:46:12.449, * /rover_ns/bogie_right_corner_rf_controller/type: effort_controller...
+2020-02-15 03:46:12.449, * /rover_ns/bogie_right_corner_rf_controller/pid/p: 1
+2020-02-15 03:46:12.449, * /rover_ns/bogie_right_corner_rf_controller/pid/i: 1
+2020-02-15 03:46:12.449, * /rover_ns/bogie_right_corner_rf_controller/pid/d: 1
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_left_corner_lb/has_effort_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_left_corner_lb/has_acceleration_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_left_bogie_left/max_velocity: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_left_bogie_left/max_jerk: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_left_bogie_left/max_effort: 0.5
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_left_bogie_left/max_acceleration: 1
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_left_bogie_left/has_velocity_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_left_bogie_left/has_position_limits: False
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_left_bogie_left/has_jerk_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_left_bogie_left/has_effort_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_left_bogie_left/has_acceleration_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_rf_wheel_rf/max_velocity: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_rf_wheel_rf/max_jerk: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_rf_wheel_rf/max_effort: 0.5
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_rf_wheel_rf/max_acceleration: 1
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_rf_wheel_rf/has_velocity_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_rf_wheel_rf/has_position_limits: False
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_rf_wheel_rf/has_jerk_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_rf_wheel_rf/has_effort_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_rf_wheel_rf/has_acceleration_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/bogie_right_corner_rf_controller/joint: bogie_right_corne...
+2020-02-15 03:46:12.449, * /rover_ns/arm_shoulder_1_arm_shoulder_2_controller/pid/d: 1
+2020-02-15 03:46:12.449, * /rover_ns/arm_shoulder_1_arm_shoulder_2_controller/joint: arm_shoulder_1_ar...
+2020-02-15 03:46:12.449, * /rover_ns/arm_elbow_arm_hand_right_controller/type: effort_controller...
+2020-02-15 03:46:12.449, * /rover_ns/arm_elbow_arm_hand_right_controller/pid/p: 0.05
+2020-02-15 03:46:12.449, * /rover_ns/arm_elbow_arm_hand_right_controller/pid/i: 0.05
+2020-02-15 03:46:12.449, * /rover_ns/arm_elbow_arm_hand_right_controller/pid/d: 0.0
+2020-02-15 03:46:12.449, * /rover_ns/arm_elbow_arm_hand_right_controller/joint: arm_elbow_arm_han...
+2020-02-15 03:46:12.449, * /rover_ns/arm_elbow_arm_hand_left_controller/type: effort_controller...
+2020-02-15 03:46:12.449, * /rover_ns/arm_elbow_arm_hand_left_controller/pid/p: 0.05
+2020-02-15 03:46:12.449, * /rover_ns/arm_elbow_arm_hand_left_controller/pid/i: 0.05
+2020-02-15 03:46:12.449, * /rover_ns/arm_elbow_arm_hand_left_controller/pid/d: 0.0
+2020-02-15 03:46:12.449, * /rover_ns/arm_elbow_arm_hand_left_controller/joint: arm_elbow_arm_han...
+2020-02-15 03:46:12.449, * /rosversion: 1.14.3
+2020-02-15 03:46:12.449, * /rosdistro: melodic
+2020-02-15 03:46:12.449," * /robot_description: <?xml version=""1...."
+2020-02-15 03:46:12.449, * /gazebo/enable_ros_network: True
+2020-02-15 03:46:12.449,PARAMETERS
+2020-02-15 03:46:12.449,========
+2020-02-15 03:46:12.449,SUMMARY
+2020-02-15 03:46:12.449,started roslaunch server http://169.254.1.3:46723/
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_rb_wheel_rb/max_velocity: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_rb_wheel_rb/max_jerk: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_rb_wheel_rb/max_effort: 0.5
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_rb_wheel_rb/max_acceleration: 1
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_rb_wheel_rb/has_velocity_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_rb_wheel_rb/has_position_limits: False
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_rb_wheel_rb/has_jerk_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_rb_wheel_rb/has_effort_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_rb_wheel_rb/has_acceleration_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_lf_wheel_lf/max_velocity: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_lf_wheel_lf/max_jerk: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_lf_wheel_lf/max_effort: 0.5
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_lf_wheel_lf/max_acceleration: 1
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_lf_wheel_lf/has_velocity_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_lf_wheel_lf/has_position_limits: False
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_lf_wheel_lf/has_jerk_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_lf_wheel_lf/has_effort_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_lf_wheel_lf/has_acceleration_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_lb_wheel_lb/max_velocity: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_lb_wheel_lb/max_jerk: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_lb_wheel_lb/max_effort: 0.5
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_lb_wheel_lb/max_acceleration: 1
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_lb_wheel_lb/has_velocity_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_lb_wheel_lb/has_position_limits: False
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_lb_wheel_lb/has_jerk_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_lb_wheel_lb/has_effort_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/corner_lb_wheel_lb/has_acceleration_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_right_wheel_rm/max_velocity: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_right_wheel_rm/max_jerk: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_right_wheel_rm/max_effort: 0.5
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_right_wheel_rm/max_acceleration: 1
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_right_wheel_rm/has_velocity_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_right_wheel_rm/has_position_limits: False
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_right_wheel_rm/has_jerk_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_right_wheel_rm/has_effort_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_right_wheel_rm/has_acceleration_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_right_corner_rf/max_velocity: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_right_corner_rf/max_jerk: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_right_corner_rf/max_effort: 0.5
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_right_corner_rf/max_acceleration: 1
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_right_corner_rf/has_velocity_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_right_corner_rf/has_position_limits: False
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_right_corner_rf/has_jerk_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_right_corner_rf/has_effort_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_right_corner_rf/has_acceleration_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_left_wheel_lm/max_velocity: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_left_wheel_lm/max_jerk: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_left_wheel_lm/max_effort: 0.5
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/bogie_left_wheel_lm/max_acceleration: 1
+2020-02-15 03:46:12.449,process[message_to_tf-5]: started with pid [164]
+2020-02-15 03:46:12.449,process[urdf_spawner-4]: started with pid [160]
+2020-02-15 03:46:12.449,process[gazebo_gui-3]: started with pid [156]
+2020-02-15 03:46:12.449,process[gazebo-2]: started with pid [154]
+2020-02-15 03:46:12.449,started core service [/rosout]
+2020-02-15 03:46:12.449,process[rosout-1]: started with pid [147]
+2020-02-15 03:46:12.449,setting /run_id to b4b728da-4fa5-11ea-97ba-0242a9fe0103
+2020-02-15 03:46:12.449,]2;/home/robomaker/workspace/applications/simulation-application/workspace/opt/built_workspace/mars/share/mars/launch/mars_full_sim.launch http://169.254.1.3:11311/
+2020-02-15 03:46:12.449,ROS_MASTER_URI=http://169.254.1.3:11311/
+2020-02-15 03:46:12.449,process[master]: started with pid [136]
+2020-02-15 03:46:12.449,auto-starting new master
+2020-02-15 03:46:12.449,    urdf_spawner (gazebo_ros/spawn_model)
+2020-02-15 03:46:12.449,    robot_state_publisher (robot_state_publisher/robot_state_publisher)
+2020-02-15 03:46:12.449,    motion (rover_description/motion)
+2020-02-15 03:46:12.449,    message_to_tf (message_to_tf/message_to_tf)
+2020-02-15 03:46:12.449,    gazebo_gui (gazebo_ros/gzclient)
+2020-02-15 03:46:12.449,    gazebo (gazebo_ros/gzserver)
+2020-02-15 03:46:12.449,    agent (mars/run_local_rl_agent.sh)
+2020-02-15 03:46:12.449,  /
+2020-02-15 03:46:12.449,    controller_spawner (controller_manager/spawner)
+2020-02-15 03:46:12.449,  /rover_ns/
+2020-02-15 03:46:12.449,NODES
+2020-02-15 03:46:12.449, * /use_sim_time: True
+2020-02-15 03:46:12.449, * /rover_ns/rocker_right_corner_rb_controller/type: effort_controller...
+2020-02-15 03:46:12.449, * /rover_ns/rocker_right_corner_rb_controller/pid/p: 1
+2020-02-15 03:46:12.449, * /rover_ns/rocker_right_corner_rb_controller/pid/i: 1
+2020-02-15 03:46:12.449, * /rover_ns/rocker_right_corner_rb_controller/pid/d: 1
+2020-02-15 03:46:12.449, * /rover_ns/rocker_right_corner_rb_controller/joint: rocker_right_corn...
+2020-02-15 03:46:12.449, * /rover_ns/rocker_right_bogie_right_controller/type: effort_controller...
+2020-02-15 03:46:12.449, * /rover_ns/rocker_right_bogie_right_controller/pid/p: 100
+2020-02-15 03:46:12.449, * /rover_ns/rocker_right_bogie_right_controller/pid/i: 0.1
+2020-02-15 03:46:12.449, * /rover_ns/rocker_right_bogie_right_controller/pid/d: 10
+2020-02-15 03:46:12.449, * /rover_ns/rocker_right_bogie_right_controller/joint: rocker_right_bogi...
+2020-02-15 03:46:12.449, * /rover_ns/rocker_left_corner_lb_controller/type: effort_controller...
+2020-02-15 03:46:12.449, * /rover_ns/rocker_left_corner_lb_controller/pid/p: 1
+2020-02-15 03:46:12.449, * /rover_ns/rocker_left_corner_lb_controller/pid/i: 1
+2020-02-15 03:46:12.449, * /rover_ns/rocker_left_corner_lb_controller/pid/d: 1
+2020-02-15 03:46:12.449, * /rover_ns/rocker_left_corner_lb_controller/joint: rocker_left_corne...
+2020-02-15 03:46:12.449, * /rover_ns/rocker_left_bogie_left_controller/type: effort_controller...
+2020-02-15 03:46:12.449, * /rover_ns/rocker_left_bogie_left_controller/pid/p: 100
+2020-02-15 03:46:12.449, * /rover_ns/rocker_left_bogie_left_controller/pid/i: 0.1
+2020-02-15 03:46:12.449, * /rover_ns/rocker_left_bogie_left_controller/pid/d: 10
+2020-02-15 03:46:12.449, * /rover_ns/rocker_left_bogie_left_controller/joint: rocker_left_bogie...
+2020-02-15 03:46:12.449, * /rover_ns/joint_state_controller/type: joint_state_contr...
+2020-02-15 03:46:12.449, * /rover_ns/joint_state_controller/publish_rate: 50
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_right_corner_rb/max_velocity: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_right_corner_rb/max_jerk: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_right_corner_rb/max_effort: 0.5
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_right_corner_rb/max_acceleration: 1
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_right_corner_rb/has_velocity_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_right_corner_rb/has_position_limits: False
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_right_corner_rb/has_jerk_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_right_corner_rb/has_effort_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_right_corner_rb/has_acceleration_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_right_bogie_right/max_velocity: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_right_bogie_right/max_jerk: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_right_bogie_right/max_effort: 0.5
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_right_bogie_right/max_acceleration: 1
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_right_bogie_right/has_velocity_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_right_bogie_right/has_position_limits: False
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_right_bogie_right/has_jerk_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_right_bogie_right/has_effort_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_right_bogie_right/has_acceleration_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_left_corner_lb/max_velocity: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_left_corner_lb/max_jerk: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_left_corner_lb/max_effort: 0.5
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_left_corner_lb/max_acceleration: 1
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_left_corner_lb/has_velocity_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_left_corner_lb/has_position_limits: False
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/rocker_left_corner_lb/has_jerk_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_shoulder_2_arm_elbow/has_velocity_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_shoulder_2_arm_elbow/has_position_limits: False
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_shoulder_2_arm_elbow/has_jerk_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_shoulder_2_arm_elbow/has_effort_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_shoulder_2_arm_elbow/has_acceleration_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_shoulder_1_arm_shoulder_2/max_velocity: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_shoulder_1_arm_shoulder_2/max_jerk: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_shoulder_1_arm_shoulder_2/max_effort: 0.5
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_shoulder_1_arm_shoulder_2/max_acceleration: 1
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_shoulder_1_arm_shoulder_2/has_velocity_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_shoulder_1_arm_shoulder_2/has_position_limits: False
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_shoulder_1_arm_shoulder_2/has_jerk_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_shoulder_1_arm_shoulder_2/has_effort_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_shoulder_1_arm_shoulder_2/has_acceleration_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_elbow_arm_hand_right/max_velocity: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_elbow_arm_hand_right/max_jerk: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_elbow_arm_hand_right/max_effort: 0.5
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_elbow_arm_hand_right/max_acceleration: 1
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_elbow_arm_hand_right/has_velocity_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_elbow_arm_hand_right/has_position_limits: False
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_elbow_arm_hand_right/has_jerk_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_elbow_arm_hand_right/has_effort_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_elbow_arm_hand_right/has_acceleration_limits: True
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_elbow_arm_hand_left/max_velocity: 10.0
+2020-02-15 03:46:12.449, * /rover_ns/joint_limits/arm_elbow_arm_hand_left/max_jerk: 10.0
+2020-02-15 03:46:12.450,"[ WARN] [1581738372.322421901]: The root link body has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF."
+2020-02-15 03:46:12.450,+ python3 -m markov.rover_agent
+2020-02-15 03:46:12.450,process[agent-9]: started with pid [174]
+2020-02-15 03:46:12.450,process[motion-8]: started with pid [172]
+2020-02-15 03:46:12.450,process[robot_state_publisher-7]: started with pid [167]
+2020-02-15 03:46:13.499,the rosdep view is empty: call 'sudo rosdep init' and 'rosdep update'
+2020-02-15 03:46:13.499,Warning [parser.cc:626] Can not find the XML attribute 'version' in sdf XML tag for model: rockformation. Please specify the SDF protocol supported in the model configuration file. The first sdf tag in the config file will be used 
+2020-02-15 03:46:13.499,Warning [parser.cc:626] Can not find the XML attribute 'version' in sdf XML tag for model: rockformation. Please specify the SDF protocol supported in the model configuration file. The first sdf tag in the config file will be used 
+2020-02-15 03:46:13.499,Warning [parser.cc:626] Can not find the XML attribute 'version' in sdf XML tag for model: jaggedrock. Please specify the SDF protocol supported in the model configuration file. The first sdf tag in the config file will be used 
+2020-02-15 03:46:13.499,Warning [parser.cc:626] Can not find the XML attribute 'version' in sdf XML tag for model: jaggedrock. Please specify the SDF protocol supported in the model configuration file. The first sdf tag in the config file will be used 
+2020-02-15 03:46:13.499,Warning [parser.cc:626] Can not find the XML attribute 'version' in sdf XML tag for model: jaggedrock. Please specify the SDF protocol supported in the model configuration file. The first sdf tag in the config file will be used 
+2020-02-15 03:46:13.499,Warning [parser.cc:626] Can not find the XML attribute 'version' in sdf XML tag for model: rock9. Please specify the SDF protocol supported in the model configuration file. The first sdf tag in the config file will be used 
+2020-02-15 03:46:13.499,Warning [parser.cc:626] Can not find the XML attribute 'version' in sdf XML tag for model: rock9. Please specify the SDF protocol supported in the model configuration file. The first sdf tag in the config file will be used 
+2020-02-15 03:46:13.499,Warning [parser.cc:626] Can not find the XML attribute 'version' in sdf XML tag for model: rock9. Please specify the SDF protocol supported in the model configuration file. The first sdf tag in the config file will be used 
+2020-02-15 03:46:13.499,Warning [parser.cc:626] Can not find the XML attribute 'version' in sdf XML tag for model: rock9. Please specify the SDF protocol supported in the model configuration file. The first sdf tag in the config file will be used 
+2020-02-15 03:46:13.499,Warning [parser.cc:626] Can not find the XML attribute 'version' in sdf XML tag for model: rock9. Please specify the SDF protocol supported in the model configuration file. The first sdf tag in the config file will be used 
+2020-02-15 03:46:13.499,Warning [parser.cc:626] Can not find the XML attribute 'version' in sdf XML tag for model: crater. Please specify the SDF protocol supported in the model configuration file. The first sdf tag in the config file will be used 
+2020-02-15 03:46:13.499,"[INFO] [1581738372.897961, 0.000000]: Loading controller body_rocker_right_controller"
+2020-02-15 03:46:13.499,"[INFO] [1581738372.899378, 0.000000]: Subscribing to command velocity (cmd_vel)..."
+2020-02-15 03:46:13.499,"[INFO] [1581738372.901907, 0.000000]: Listening..."
+2020-02-15 03:46:13.499,"[INFO] [1581738372.932832, 0.000000]: Controller Spawner: Waiting for service controller_manager/load_controller"
+2020-02-15 03:46:13.499,Warning [parser.cc:626] Can not find the XML attribute 'version' in sdf XML tag for model: curiosity_path. Please specify the SDF protocol supported in the model configuration file. The first sdf tag in the config file will be used 
+2020-02-15 03:46:13.499,Warning [parser.cc:626] Can not find the XML attribute 'version' in sdf XML tag for model: terrain. Please specify the SDF protocol supported in the model configuration file. The first sdf tag in the config file will be used 
+2020-02-15 03:46:13.499,Warning [parser.cc:626] Can not find the XML attribute 'version' in sdf XML tag for model: terrain. Please specify the SDF protocol supported in the model configuration file. The first sdf tag in the config file will be used 
+2020-02-15 03:46:13.499,Warning [parser.cc:626] Can not find the XML attribute 'version' in sdf XML tag for model: terrain. Please specify the SDF protocol supported in the model configuration file. The first sdf tag in the config file will be used 
+2020-02-15 03:46:13.499,Warning [parser.cc:626] Can not find the XML attribute 'version' in sdf XML tag for model: rockformation. Please specify the SDF protocol supported in the model configuration file. The first sdf tag in the config file will be used 
+2020-02-15 03:46:13.499,Warning [parser.cc:626] Can not find the XML attribute 'version' in sdf XML tag for model: rockformation. Please specify the SDF protocol supported in the model configuration file. The first sdf tag in the config file will be used 
+2020-02-15 03:46:13.499,Warning [parser.cc:626] Can not find the XML attribute 'version' in sdf XML tag for model: rockformation. Please specify the SDF protocol supported in the model configuration file. The first sdf tag in the config file will be used 
+2020-02-15 03:46:13.499,+ /opt/amazon/RoboMakerGazebo/bin/gzserver -s librobomaker_gazebo_metrics_plugin.so -e ode /home/robomaker/workspace/applications/simulation-application/workspace/opt/built_workspace/mars/share/mars/worlds/mars.world -s /home/robomaker/workspace/applications/simulation-application/dependencies/opt/ros/melodic/lib/libgazebo_ros_paths_plugin.so -s /home/robomaker/workspace/applications/simulation-application/dependencies/opt/ros/melodic/lib/libgazebo_ros_api_plugin.so __name:=gazebo __log:=/home/robomaker/.ros/log/b4b728da-4fa5-11ea-97ba-0242a9fe0103/gazebo-2.log
+2020-02-15 03:46:13.499,[ INFO] [1581738372.800750376]: Finished loading Gazebo ROS API Plugin.
+2020-02-15 03:46:13.499,"[ INFO] [1581738372.801847686]: waitForService: Service [/gazebo_gui/set_physics_properties] has not been advertised, waiting..."
+2020-02-15 03:46:13.499,[ INFO] [1581738372.808408308]: Finished loading Gazebo ROS API Plugin.
+2020-02-15 03:46:13.499,"[ INFO] [1581738372.809400746]: waitForService: Service [/gazebo/set_physics_properties] has not been advertised, waiting..."
+2020-02-15 03:46:13.499,"[INFO] [1581738372.865469, 0.000000]: Starting the motion node..."
+2020-02-15 03:46:13.499,"[INFO] [1581738372.866190, 0.000000]: Motion control started..."
+2020-02-15 03:46:13.499,"[INFO] [1581738372.866836, 0.000000]: Loading controllers..."
+2020-02-15 03:46:13.499,"[INFO] [1581738372.867440, 0.000000]: Loading controller corner_lf_wheel_lf_controller"
+2020-02-15 03:46:13.499,"[INFO] [1581738372.868979, 0.000000]: Loading controller corner_rf_wheel_rf_controller"
+2020-02-15 03:46:13.499,"[INFO] [1581738372.870340, 0.000000]: Loading controller joint_state_controller"
+2020-02-15 03:46:13.499,"[INFO] [1581738372.872037, 0.000000]: Loading controller rocker_right_bogie_right_controller"
+2020-02-15 03:46:13.499,"[INFO] [1581738372.873536, 0.000000]: Loading controller corner_rb_wheel_rb_controller"
+2020-02-15 03:46:13.499,"[INFO] [1581738372.875385, 0.000000]: Loading controller bogie_right_wheel_rm_controller"
+2020-02-15 03:46:13.499,"[INFO] [1581738372.879612, 0.000000]: Loading controller rocker_left_corner_lb_controller"
+2020-02-15 03:46:13.499,"[INFO] [1581738372.882568, 0.000000]: Loading controller bogie_right_corner_rf_controller"
+2020-02-15 03:46:13.499,"[INFO] [1581738372.887510, 0.000000]: Loading controller corner_lb_wheel_lb_controller"
+2020-02-15 03:46:13.499,"[INFO] [1581738372.889662, 0.000000]: Loading controller body_rocker_left_controller"
+2020-02-15 03:46:13.499,"[INFO] [1581738372.891062, 0.000000]: Loading controller bogie_left_wheel_lm_controller"
+2020-02-15 03:46:13.499,"[INFO] [1581738372.892774, 0.000000]: Loading controller rocker_left_bogie_left_controller"
+2020-02-15 03:46:13.499,"[INFO] [1581738372.894894, 0.000000]: Loading controller bogie_left_corner_lf_controller"
+2020-02-15 03:46:13.499,Warning [parser.cc:626] Can not find the XML attribute 'version' in sdf XML tag for model: rockformation. Please specify the SDF protocol supported in the model configuration file. The first sdf tag in the config file will be used 
+2020-02-15 03:46:13.499,"[INFO] [1581738372.896575, 0.000000]: Loading controller rocker_right_corner_rb_controller"
+2020-02-15 03:46:14.537,"[INFO] [1581738373.567976, 0.000000]: Loading model XML from ros parameter robot_description"
+2020-02-15 03:46:14.537,"[INFO] [1581738373.586505, 0.000000]: Waiting for service /gazebo/spawn_urdf_model"
+2020-02-15 03:46:14.537,"[INFO] [1581738373.588435, 0.000000]: Calling service /gazebo/spawn_urdf_model"
+2020-02-15 03:46:15.597,"[ INFO] [1581738374.799090737, 0.018500000]: Camera Plugin: Using the 'robotNamespace' param: '/'"
+2020-02-15 03:46:15.597,"[ INFO] [1581738374.801391153, 0.018500000]: Camera Plugin (ns = /)  <tf_prefix_>, set to """""
+2020-02-15 03:46:15.597,"[ INFO] [1581738374.807511941, 0.018500000]: Camera Plugin: Using the 'robotNamespace' param: '/'"
+2020-02-15 03:46:15.597,"[ INFO] [1581738374.808953725, 0.018500000]: Camera Plugin (ns = /)  <tf_prefix_>, set to """""
+2020-02-15 03:46:15.597,"[ INFO] [1581738374.900179906, 0.018500000]: Laser Plugin: Using the 'robotNamespace' param: '/'"
+2020-02-15 03:46:15.597,"[ INFO] [1581738374.900275130, 0.018500000]: Starting Laser Plugin (ns = /)"
+2020-02-15 03:46:15.597,"[ INFO] [1581738374.901443066, 0.018500000]: Laser Plugin (ns = /)  <tf_prefix_>, set to """""
+2020-02-15 03:46:15.597,"[INFO] [1581738374.934384, 0.018500]: Spawn status: SpawnModel: Successfully spawned entity"
+2020-02-15 03:46:15.597,[urdf_spawner-4] process has finished cleanly
+2020-02-15 03:46:15.597,log file: /home/robomaker/.ros/log/b4b728da-4fa5-11ea-97ba-0242a9fe0103/urdf_spawner-4*.log
+2020-02-15 03:46:15.597,"[ INFO] [1581738375.572296750, 0.018500000]: Loading gazebo_ros_control plugin"
+2020-02-15 03:46:15.597,"[ INFO] [1581738375.572409641, 0.018500000]: Starting gazebo_ros_control plugin in namespace: rover_ns"
+2020-02-15 03:46:15.597,"[ INFO] [1581738375.572872730, 0.018500000]: gazebo_ros_control plugin is waiting for model URDF in parameter [/robot_description] on the ROS param server."
+2020-02-15 03:46:16.634,"[ INFO] [1581738375.717148446, 0.018500000]: Loaded gazebo_ros_control."
+2020-02-15 03:46:16.634,"[ERROR] [1581738375.731299738, 0.037000000]: Tried to advertise a service that is already advertised in this node [/imu_service]"
+2020-02-15 03:46:16.634,"[ERROR] [1581738375.731364834, 0.037000000]: Tried to advertise a service that is already advertised in this node [/imu_service]"
+2020-02-15 03:46:16.634,"[ERROR] [1581738375.731762845, 0.037000000]: Tried to advertise a service that is already advertised in this node [/imu_service]"
+2020-02-15 03:46:16.634,"[ERROR] [1581738375.732323269, 0.037000000]: Tried to advertise a service that is already advertised in this node [/imu_service]"
+2020-02-15 03:46:16.634,"[ERROR] [1581738375.732681230, 0.037000000]: Tried to advertise a service that is already advertised in this node [/imu_service]"
+2020-02-15 03:46:16.634,"[ERROR] [1581738375.733102751, 0.037000000]: Tried to advertise a service that is already advertised in this node [/imu_service]"
+2020-02-15 03:46:16.634,"[ INFO] [1581738375.758372262, 0.055500000]: waitForService: Service [/gazebo/set_physics_properties] is now available."
+2020-02-15 03:46:16.634,"[ INFO] [1581738375.772587230, 0.055500000]: Physics dynamic reconfigure ready."
+2020-02-15 03:46:16.634,"[INFO] [1581738375.944879, 0.166500]: Controller Spawner: Waiting for service controller_manager/switch_controller"
+2020-02-15 03:46:16.634,"[INFO] [1581738375.947323, 0.166500]: Controller Spawner: Waiting for service controller_manager/unload_controller"
+2020-02-15 03:46:16.634,"[INFO] [1581738375.949265, 0.166500]: Loading controller: body_rocker_left_controller"
+2020-02-15 03:46:16.634,"[INFO] [1581738375.994037, 0.203500]: Loading controller: body_rocker_right_controller"
+2020-02-15 03:46:16.634,"[INFO] [1581738376.018942, 0.203500]: Loading controller: corner_lf_wheel_lf_controller"
+2020-02-15 03:46:16.634,"[INFO] [1581738376.044571, 0.240500]: Loading controller: bogie_left_wheel_lm_controller"
+2020-02-15 03:46:16.634,"[INFO] [1581738376.069788, 0.259000]: Loading controller: corner_lb_wheel_lb_controller"
+2020-02-15 03:46:16.634,"[INFO] [1581738376.094554, 0.277500]: Loading controller: corner_rb_wheel_rb_controller"
+2020-02-15 03:46:16.634,"[INFO] [1581738376.121482, 0.296000]: Loading controller: bogie_right_wheel_rm_controller"
+2020-02-15 03:46:16.634,"[INFO] [1581738376.146472, 0.314500]: Loading controller: corner_rf_wheel_rf_controller"
+2020-02-15 03:46:16.634,"[INFO] [1581738376.171581, 0.333000]: Loading controller: rocker_left_bogie_left_controller"
+2020-02-15 03:46:16.634,"[INFO] [1581738376.196890, 0.351500]: Loading controller: rocker_right_bogie_right_controller"
+2020-02-15 03:46:16.634,"[INFO] [1581738376.222226, 0.370000]: Loading controller: bogie_left_corner_lf_controller"
+2020-02-15 03:46:16.634,"[INFO] [1581738376.247354, 0.388500]: Loading controller: rocker_left_corner_lb_controller"
+2020-02-15 03:46:16.634,"[INFO] [1581738376.272195, 0.407000]: Loading controller: rocker_right_corner_rb_controller"
+2020-02-15 03:46:16.634,"[INFO] [1581738376.297195, 0.425500]: Loading controller: bogie_right_corner_rf_controller"
+2020-02-15 03:46:16.634,"[INFO] [1581738376.326436, 0.444000]: Loading controller: joint_state_controller"
+2020-02-15 03:46:16.634,"[INFO] [1581738376.352575, 0.462500]: Controller Spawner: Loaded controllers: body_rocker_left_controller, body_rocker_right_controller, corner_lf_wheel_lf_controller, bogie_left_wheel_lm_controller, corner_lb_wheel_lb_controller, corner_rb_wheel_rb_controller, bogie_right_wheel_rm_controller, corner_rf_wheel_rf_controller, rocker_left_bogie_left_controller, rocker_right_bogie_right_controller, bogie_left_corner_lf_controller, rocker_left_corner_lb_controller, rocker_right_corner_rb_controller, bogie_right_corner_rf_controller, joint_state_controller"
+2020-02-15 03:46:16.634,"[INFO] [1581738376.378781, 0.481000]: Started controllers: body_rocker_left_controller, body_rocker_right_controller, corner_lf_wheel_lf_controller, bogie_left_wheel_lm_controller, corner_lb_wheel_lb_controller, corner_rb_wheel_rb_controller, bogie_right_wheel_rm_controller, corner_rf_wheel_rf_controller, rocker_left_bogie_left_controller, rocker_right_bogie_right_controller, bogie_left_corner_lf_controller, rocker_left_corner_lb_controller, rocker_right_corner_rb_controller, bogie_right_corner_rf_controller, joint_state_controller"
+2020-02-15 03:46:16.634,/home/robomaker/workspace/applications/simulation-application/dependencies/usr/local/lib/python3.6/dist-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+2020-02-15 03:46:16.634,  result = entry_point.load(False)
+2020-02-15 03:46:18.447,Creating graph - name: BasicRLGraphManager
+2020-02-15 03:46:18.447,New Martian Gym environment created...
+2020-02-15 03:46:18.447,Total Episodic Reward=0.00 Total Episodic Steps=0.00
+2020-02-15 03:46:18.447,Step:0.00 Steering:0.000000 R:0.00 DTCP:44.589668 DT:0.025688 CT:4.03 CTCP:0.000000 PSR: 2000.000000 IMU: 4.178800
+2020-02-15 03:46:18.447,Step:1.00 Steering:1.000000 R:2.00 DTCP:44.596651 DT:0.037315 CT:4.04 CTCP:0.000000 PSR: 1999.000000 IMU: 4.178800
+2020-02-15 03:46:18.447,Creating agent - name: agent
+2020-02-15 03:46:24.804,2020-02-15 03:46:24.775296: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
+2020-02-15 03:46:28.408,INFO:tensorflow:Froze 11 variables.
+2020-02-15 03:46:29.457,INFO:tensorflow:Converted 11 variables to const ops.
+2020-02-15 03:46:53.530,Step:67.00 Steering:0.000000 R:2.00 DTCP:50.650641 DT:6.844379 CT:0.56 CTCP:1.000000 PSR: 1933.000000 IMU: 6.611481
+2020-02-15 03:46:53.530,Step:66.00 Steering:-1.000000 R:2.00 DTCP:50.657073 DT:6.833121 CT:0.56 CTCP:1.000000 PSR: 1934.000000 IMU: 6.611481
+2020-02-15 03:46:53.530,Step:65.00 Steering:0.000000 R:1.00 DTCP:50.657330 DT:6.822797 CT:0.58 CTCP:0.000000 PSR: 1935.000000 IMU: 6.611481
+2020-02-15 03:46:53.530,Step:64.00 Steering:-1.000000 R:2.00 DTCP:50.651882 DT:6.813140 CT:0.58 CTCP:1.000000 PSR: 1936.000000 IMU: 6.611481
+2020-02-15 03:46:53.530,Step:63.00 Steering:-1.000000 R:2.00 DTCP:50.652519 DT:6.798090 CT:0.57 CTCP:1.000000 PSR: 1937.000000 IMU: 6.611481
+2020-02-15 03:46:53.530,Step:62.00 Steering:0.000000 R:1.00 DTCP:50.645714 DT:6.774556 CT:0.56 CTCP:0.000000 PSR: 1938.000000 IMU: 6.611481
+2020-02-15 03:46:53.530,Step:61.00 Steering:1.000000 R:1.00 DTCP:50.631500 DT:6.746591 CT:0.57 CTCP:0.000000 PSR: 1939.000000 IMU: 6.611481
+2020-02-15 03:46:53.530,Step:60.00 Steering:-1.000000 R:2.00 DTCP:50.616044 DT:6.728868 CT:0.59 CTCP:1.000000 PSR: 1940.000000 IMU: 6.611481
+2020-02-15 03:46:53.530,Step:59.00 Steering:-1.000000 R:2.00 DTCP:50.617412 DT:6.723072 CT:0.58 CTCP:1.000000 PSR: 1941.000000 IMU: 6.611481
+2020-02-15 03:46:53.530,Step:58.00 Steering:1.000000 R:1.00 DTCP:50.616992 DT:6.721271 CT:0.58 CTCP:0.000000 PSR: 1942.000000 IMU: 6.611481
+2020-02-15 03:46:53.530,Step:57.00 Steering:-1.000000 R:1.00 DTCP:50.615407 DT:6.717521 CT:0.58 CTCP:0.000000 PSR: 1943.000000 IMU: 6.611481
+2020-02-15 03:46:53.530,Step:56.00 Steering:0.000000 R:2.00 DTCP:50.617029 DT:6.711777 CT:0.58 CTCP:1.000000 PSR: 1944.000000 IMU: 6.611481
+2020-02-15 03:46:53.530,Step:55.00 Steering:1.000000 R:1.00 DTCP:50.616669 DT:6.695470 CT:0.59 CTCP:0.000000 PSR: 1945.000000 IMU: 6.611481
+2020-02-15 03:46:53.530,Step:54.00 Steering:-1.000000 R:2.00 DTCP:50.614172 DT:6.685777 CT:0.58 CTCP:1.000000 PSR: 1946.000000 IMU: 6.611481
+2020-02-15 03:46:53.530,Step:53.00 Steering:-1.000000 R:2.00 DTCP:50.626331 DT:6.664122 CT:0.60 CTCP:1.000000 PSR: 1947.000000 IMU: 6.611481
+2020-02-15 03:46:53.530,Step:52.00 Steering:-1.000000 R:2.00 DTCP:50.632310 DT:6.633817 CT:0.61 CTCP:1.000000 PSR: 1948.000000 IMU: 6.611481
+2020-02-15 03:46:53.530,Step:51.00 Steering:1.000000 R:1.00 DTCP:50.634140 DT:6.603325 CT:0.62 CTCP:0.000000 PSR: 1949.000000 IMU: 6.611481
+2020-02-15 03:46:53.530,Step:50.00 Steering:0.000000 R:2.00 DTCP:50.635223 DT:6.592991 CT:0.64 CTCP:1.000000 PSR: 1950.000000 IMU: 6.611481
+2020-02-15 03:46:53.530,Step:49.00 Steering:-1.000000 R:1.00 DTCP:50.622498 DT:6.546048 CT:0.64 CTCP:0.000000 PSR: 1951.000000 IMU: 6.423150
+2020-02-15 03:46:53.530,Step:48.00 Steering:1.000000 R:1.00 DTCP:50.574020 DT:6.457551 CT:0.61 CTCP:0.000000 PSR: 1952.000000 IMU: 6.423150
+2020-02-15 03:46:53.530,Step:47.00 Steering:0.000000 R:1.00 DTCP:50.508780 DT:6.367008 CT:0.67 CTCP:0.000000 PSR: 1953.000000 IMU: 6.423150
+2020-02-15 03:46:53.530,Step:46.00 Steering:-1.000000 R:1.00 DTCP:50.353106 DT:6.203853 CT:0.80 CTCP:0.000000 PSR: 1954.000000 IMU: 6.423150
+2020-02-15 03:46:53.530,Step:45.00 Steering:0.000000 R:1.00 DTCP:50.222385 DT:6.064778 CT:0.93 CTCP:0.000000 PSR: 1955.000000 IMU: 6.423150
+2020-02-15 03:46:53.530,Step:44.00 Steering:-1.000000 R:1.25 DTCP:50.080740 DT:5.914158 CT:1.06 CTCP:0.000000 PSR: 1956.000000 IMU: 6.423150
+2020-02-15 03:46:53.530,Step:43.00 Steering:-1.000000 R:1.25 DTCP:49.959740 DT:5.786910 CT:1.17 CTCP:0.000000 PSR: 1957.000000 IMU: 6.423150
+2020-02-15 03:46:53.530,Step:42.00 Steering:1.000000 R:1.25 DTCP:49.830489 DT:5.646721 CT:1.28 CTCP:0.000000 PSR: 1958.000000 IMU: 6.423150
+2020-02-15 03:46:53.530,Step:41.00 Steering:1.000000 R:1.25 DTCP:49.714105 DT:5.515380 CT:1.28 CTCP:0.000000 PSR: 1959.000000 IMU: 6.423150
+2020-02-15 03:46:53.530,Step:40.00 Steering:1.000000 R:1.25 DTCP:49.572598 DT:5.352800 CT:1.32 CTCP:0.000000 PSR: 1960.000000 IMU: 6.423150
+2020-02-15 03:46:53.530,Step:39.00 Steering:1.000000 R:1.25 DTCP:49.456565 DT:5.219019 CT:1.43 CTCP:0.000000 PSR: 1961.000000 IMU: 6.423150
+2020-02-15 03:46:53.530,Step:38.00 Steering:1.000000 R:1.50 DTCP:49.337054 DT:5.080676 CT:1.54 CTCP:0.000000 PSR: 1962.000000 IMU: 6.423150
+2020-02-15 03:46:53.530,Step:37.00 Steering:0.000000 R:1.25 DTCP:49.203785 DT:4.931285 CT:1.19 CTCP:0.000000 PSR: 1963.000000 IMU: 6.423150
+2020-02-15 03:46:53.530,Step:36.00 Steering:0.000000 R:1.25 DTCP:49.081727 DT:4.796419 CT:1.23 CTCP:0.000000 PSR: 1964.000000 IMU: 6.423150
+2020-02-15 03:46:53.530,Step:35.00 Steering:0.000000 R:1.25 DTCP:48.959937 DT:4.660004 CT:1.32 CTCP:0.000000 PSR: 1965.000000 IMU: 6.423150
+2020-02-15 03:46:53.530,Step:34.00 Steering:0.000000 R:1.25 DTCP:48.824756 DT:4.506879 CT:1.39 CTCP:0.000000 PSR: 1966.000000 IMU: 6.423150
+2020-02-15 03:46:53.530,Step:33.00 Steering:-1.000000 R:1.25 DTCP:48.690430 DT:4.355332 CT:1.39 CTCP:0.000000 PSR: 1967.000000 IMU: 6.423150
+2020-02-15 03:46:53.530,Step:32.00 Steering:0.000000 R:1.25 DTCP:48.558451 DT:4.207362 CT:1.47 CTCP:0.000000 PSR: 1968.000000 IMU: 6.423150
+2020-02-15 03:46:53.530,Step:31.00 Steering:0.000000 R:1.50 DTCP:48.405414 DT:4.036127 CT:1.61 CTCP:0.000000 PSR: 1969.000000 IMU: 6.423150
+2020-02-15 03:46:53.530,Step:30.00 Steering:-1.000000 R:2.00 DTCP:48.293901 DT:3.912570 CT:2.88 CTCP:0.000000 PSR: 1970.000000 IMU: 6.423150
+2020-02-15 03:46:53.530,Step:29.00 Steering:-1.000000 R:2.00 DTCP:48.168798 DT:3.776288 CT:3.03 CTCP:0.000000 PSR: 1971.000000 IMU: 6.423150
+2020-02-15 03:46:53.530,Step:28.00 Steering:-1.000000 R:2.00 DTCP:48.025839 DT:3.618119 CT:3.21 CTCP:0.000000 PSR: 1972.000000 IMU: 6.423150
+2020-02-15 03:46:53.530,Step:27.00 Steering:1.000000 R:2.00 DTCP:47.902367 DT:3.480333 CT:3.36 CTCP:0.000000 PSR: 1973.000000 IMU: 6.423150
+2020-02-15 03:46:53.530,Step:26.00 Steering:-1.000000 R:2.00 DTCP:47.776660 DT:3.344220 CT:3.36 CTCP:0.000000 PSR: 1974.000000 IMU: 6.423150
+2020-02-15 03:46:53.530,Step:25.00 Steering:-1.000000 R:2.00 DTCP:47.650131 DT:3.208112 CT:3.53 CTCP:0.000000 PSR: 1975.000000 IMU: 6.423150
+2020-02-15 03:46:53.530,Step:24.00 Steering:0.000000 R:2.00 DTCP:47.515455 DT:3.061751 CT:3.68 CTCP:0.000000 PSR: 1976.000000 IMU: 6.423150
+2020-02-15 03:46:53.530,Step:23.00 Steering:1.000000 R:2.00 DTCP:47.403311 DT:2.941292 CT:2.51 CTCP:0.000000 PSR: 1977.000000 IMU: 6.423150
+2020-02-15 03:46:53.530,Step:22.00 Steering:-1.000000 R:2.00 DTCP:47.278469 DT:2.809170 CT:2.55 CTCP:0.000000 PSR: 1978.000000 IMU: 6.423150
+2020-02-15 03:46:53.530,Step:21.00 Steering:-1.000000 R:2.00 DTCP:47.154979 DT:2.674137 CT:2.76 CTCP:0.000000 PSR: 1979.000000 IMU: 6.423150
+2020-02-15 03:46:53.530,Step:20.00 Steering:1.000000 R:2.00 DTCP:47.033562 DT:2.541572 CT:2.76 CTCP:0.000000 PSR: 1980.000000 IMU: 6.423150
+2020-02-15 03:46:53.530,Step:19.00 Steering:-1.000000 R:2.00 DTCP:46.903834 DT:2.401733 CT:2.86 CTCP:0.000000 PSR: 1981.000000 IMU: 5.231493
+2020-02-15 03:46:53.530,Step:18.00 Steering:0.000000 R:2.00 DTCP:46.783545 DT:2.269738 CT:3.05 CTCP:0.000000 PSR: 1982.000000 IMU: 5.231493
+2020-02-15 03:46:53.530,Step:17.00 Steering:0.000000 R:2.00 DTCP:46.649763 DT:2.124642 CT:3.13 CTCP:0.000000 PSR: 1983.000000 IMU: 5.231493
+2020-02-15 03:46:53.530,Step:16.00 Steering:0.000000 R:2.00 DTCP:46.520253 DT:1.987018 CT:4.50 CTCP:0.000000 PSR: 1984.000000 IMU: 4.872161
+2020-02-15 03:46:53.530,Step:15.00 Steering:-1.000000 R:2.00 DTCP:46.363137 DT:1.823048 CT:3.54 CTCP:0.000000 PSR: 1985.000000 IMU: 4.872161
+2020-02-15 03:46:53.530,Step:14.00 Steering:-1.000000 R:2.00 DTCP:46.229236 DT:1.684808 CT:3.53 CTCP:0.000000 PSR: 1986.000000 IMU: 4.872161
+2020-02-15 03:46:53.530,Step:13.00 Steering:-1.000000 R:2.00 DTCP:46.094684 DT:1.547812 CT:3.53 CTCP:0.000000 PSR: 1987.000000 IMU: 4.872161
+2020-02-15 03:46:53.530,Step:12.00 Steering:-1.000000 R:2.00 DTCP:45.941042 DT:1.392645 CT:4.50 CTCP:0.000000 PSR: 1988.000000 IMU: 4.872161
+2020-02-15 03:46:53.530,Step:11.00 Steering:-1.000000 R:2.00 DTCP:45.790948 DT:1.241930 CT:4.26 CTCP:0.000000 PSR: 1989.000000 IMU: 4.872161
+2020-02-15 03:46:53.530,Step:10.00 Steering:-1.000000 R:2.00 DTCP:45.667338 DT:1.118182 CT:4.50 CTCP:0.000000 PSR: 1990.000000 IMU: 4.872161
+2020-02-15 03:46:53.530,Step:9.00 Steering:-1.000000 R:2.00 DTCP:45.520060 DT:0.970708 CT:4.04 CTCP:0.000000 PSR: 1991.000000 IMU: 4.872161
+2020-02-15 03:46:53.530,Step:8.00 Steering:1.000000 R:2.00 DTCP:45.387387 DT:0.837094 CT:4.50 CTCP:0.000000 PSR: 1992.000000 IMU: 4.872161
+2020-02-15 03:46:53.530,Step:7.00 Steering:-1.000000 R:2.00 DTCP:45.247579 DT:0.696738 CT:4.50 CTCP:0.000000 PSR: 1993.000000 IMU: 4.872161
+2020-02-15 03:46:53.530,Step:6.00 Steering:-1.000000 R:2.00 DTCP:45.104713 DT:0.551575 CT:3.99 CTCP:0.000000 PSR: 1994.000000 IMU: 4.872161
+2020-02-15 03:46:53.530,Step:5.00 Steering:0.000000 R:2.00 DTCP:44.957203 DT:0.403254 CT:4.50 CTCP:0.000000 PSR: 1995.000000 IMU: 4.872161
+2020-02-15 03:46:53.530,Step:4.00 Steering:-1.000000 R:2.00 DTCP:44.820816 DT:0.265785 CT:4.24 CTCP:0.000000 PSR: 1996.000000 IMU: 4.872161
+2020-02-15 03:46:53.530,Step:3.00 Steering:1.000000 R:2.00 DTCP:44.701340 DT:0.145819 CT:4.32 CTCP:0.000000 PSR: 1997.000000 IMU: 4.872161
+2020-02-15 03:46:53.530,Step:2.00 Steering:1.000000 R:2.00 DTCP:44.617299 DT:0.058949 CT:4.50 CTCP:0.000000 PSR: 1998.000000 IMU: 4.872161
+2020-02-15 03:46:53.530,Step:1.00 Steering:-1.000000 R:4.00 DTCP:44.577738 DT:0.016194 CT:4.13 CTCP:1.000000 PSR: 1999.000000 IMU: 4.872161
+2020-02-15 03:46:53.530,Step:0.00 Steering:0.000000 R:0.00 DTCP:44.576171 DT:0.007100 CT:3.88 CTCP:0.000000 PSR: 2000.000000 IMU: 4.872161
+2020-02-15 03:46:53.530,Total Episodic Reward=2.00 Total Episodic Steps=1.00
+2020-02-15 03:46:53.530,Starting to improve simple_rl_graph task index 0
+2020-02-15 03:46:53.530,Saved TF frozen graph!
+2020-02-15 03:46:53.530,Checkpoint - Saving in path: ['./checkpoint/0_Step-0.ckpt'] 
+2020-02-15 03:47:15.532,Step:68.00 Steering:1.000000 R:1.00 DTCP:50.654518 DT:6.855778 CT:0.57 CTCP:0.000000 PSR: 1932.000000 IMU: 6.611481
+2020-02-15 03:47:15.532,Step:69.00 Steering:1.000000 R:2.00 DTCP:50.653550 DT:6.865899 CT:0.55 CTCP:1.000000 PSR: 1931.000000 IMU: 6.611481
+2020-02-15 03:47:15.532,Step:70.00 Steering:0.000000 R:1.00 DTCP:50.658525 DT:6.892649 CT:0.55 CTCP:0.000000 PSR: 1930.000000 IMU: 6.611481
+2020-02-15 03:47:15.532,Step:71.00 Steering:1.000000 R:1.00 DTCP:50.663203 DT:6.910728 CT:0.56 CTCP:0.000000 PSR: 1929.000000 IMU: 6.611481
+2020-02-15 03:47:15.532,Step:72.00 Steering:0.000000 R:2.00 DTCP:50.663631 DT:6.924843 CT:0.57 CTCP:1.000000 PSR: 1928.000000 IMU: 6.611481
+2020-02-15 03:47:15.532,Step:73.00 Steering:0.000000 R:1.00 DTCP:50.670871 DT:6.942244 CT:0.57 CTCP:0.000000 PSR: 1927.000000 IMU: 6.611481
+2020-02-15 03:47:15.532,Step:74.00 Steering:-1.000000 R:2.00 DTCP:50.672991 DT:6.947005 CT:0.56 CTCP:1.000000 PSR: 1926.000000 IMU: 6.611481
+2020-02-15 03:47:15.532,Step:75.00 Steering:0.000000 R:2.00 DTCP:50.669638 DT:6.952061 CT:0.58 CTCP:1.000000 PSR: 1925.000000 IMU: 6.611481
+2020-02-15 03:47:15.532,Step:76.00 Steering:1.000000 R:1.00 DTCP:50.670227 DT:6.961721 CT:0.56 CTCP:0.000000 PSR: 1924.000000 IMU: 6.611481
+2020-02-15 03:47:15.532,Step:77.00 Steering:0.000000 R:1.00 DTCP:50.675623 DT:6.974833 CT:0.56 CTCP:0.000000 PSR: 1923.000000 IMU: 6.611481
+2020-02-15 03:47:15.532,Step:78.00 Steering:1.000000 R:1.00 DTCP:50.684760 DT:7.001300 CT:0.57 CTCP:0.000000 PSR: 1922.000000 IMU: 6.611481
+2020-02-15 03:47:15.532,Step:79.00 Steering:1.000000 R:2.00 DTCP:50.695541 DT:7.031673 CT:0.57 CTCP:1.000000 PSR: 1921.000000 IMU: 6.611481
+2020-02-15 03:47:15.532,Step:80.00 Steering:-1.000000 R:1.00 DTCP:50.711628 DT:7.069623 CT:0.58 CTCP:0.000000 PSR: 1920.000000 IMU: 7.024731
+2020-02-15 03:47:15.532,Step:81.00 Steering:1.000000 R:1.00 DTCP:50.734994 DT:7.110525 CT:0.58 CTCP:0.000000 PSR: 1919.000000 IMU: 7.024731
+2020-02-15 03:47:15.532,Step:82.00 Steering:1.000000 R:1.00 DTCP:50.761260 DT:7.151737 CT:0.57 CTCP:0.000000 PSR: 1918.000000 IMU: 7.024731
+2020-02-15 03:47:15.532,Step:83.00 Steering:-1.000000 R:1.00 DTCP:50.788982 DT:7.198387 CT:0.57 CTCP:0.000000 PSR: 1917.000000 IMU: 7.024731
+2020-02-15 03:47:15.532,Step:84.00 Steering:-1.000000 R:1.00 DTCP:50.810144 DT:7.226415 CT:0.57 CTCP:0.000000 PSR: 1916.000000 IMU: 7.024731
+2020-02-15 03:47:15.532,Step:85.00 Steering:0.000000 R:1.00 DTCP:50.819283 DT:7.241224 CT:0.54 CTCP:0.000000 PSR: 1915.000000 IMU: 7.024731
+2020-02-15 03:47:15.532,Step:86.00 Steering:0.000000 R:2.00 DTCP:50.821896 DT:7.250140 CT:0.55 CTCP:1.000000 PSR: 1914.000000 IMU: 7.024731
+2020-02-15 03:47:15.532,Step:87.00 Steering:-1.000000 R:2.00 DTCP:50.823143 DT:7.253266 CT:0.55 CTCP:1.000000 PSR: 1913.000000 IMU: 7.024731
+2020-02-15 03:47:15.532,Step:88.00 Steering:-1.000000 R:2.00 DTCP:50.817389 DT:7.262597 CT:0.55 CTCP:1.000000 PSR: 1912.000000 IMU: 7.024731
+2020-02-15 03:47:15.532,Step:89.00 Steering:1.000000 R:1.00 DTCP:50.813086 DT:7.270793 CT:0.55 CTCP:0.000000 PSR: 1911.000000 IMU: 7.024731
+2020-02-15 03:47:15.532,Step:90.00 Steering:-1.000000 R:2.00 DTCP:50.809620 DT:7.277833 CT:0.55 CTCP:1.000000 PSR: 1910.000000 IMU: 7.024731
+2020-02-15 03:47:15.532,Step:91.00 Steering:-1.000000 R:1.00 DTCP:50.812462 DT:7.284618 CT:0.56 CTCP:0.000000 PSR: 1909.000000 IMU: 7.024731
+2020-02-15 03:47:15.532,Step:92.00 Steering:1.000000 R:1.00 DTCP:50.812302 DT:7.289174 CT:0.56 CTCP:0.000000 PSR: 1908.000000 IMU: 7.024731
+2020-02-15 03:47:15.532,Step:93.00 Steering:1.000000 R:2.00 DTCP:50.815351 DT:7.295661 CT:0.56 CTCP:1.000000 PSR: 1907.000000 IMU: 7.024731
+2020-02-15 03:47:15.532,Step:94.00 Steering:0.000000 R:1.00 DTCP:50.818723 DT:7.303186 CT:0.55 CTCP:0.000000 PSR: 1906.000000 IMU: 7.024731
+2020-02-15 03:47:15.532,Step:95.00 Steering:-1.000000 R:2.00 DTCP:50.819681 DT:7.308969 CT:0.55 CTCP:1.000000 PSR: 1905.000000 IMU: 7.024731
+2020-02-15 03:47:15.532,Step:96.00 Steering:1.000000 R:2.00 DTCP:50.820693 DT:7.314890 CT:0.55 CTCP:1.000000 PSR: 1904.000000 IMU: 7.024731
+2020-02-15 03:47:15.532,Step:97.00 Steering:1.000000 R:2.00 DTCP:50.818572 DT:7.321811 CT:0.55 CTCP:1.000000 PSR: 1903.000000 IMU: 7.024731
+2020-02-15 03:47:15.532,Step:98.00 Steering:-1.000000 R:1.00 DTCP:50.820550 DT:7.325699 CT:0.55 CTCP:0.000000 PSR: 1902.000000 IMU: 7.024731
+2020-02-15 03:47:15.532,Step:99.00 Steering:0.000000 R:1.00 DTCP:50.822206 DT:7.329836 CT:0.54 CTCP:0.000000 PSR: 1901.000000 IMU: 7.024731
+2020-02-15 03:47:15.532,Step:100.00 Steering:-1.000000 R:2.00 DTCP:50.824359 DT:7.337396 CT:0.54 CTCP:1.000000 PSR: 1900.000000 IMU: 7.024731
+2020-02-15 03:47:15.532,Step:101.00 Steering:-1.000000 R:2.00 DTCP:50.824190 DT:7.341451 CT:0.55 CTCP:1.000000 PSR: 1899.000000 IMU: 7.024731
+2020-02-15 03:47:15.532,Step:102.00 Steering:1.000000 R:2.00 DTCP:50.823788 DT:7.344941 CT:0.54 CTCP:1.000000 PSR: 1898.000000 IMU: 7.024731
+2020-02-15 03:47:15.532,Step:103.00 Steering:-1.000000 R:1.00 DTCP:50.823045 DT:7.351516 CT:0.54 CTCP:0.000000 PSR: 1897.000000 IMU: 7.024731
+2020-02-15 03:47:15.532,Step:104.00 Steering:0.000000 R:2.00 DTCP:50.824005 DT:7.359548 CT:0.55 CTCP:1.000000 PSR: 1896.000000 IMU: 7.024731
+2020-02-15 03:47:15.532,Step:105.00 Steering:1.000000 R:1.00 DTCP:50.826717 DT:7.370519 CT:0.55 CTCP:0.000000 PSR: 1895.000000 IMU: 7.024731
+2020-02-15 03:47:15.532,Step:106.00 Steering:-1.000000 R:1.00 DTCP:50.833578 DT:7.382062 CT:0.53 CTCP:0.000000 PSR: 1894.000000 IMU: 7.024731
+2020-02-15 03:47:15.532,Step:107.00 Steering:1.000000 R:1.00 DTCP:50.840933 DT:7.397376 CT:0.53 CTCP:0.000000 PSR: 1893.000000 IMU: 7.024731
+2020-02-15 03:47:15.532,Step:108.00 Steering:1.000000 R:2.00 DTCP:50.842292 DT:7.403606 CT:0.54 CTCP:1.000000 PSR: 1892.000000 IMU: 7.024731
+2020-02-15 03:47:15.532,Step:109.00 Steering:0.000000 R:1.00 DTCP:50.844196 DT:7.408790 CT:0.53 CTCP:0.000000 PSR: 1891.000000 IMU: 7.024731
+2020-02-15 03:47:15.532,Step:110.00 Steering:1.000000 R:2.00 DTCP:50.841213 DT:7.414295 CT:0.53 CTCP:1.000000 PSR: 1890.000000 IMU: 7.024731
+2020-02-15 03:47:15.532,Step:111.00 Steering:-1.000000 R:2.00 DTCP:50.840909 DT:7.423278 CT:0.53 CTCP:1.000000 PSR: 1889.000000 IMU: 7.024731
+2020-02-15 03:47:15.532,Step:112.00 Steering:-1.000000 R:2.00 DTCP:50.840104 DT:7.430388 CT:0.54 CTCP:1.000000 PSR: 1888.000000 IMU: 10.860494
+2020-02-15 03:47:15.532,Step:113.00 Steering:0.000000 R:1.00 DTCP:50.838573 DT:7.436373 CT:0.53 CTCP:0.000000 PSR: 1887.000000 IMU: 10.860494
+2020-02-15 03:47:15.532,Step:114.00 Steering:0.000000 R:1.00 DTCP:50.840315 DT:7.444315 CT:0.54 CTCP:0.000000 PSR: 1886.000000 IMU: 10.860494
+2020-02-15 03:47:15.532,Step:115.00 Steering:0.000000 R:2.00 DTCP:50.843788 DT:7.454769 CT:0.53 CTCP:1.000000 PSR: 1885.000000 IMU: 10.860494
+2020-02-15 03:47:15.532,Step:116.00 Steering:-1.000000 R:1.00 DTCP:50.845062 DT:7.460726 CT:0.53 CTCP:0.000000 PSR: 1884.000000 IMU: 10.860494
+2020-02-15 03:47:15.532,Step:117.00 Steering:0.000000 R:2.00 DTCP:50.846303 DT:7.464912 CT:0.53 CTCP:1.000000 PSR: 1883.000000 IMU: 10.860494
+2020-02-15 03:47:15.532,Step:118.00 Steering:-1.000000 R:1.00 DTCP:50.848370 DT:7.469934 CT:0.53 CTCP:0.000000 PSR: 1882.000000 IMU: 10.860494
+2020-02-15 03:47:15.532,Step:119.00 Steering:1.000000 R:2.00 DTCP:50.847556 DT:7.473318 CT:0.53 CTCP:1.000000 PSR: 1881.000000 IMU: 10.860494
+2020-02-15 03:47:15.532,Step:120.00 Steering:0.000000 R:1.00 DTCP:50.849508 DT:7.483714 CT:0.53 CTCP:0.000000 PSR: 1880.000000 IMU: 10.860494
+2020-02-15 03:47:15.532,Step:121.00 Steering:1.000000 R:2.00 DTCP:50.850516 DT:7.492811 CT:0.53 CTCP:1.000000 PSR: 1879.000000 IMU: 10.860494
+2020-02-15 03:47:15.532,Step:122.00 Steering:1.000000 R:1.00 DTCP:50.852936 DT:7.499465 CT:0.52 CTCP:0.000000 PSR: 1878.000000 IMU: 10.860494
+2020-02-15 03:47:15.532,Step:123.00 Steering:-1.000000 R:2.00 DTCP:50.854272 DT:7.506534 CT:0.53 CTCP:1.000000 PSR: 1877.000000 IMU: 10.860494
+2020-02-15 03:47:15.532,Step:124.00 Steering:1.000000 R:2.00 DTCP:50.852278 DT:7.511949 CT:0.53 CTCP:1.000000 PSR: 1876.000000 IMU: 10.860494
+2020-02-15 03:47:15.532,Step:125.00 Steering:1.000000 R:1.00 DTCP:50.854797 DT:7.515629 CT:0.51 CTCP:0.000000 PSR: 1875.000000 IMU: 10.860494
+2020-02-15 03:47:15.532,Step:126.00 Steering:-1.000000 R:1.00 DTCP:50.856277 DT:7.520025 CT:0.53 CTCP:0.000000 PSR: 1874.000000 IMU: 10.860494
+2020-02-15 03:47:15.532,Step:127.00 Steering:0.000000 R:2.00 DTCP:50.853049 DT:7.528061 CT:0.53 CTCP:1.000000 PSR: 1873.000000 IMU: 10.860494
+2020-02-15 03:47:15.532,Step:128.00 Steering:0.000000 R:1.00 DTCP:50.854696 DT:7.534182 CT:0.53 CTCP:0.000000 PSR: 1872.000000 IMU: 10.860494
+2020-02-15 03:47:15.532,Step:129.00 Steering:1.000000 R:1.00 DTCP:50.859313 DT:7.542306 CT:0.53 CTCP:0.000000 PSR: 1871.000000 IMU: 10.860494
+2020-02-15 03:47:15.532,Step:130.00 Steering:1.000000 R:1.00 DTCP:50.862267 DT:7.548824 CT:0.52 CTCP:0.000000 PSR: 1870.000000 IMU: 10.860494
+2020-02-15 03:47:15.532,Step:131.00 Steering:0.000000 R:2.00 DTCP:50.863762 DT:7.554705 CT:0.52 CTCP:1.000000 PSR: 1869.000000 IMU: 10.860494
+2020-02-15 03:47:15.532,Step:132.00 Steering:-1.000000 R:1.00 DTCP:50.864308 DT:7.560047 CT:0.52 CTCP:0.000000 PSR: 1868.000000 IMU: 10.860494
+2020-02-15 03:47:15.532,Step:133.00 Steering:-1.000000 R:2.00 DTCP:50.861398 DT:7.567220 CT:0.52 CTCP:1.000000 PSR: 1867.000000 IMU: 10.860494
+2020-02-15 03:47:15.532,Step:134.00 Steering:0.000000 R:2.00 DTCP:50.859708 DT:7.572513 CT:0.53 CTCP:1.000000 PSR: 1866.000000 IMU: 10.860494
+2020-02-15 03:47:15.532,Step:135.00 Steering:-1.000000 R:1.00 DTCP:50.860275 DT:7.577706 CT:0.52 CTCP:0.000000 PSR: 1865.000000 IMU: 10.860494
+2020-02-15 03:47:15.532,Step:136.00 Steering:1.000000 R:2.00 DTCP:50.858865 DT:7.583124 CT:0.52 CTCP:1.000000 PSR: 1864.000000 IMU: 10.860494
+2020-02-15 03:47:15.532,Step:137.00 Steering:0.000000 R:2.00 DTCP:50.858118 DT:7.589279 CT:0.52 CTCP:1.000000 PSR: 1863.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:166.00 Steering:1.000000 R:2.00 DTCP:50.886255 DT:7.786620 CT:0.52 CTCP:1.000000 PSR: 1834.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:167.00 Steering:-1.000000 R:1.00 DTCP:50.887868 DT:7.793772 CT:0.52 CTCP:0.000000 PSR: 1833.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:168.00 Steering:1.000000 R:1.00 DTCP:50.891271 DT:7.800544 CT:0.52 CTCP:0.000000 PSR: 1832.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:169.00 Steering:1.000000 R:2.00 DTCP:50.896043 DT:7.812452 CT:0.51 CTCP:1.000000 PSR: 1831.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:170.00 Steering:1.000000 R:2.00 DTCP:50.894319 DT:7.820215 CT:0.52 CTCP:1.000000 PSR: 1830.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:171.00 Steering:-1.000000 R:1.00 DTCP:50.897728 DT:7.826300 CT:0.51 CTCP:0.000000 PSR: 1829.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:172.00 Steering:1.000000 R:2.00 DTCP:50.898682 DT:7.832109 CT:0.49 CTCP:1.000000 PSR: 1828.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:173.00 Steering:0.000000 R:2.00 DTCP:50.897646 DT:7.838715 CT:0.49 CTCP:1.000000 PSR: 1827.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:174.00 Steering:-1.000000 R:2.00 DTCP:50.898417 DT:7.845427 CT:0.51 CTCP:1.000000 PSR: 1826.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:175.00 Steering:-1.000000 R:1.00 DTCP:50.897655 DT:7.852853 CT:0.51 CTCP:0.000000 PSR: 1825.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:176.00 Steering:0.000000 R:2.00 DTCP:50.894738 DT:7.861272 CT:0.51 CTCP:1.000000 PSR: 1824.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:177.00 Steering:1.000000 R:1.00 DTCP:50.894695 DT:7.870797 CT:0.52 CTCP:0.000000 PSR: 1823.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:178.00 Steering:-1.000000 R:1.00 DTCP:50.900580 DT:7.880672 CT:0.52 CTCP:0.000000 PSR: 1822.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:179.00 Steering:1.000000 R:1.00 DTCP:50.900873 DT:7.885654 CT:0.51 CTCP:0.000000 PSR: 1821.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:180.00 Steering:0.000000 R:1.00 DTCP:50.901740 DT:7.893797 CT:0.51 CTCP:0.000000 PSR: 1820.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:181.00 Steering:0.000000 R:2.00 DTCP:50.900566 DT:7.898616 CT:0.51 CTCP:1.000000 PSR: 1819.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:182.00 Steering:0.000000 R:1.00 DTCP:50.901596 DT:7.905109 CT:0.52 CTCP:0.000000 PSR: 1818.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:183.00 Steering:1.000000 R:2.00 DTCP:50.900141 DT:7.910209 CT:0.52 CTCP:1.000000 PSR: 1817.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:184.00 Steering:-1.000000 R:1.00 DTCP:50.897459 DT:7.918025 CT:0.51 CTCP:0.000000 PSR: 1816.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:185.00 Steering:0.000000 R:1.00 DTCP:50.899462 DT:7.925698 CT:0.51 CTCP:0.000000 PSR: 1815.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:186.00 Steering:-1.000000 R:1.00 DTCP:50.903509 DT:7.933982 CT:0.52 CTCP:0.000000 PSR: 1814.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:187.00 Steering:1.000000 R:2.00 DTCP:50.901988 DT:7.942342 CT:0.51 CTCP:1.000000 PSR: 1813.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:188.00 Steering:-1.000000 R:1.00 DTCP:50.904511 DT:7.947531 CT:0.51 CTCP:0.000000 PSR: 1812.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:189.00 Steering:0.000000 R:2.00 DTCP:50.901446 DT:7.955665 CT:0.51 CTCP:1.000000 PSR: 1811.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:190.00 Steering:0.000000 R:2.00 DTCP:50.902909 DT:7.961402 CT:0.50 CTCP:1.000000 PSR: 1810.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:191.00 Steering:-1.000000 R:2.00 DTCP:50.901679 DT:7.967260 CT:0.51 CTCP:1.000000 PSR: 1809.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:192.00 Steering:-1.000000 R:1.00 DTCP:50.900909 DT:7.976041 CT:0.52 CTCP:0.000000 PSR: 1808.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:193.00 Steering:0.000000 R:1.00 DTCP:50.901921 DT:7.980491 CT:0.51 CTCP:0.000000 PSR: 1807.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:194.00 Steering:-1.000000 R:1.00 DTCP:50.904722 DT:7.986890 CT:0.51 CTCP:0.000000 PSR: 1806.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:195.00 Steering:0.000000 R:2.00 DTCP:50.901302 DT:7.995625 CT:0.50 CTCP:1.000000 PSR: 1805.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:196.00 Steering:-1.000000 R:1.00 DTCP:50.900195 DT:7.999844 CT:0.51 CTCP:0.000000 PSR: 1804.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:197.00 Steering:0.000000 R:1.00 DTCP:50.897965 DT:8.005346 CT:0.51 CTCP:0.000000 PSR: 1803.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:198.00 Steering:1.000000 R:1.00 DTCP:50.897791 DT:8.014281 CT:0.51 CTCP:0.000000 PSR: 1802.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:199.00 Steering:0.000000 R:1.00 DTCP:50.901227 DT:8.023454 CT:0.50 CTCP:0.000000 PSR: 1801.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:200.00 Steering:0.000000 R:1.00 DTCP:50.901255 DT:8.028615 CT:0.51 CTCP:0.000000 PSR: 1800.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:201.00 Steering:-1.000000 R:2.00 DTCP:50.897575 DT:8.036791 CT:0.52 CTCP:1.000000 PSR: 1799.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:202.00 Steering:1.000000 R:1.00 DTCP:50.897532 DT:8.041963 CT:0.51 CTCP:0.000000 PSR: 1798.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:203.00 Steering:-1.000000 R:1.00 DTCP:50.903883 DT:8.053126 CT:0.51 CTCP:0.000000 PSR: 1797.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:204.00 Steering:0.000000 R:2.00 DTCP:50.902157 DT:8.059144 CT:0.51 CTCP:1.000000 PSR: 1796.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:205.00 Steering:1.000000 R:2.00 DTCP:50.904496 DT:8.067012 CT:0.51 CTCP:1.000000 PSR: 1795.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:206.00 Steering:-1.000000 R:1.00 DTCP:50.906987 DT:8.075824 CT:0.52 CTCP:0.000000 PSR: 1794.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:138.00 Steering:0.000000 R:1.00 DTCP:50.859721 DT:7.592624 CT:0.53 CTCP:0.000000 PSR: 1862.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:139.00 Steering:1.000000 R:1.00 DTCP:50.863132 DT:7.599486 CT:0.52 CTCP:0.000000 PSR: 1861.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:140.00 Steering:-1.000000 R:1.00 DTCP:50.867660 DT:7.608641 CT:0.51 CTCP:0.000000 PSR: 1860.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:141.00 Steering:0.000000 R:2.00 DTCP:50.863995 DT:7.614714 CT:0.54 CTCP:1.000000 PSR: 1859.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:142.00 Steering:1.000000 R:1.00 DTCP:50.867454 DT:7.620771 CT:0.54 CTCP:0.000000 PSR: 1858.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:143.00 Steering:-1.000000 R:1.00 DTCP:50.870662 DT:7.629265 CT:0.53 CTCP:0.000000 PSR: 1857.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:144.00 Steering:0.000000 R:2.00 DTCP:50.871035 DT:7.636532 CT:0.52 CTCP:1.000000 PSR: 1856.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:145.00 Steering:0.000000 R:1.00 DTCP:50.870437 DT:7.646973 CT:0.52 CTCP:0.000000 PSR: 1855.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:146.00 Steering:-1.000000 R:2.00 DTCP:50.872426 DT:7.654526 CT:0.52 CTCP:1.000000 PSR: 1854.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:147.00 Steering:-1.000000 R:1.00 DTCP:50.874481 DT:7.660468 CT:0.52 CTCP:0.000000 PSR: 1853.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:148.00 Steering:0.000000 R:1.00 DTCP:50.873347 DT:7.664030 CT:0.51 CTCP:0.000000 PSR: 1852.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:149.00 Steering:0.000000 R:1.00 DTCP:50.874609 DT:7.668021 CT:0.50 CTCP:0.000000 PSR: 1851.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:150.00 Steering:0.000000 R:1.00 DTCP:50.875141 DT:7.674612 CT:0.51 CTCP:0.000000 PSR: 1850.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:151.00 Steering:1.000000 R:1.00 DTCP:50.873555 DT:7.681729 CT:0.51 CTCP:0.000000 PSR: 1849.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:152.00 Steering:0.000000 R:2.00 DTCP:50.873902 DT:7.688263 CT:0.53 CTCP:1.000000 PSR: 1848.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:153.00 Steering:1.000000 R:1.00 DTCP:50.876681 DT:7.695339 CT:0.52 CTCP:0.000000 PSR: 1847.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:154.00 Steering:1.000000 R:2.00 DTCP:50.874817 DT:7.702616 CT:0.52 CTCP:1.000000 PSR: 1846.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:155.00 Steering:1.000000 R:1.00 DTCP:50.877446 DT:7.707653 CT:0.52 CTCP:0.000000 PSR: 1845.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:156.00 Steering:0.000000 R:1.00 DTCP:50.879392 DT:7.713950 CT:0.52 CTCP:0.000000 PSR: 1844.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:157.00 Steering:0.000000 R:1.00 DTCP:50.880807 DT:7.721015 CT:0.52 CTCP:0.000000 PSR: 1843.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:158.00 Steering:-1.000000 R:2.00 DTCP:50.880766 DT:7.726935 CT:0.52 CTCP:1.000000 PSR: 1842.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:159.00 Steering:-1.000000 R:1.00 DTCP:50.878695 DT:7.735589 CT:0.52 CTCP:0.000000 PSR: 1841.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:160.00 Steering:-1.000000 R:1.00 DTCP:50.878459 DT:7.741679 CT:0.51 CTCP:0.000000 PSR: 1840.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:161.00 Steering:0.000000 R:2.00 DTCP:50.878039 DT:7.747635 CT:0.51 CTCP:1.000000 PSR: 1839.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:162.00 Steering:0.000000 R:1.00 DTCP:50.879701 DT:7.751282 CT:0.52 CTCP:0.000000 PSR: 1838.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:163.00 Steering:1.000000 R:1.00 DTCP:50.877972 DT:7.756951 CT:0.50 CTCP:0.000000 PSR: 1837.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:164.00 Steering:1.000000 R:1.00 DTCP:50.876268 DT:7.763143 CT:0.51 CTCP:0.000000 PSR: 1836.000000 IMU: 10.860494
+2020-02-15 03:47:37.200,Step:165.00 Steering:1.000000 R:1.00 DTCP:50.883195 DT:7.776325 CT:0.52 CTCP:0.000000 PSR: 1835.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:232.00 Steering:1.000000 R:2.00 DTCP:50.904934 DT:8.284847 CT:0.53 CTCP:1.000000 PSR: 1768.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:233.00 Steering:0.000000 R:1.00 DTCP:50.905604 DT:8.292104 CT:0.53 CTCP:0.000000 PSR: 1767.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:234.00 Steering:1.000000 R:2.00 DTCP:50.907879 DT:8.299677 CT:0.53 CTCP:1.000000 PSR: 1766.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:235.00 Steering:1.000000 R:1.00 DTCP:50.909079 DT:8.310079 CT:0.51 CTCP:0.000000 PSR: 1765.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:236.00 Steering:0.000000 R:1.00 DTCP:50.912783 DT:8.318492 CT:0.52 CTCP:0.000000 PSR: 1764.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:237.00 Steering:-1.000000 R:1.00 DTCP:50.913897 DT:8.324981 CT:0.52 CTCP:0.000000 PSR: 1763.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:238.00 Steering:0.000000 R:1.00 DTCP:50.911958 DT:8.331328 CT:0.52 CTCP:0.000000 PSR: 1762.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:239.00 Steering:1.000000 R:1.00 DTCP:50.909600 DT:8.340422 CT:0.52 CTCP:0.000000 PSR: 1761.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:240.00 Steering:0.000000 R:2.00 DTCP:50.912003 DT:8.352539 CT:0.52 CTCP:1.000000 PSR: 1760.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:241.00 Steering:1.000000 R:2.00 DTCP:50.915892 DT:8.364641 CT:0.51 CTCP:1.000000 PSR: 1759.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:242.00 Steering:0.000000 R:1.00 DTCP:50.917603 DT:8.372512 CT:0.53 CTCP:0.000000 PSR: 1758.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:243.00 Steering:0.000000 R:2.00 DTCP:50.917511 DT:8.384215 CT:0.52 CTCP:1.000000 PSR: 1757.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:244.00 Steering:0.000000 R:2.00 DTCP:50.914748 DT:8.391910 CT:0.52 CTCP:1.000000 PSR: 1756.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:245.00 Steering:1.000000 R:2.00 DTCP:50.917797 DT:8.402631 CT:0.51 CTCP:1.000000 PSR: 1755.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:246.00 Steering:-1.000000 R:1.00 DTCP:50.920458 DT:8.410094 CT:0.51 CTCP:0.000000 PSR: 1754.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:247.00 Steering:-1.000000 R:2.00 DTCP:50.919544 DT:8.422119 CT:0.52 CTCP:1.000000 PSR: 1753.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:248.00 Steering:0.000000 R:2.00 DTCP:50.912182 DT:8.432376 CT:0.52 CTCP:1.000000 PSR: 1752.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:249.00 Steering:-1.000000 R:1.00 DTCP:50.913829 DT:8.439592 CT:0.51 CTCP:0.000000 PSR: 1751.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:250.00 Steering:-1.000000 R:1.00 DTCP:50.913331 DT:8.449078 CT:0.51 CTCP:0.000000 PSR: 1750.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:251.00 Steering:0.000000 R:1.00 DTCP:50.914057 DT:8.459752 CT:0.51 CTCP:0.000000 PSR: 1749.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:252.00 Steering:1.000000 R:1.00 DTCP:50.916580 DT:8.472320 CT:0.51 CTCP:0.000000 PSR: 1748.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:253.00 Steering:-1.000000 R:1.00 DTCP:50.924099 DT:8.482292 CT:0.52 CTCP:0.000000 PSR: 1747.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:254.00 Steering:1.000000 R:1.00 DTCP:50.925789 DT:8.488716 CT:0.51 CTCP:0.000000 PSR: 1746.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:255.00 Steering:1.000000 R:2.00 DTCP:50.922629 DT:8.496442 CT:0.51 CTCP:1.000000 PSR: 1745.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:256.00 Steering:1.000000 R:1.00 DTCP:50.920425 DT:8.502865 CT:0.51 CTCP:0.000000 PSR: 1744.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:257.00 Steering:-1.000000 R:2.00 DTCP:50.924234 DT:8.513268 CT:0.52 CTCP:1.000000 PSR: 1743.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:258.00 Steering:0.000000 R:2.00 DTCP:50.922451 DT:8.521406 CT:0.52 CTCP:1.000000 PSR: 1742.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:259.00 Steering:-1.000000 R:1.00 DTCP:50.923958 DT:8.527936 CT:0.50 CTCP:0.000000 PSR: 1741.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:260.00 Steering:0.000000 R:1.00 DTCP:50.923325 DT:8.537340 CT:0.51 CTCP:0.000000 PSR: 1740.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:261.00 Steering:1.000000 R:2.00 DTCP:50.921025 DT:8.547308 CT:0.51 CTCP:1.000000 PSR: 1739.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:262.00 Steering:1.000000 R:1.00 DTCP:50.922458 DT:8.552651 CT:0.51 CTCP:0.000000 PSR: 1738.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:263.00 Steering:1.000000 R:1.00 DTCP:50.924262 DT:8.557497 CT:0.51 CTCP:0.000000 PSR: 1737.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:264.00 Steering:1.000000 R:1.00 DTCP:50.923617 DT:8.567785 CT:0.52 CTCP:0.000000 PSR: 1736.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:265.00 Steering:-1.000000 R:2.00 DTCP:50.925005 DT:8.577785 CT:0.51 CTCP:1.000000 PSR: 1735.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:266.00 Steering:1.000000 R:2.00 DTCP:50.922525 DT:8.586116 CT:0.51 CTCP:1.000000 PSR: 1734.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:267.00 Steering:-1.000000 R:2.00 DTCP:50.917325 DT:8.595487 CT:0.52 CTCP:1.000000 PSR: 1733.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:268.00 Steering:1.000000 R:1.00 DTCP:50.918049 DT:8.601520 CT:0.52 CTCP:0.000000 PSR: 1732.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:269.00 Steering:-1.000000 R:1.00 DTCP:50.919978 DT:8.610312 CT:0.52 CTCP:0.000000 PSR: 1731.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:270.00 Steering:-1.000000 R:2.00 DTCP:50.915772 DT:8.619945 CT:0.52 CTCP:1.000000 PSR: 1730.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:271.00 Steering:1.000000 R:1.00 DTCP:50.915205 DT:8.626561 CT:0.52 CTCP:0.000000 PSR: 1729.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:272.00 Steering:0.000000 R:2.00 DTCP:50.915349 DT:8.637296 CT:0.51 CTCP:1.000000 PSR: 1728.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:273.00 Steering:-1.000000 R:1.00 DTCP:50.915680 DT:8.643398 CT:0.53 CTCP:0.000000 PSR: 1727.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:274.00 Steering:1.000000 R:2.00 DTCP:50.916042 DT:8.650829 CT:0.52 CTCP:1.000000 PSR: 1726.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:275.00 Steering:0.000000 R:1.00 DTCP:50.921147 DT:8.658986 CT:0.52 CTCP:0.000000 PSR: 1725.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:276.00 Steering:-1.000000 R:1.00 DTCP:50.922204 DT:8.665195 CT:0.51 CTCP:0.000000 PSR: 1724.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:207.00 Steering:-1.000000 R:2.00 DTCP:50.905633 DT:8.084296 CT:0.51 CTCP:1.000000 PSR: 1793.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:208.00 Steering:1.000000 R:2.00 DTCP:50.902570 DT:8.091033 CT:0.51 CTCP:1.000000 PSR: 1792.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:209.00 Steering:-1.000000 R:2.00 DTCP:50.901390 DT:8.096007 CT:0.51 CTCP:1.000000 PSR: 1791.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:210.00 Steering:0.000000 R:2.00 DTCP:50.901255 DT:8.103203 CT:0.51 CTCP:1.000000 PSR: 1790.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:211.00 Steering:1.000000 R:2.00 DTCP:50.903820 DT:8.111331 CT:0.52 CTCP:1.000000 PSR: 1789.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:212.00 Steering:1.000000 R:2.00 DTCP:50.903718 DT:8.117212 CT:0.52 CTCP:1.000000 PSR: 1788.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:213.00 Steering:1.000000 R:2.00 DTCP:50.902160 DT:8.128110 CT:0.52 CTCP:1.000000 PSR: 1787.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:214.00 Steering:1.000000 R:1.00 DTCP:50.903488 DT:8.133072 CT:0.52 CTCP:0.000000 PSR: 1786.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:215.00 Steering:1.000000 R:1.00 DTCP:50.907100 DT:8.141737 CT:0.52 CTCP:0.000000 PSR: 1785.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:216.00 Steering:0.000000 R:1.00 DTCP:50.909120 DT:8.151830 CT:0.51 CTCP:0.000000 PSR: 1784.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:217.00 Steering:1.000000 R:2.00 DTCP:50.905917 DT:8.160795 CT:0.52 CTCP:1.000000 PSR: 1783.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:218.00 Steering:-1.000000 R:2.00 DTCP:50.904615 DT:8.167733 CT:0.51 CTCP:1.000000 PSR: 1782.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:219.00 Steering:-1.000000 R:2.00 DTCP:50.906849 DT:8.177843 CT:0.51 CTCP:1.000000 PSR: 1781.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:220.00 Steering:1.000000 R:2.00 DTCP:50.904012 DT:8.187840 CT:0.51 CTCP:1.000000 PSR: 1780.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:221.00 Steering:1.000000 R:1.00 DTCP:50.906665 DT:8.195549 CT:0.51 CTCP:0.000000 PSR: 1779.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:222.00 Steering:-1.000000 R:1.00 DTCP:50.907290 DT:8.207611 CT:0.52 CTCP:0.000000 PSR: 1778.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:223.00 Steering:-1.000000 R:2.00 DTCP:50.904735 DT:8.217733 CT:0.53 CTCP:1.000000 PSR: 1777.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:224.00 Steering:-1.000000 R:1.00 DTCP:50.902604 DT:8.224953 CT:0.51 CTCP:0.000000 PSR: 1776.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:225.00 Steering:0.000000 R:1.00 DTCP:50.904270 DT:8.234897 CT:0.51 CTCP:0.000000 PSR: 1775.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:226.00 Steering:-1.000000 R:1.00 DTCP:50.902106 DT:8.242663 CT:0.50 CTCP:0.000000 PSR: 1774.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:227.00 Steering:-1.000000 R:1.00 DTCP:50.901514 DT:8.248233 CT:0.50 CTCP:0.000000 PSR: 1773.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:228.00 Steering:0.000000 R:1.00 DTCP:50.904532 DT:8.256090 CT:0.51 CTCP:0.000000 PSR: 1772.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:229.00 Steering:0.000000 R:1.00 DTCP:50.905491 DT:8.262561 CT:0.52 CTCP:0.000000 PSR: 1771.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:230.00 Steering:0.000000 R:2.00 DTCP:50.904163 DT:8.271772 CT:0.52 CTCP:1.000000 PSR: 1770.000000 IMU: 10.860494
+2020-02-15 03:47:59.195,Step:231.00 Steering:0.000000 R:1.00 DTCP:50.904532 DT:8.276817 CT:0.51 CTCP:0.000000 PSR: 1769.000000 IMU: 10.860494
+2020-02-15 03:48:20.971,Step:291.00 Steering:-1.000000 R:2.00 DTCP:50.917369 DT:8.767446 CT:0.51 CTCP:1.000000 PSR: 1709.000000 IMU: 10.860494
+2020-02-15 03:48:20.971,Step:290.00 Steering:0.000000 R:1.00 DTCP:50.917255 DT:8.760496 CT:0.51 CTCP:0.000000 PSR: 1710.000000 IMU: 10.860494
+2020-02-15 03:48:20.971,Step:289.00 Steering:-1.000000 R:2.00 DTCP:50.918105 DT:8.752286 CT:0.51 CTCP:1.000000 PSR: 1711.000000 IMU: 10.860494
+2020-02-15 03:48:20.971,Step:288.00 Steering:-1.000000 R:2.00 DTCP:50.920680 DT:8.745779 CT:0.52 CTCP:1.000000 PSR: 1712.000000 IMU: 10.860494
+2020-02-15 03:48:20.971,Step:287.00 Steering:0.000000 R:2.00 DTCP:50.917747 DT:8.738630 CT:0.52 CTCP:1.000000 PSR: 1713.000000 IMU: 10.860494
+2020-02-15 03:48:20.971,Step:286.00 Steering:1.000000 R:1.00 DTCP:50.917007 DT:8.730724 CT:0.51 CTCP:0.000000 PSR: 1714.000000 IMU: 10.860494
+2020-02-15 03:48:20.971,Step:285.00 Steering:1.000000 R:1.00 DTCP:50.917907 DT:8.727310 CT:0.51 CTCP:0.000000 PSR: 1715.000000 IMU: 10.860494
+2020-02-15 03:48:20.971,Step:284.00 Steering:0.000000 R:2.00 DTCP:50.917091 DT:8.719715 CT:0.52 CTCP:1.000000 PSR: 1716.000000 IMU: 10.860494
+2020-02-15 03:48:20.971,Step:283.00 Steering:-1.000000 R:2.00 DTCP:50.915921 DT:8.711924 CT:0.50 CTCP:1.000000 PSR: 1717.000000 IMU: 10.860494
+2020-02-15 03:48:20.971,Step:282.00 Steering:1.000000 R:1.00 DTCP:50.919184 DT:8.706040 CT:0.51 CTCP:0.000000 PSR: 1718.000000 IMU: 10.860494
+2020-02-15 03:48:20.971,Step:281.00 Steering:-1.000000 R:1.00 DTCP:50.918052 DT:8.700200 CT:0.51 CTCP:0.000000 PSR: 1719.000000 IMU: 10.860494
+2020-02-15 03:48:20.971,Step:280.00 Steering:-1.000000 R:1.00 DTCP:50.915947 DT:8.692881 CT:0.52 CTCP:0.000000 PSR: 1720.000000 IMU: 10.860494
+2020-02-15 03:48:20.971,Step:279.00 Steering:1.000000 R:1.00 DTCP:50.914881 DT:8.685811 CT:0.51 CTCP:0.000000 PSR: 1721.000000 IMU: 10.860494
+2020-02-15 03:48:20.971,Step:278.00 Steering:0.000000 R:2.00 DTCP:50.916168 DT:8.679351 CT:0.51 CTCP:1.000000 PSR: 1722.000000 IMU: 10.860494
+2020-02-15 03:48:20.971,Step:277.00 Steering:-1.000000 R:1.00 DTCP:50.920494 DT:8.670577 CT:0.51 CTCP:0.000000 PSR: 1723.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:321.00 Steering:-1.000000 R:2.00 DTCP:50.932739 DT:9.056603 CT:0.53 CTCP:1.000000 PSR: 1679.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:320.00 Steering:-1.000000 R:2.00 DTCP:50.935995 DT:9.050145 CT:0.53 CTCP:1.000000 PSR: 1680.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:319.00 Steering:0.000000 R:1.00 DTCP:50.938578 DT:9.041062 CT:0.53 CTCP:0.000000 PSR: 1681.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:318.00 Steering:1.000000 R:2.00 DTCP:50.932038 DT:9.028806 CT:0.52 CTCP:1.000000 PSR: 1682.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:317.00 Steering:-1.000000 R:1.00 DTCP:50.936828 DT:9.017866 CT:0.52 CTCP:0.000000 PSR: 1683.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:316.00 Steering:1.000000 R:2.00 DTCP:50.933914 DT:9.005556 CT:0.52 CTCP:1.000000 PSR: 1684.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:315.00 Steering:-1.000000 R:1.00 DTCP:50.937118 DT:8.997957 CT:0.52 CTCP:0.000000 PSR: 1685.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:314.00 Steering:0.000000 R:1.00 DTCP:50.934788 DT:8.985299 CT:0.52 CTCP:0.000000 PSR: 1686.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:313.00 Steering:1.000000 R:1.00 DTCP:50.934649 DT:8.976056 CT:0.51 CTCP:0.000000 PSR: 1687.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:312.00 Steering:1.000000 R:1.00 DTCP:50.930393 DT:8.962904 CT:0.51 CTCP:0.000000 PSR: 1688.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:311.00 Steering:0.000000 R:1.00 DTCP:50.929526 DT:8.954815 CT:0.52 CTCP:0.000000 PSR: 1689.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:310.00 Steering:0.000000 R:1.00 DTCP:50.926454 DT:8.944626 CT:0.51 CTCP:0.000000 PSR: 1690.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:309.00 Steering:-1.000000 R:2.00 DTCP:50.925211 DT:8.936913 CT:0.52 CTCP:1.000000 PSR: 1691.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:308.00 Steering:-1.000000 R:1.00 DTCP:50.927610 DT:8.928966 CT:0.51 CTCP:0.000000 PSR: 1692.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:307.00 Steering:0.000000 R:2.00 DTCP:50.922576 DT:8.917873 CT:0.52 CTCP:1.000000 PSR: 1693.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:306.00 Steering:-1.000000 R:2.00 DTCP:50.926552 DT:8.903457 CT:0.52 CTCP:1.000000 PSR: 1694.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:305.00 Steering:-1.000000 R:2.00 DTCP:50.927909 DT:8.890967 CT:0.53 CTCP:1.000000 PSR: 1695.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:304.00 Steering:0.000000 R:1.00 DTCP:50.923378 DT:8.879467 CT:0.52 CTCP:0.000000 PSR: 1696.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:303.00 Steering:1.000000 R:2.00 DTCP:50.917360 DT:8.863622 CT:0.52 CTCP:1.000000 PSR: 1697.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:302.00 Steering:-1.000000 R:2.00 DTCP:50.919387 DT:8.856229 CT:0.51 CTCP:1.000000 PSR: 1698.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:301.00 Steering:0.000000 R:1.00 DTCP:50.923269 DT:8.843934 CT:0.51 CTCP:0.000000 PSR: 1699.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:300.00 Steering:0.000000 R:2.00 DTCP:50.921645 DT:8.837346 CT:0.52 CTCP:1.000000 PSR: 1700.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:299.00 Steering:0.000000 R:2.00 DTCP:50.920751 DT:8.831037 CT:0.52 CTCP:1.000000 PSR: 1701.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:298.00 Steering:-1.000000 R:2.00 DTCP:50.919015 DT:8.822278 CT:0.52 CTCP:1.000000 PSR: 1702.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:297.00 Steering:1.000000 R:1.00 DTCP:50.923988 DT:8.814563 CT:0.52 CTCP:0.000000 PSR: 1703.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:296.00 Steering:0.000000 R:2.00 DTCP:50.919511 DT:8.803527 CT:0.51 CTCP:1.000000 PSR: 1704.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:295.00 Steering:1.000000 R:2.00 DTCP:50.917856 DT:8.797256 CT:0.51 CTCP:1.000000 PSR: 1705.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:294.00 Steering:1.000000 R:2.00 DTCP:50.916984 DT:8.788254 CT:0.52 CTCP:1.000000 PSR: 1706.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:293.00 Steering:0.000000 R:2.00 DTCP:50.916280 DT:8.781047 CT:0.52 CTCP:1.000000 PSR: 1707.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:292.00 Steering:1.000000 R:1.00 DTCP:50.918136 DT:8.775273 CT:0.51 CTCP:0.000000 PSR: 1708.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:345.00 Steering:1.000000 R:2.00 DTCP:50.952248 DT:9.261348 CT:0.53 CTCP:1.000000 PSR: 1655.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:344.00 Steering:-1.000000 R:1.00 DTCP:50.952002 DT:9.253940 CT:0.53 CTCP:0.000000 PSR: 1656.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:343.00 Steering:0.000000 R:1.00 DTCP:50.947104 DT:9.244053 CT:0.53 CTCP:0.000000 PSR: 1657.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:342.00 Steering:0.000000 R:1.00 DTCP:50.946812 DT:9.234690 CT:0.53 CTCP:0.000000 PSR: 1658.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:341.00 Steering:-1.000000 R:1.00 DTCP:50.945680 DT:9.225798 CT:0.52 CTCP:0.000000 PSR: 1659.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:340.00 Steering:0.000000 R:1.00 DTCP:50.949826 DT:9.216762 CT:0.53 CTCP:0.000000 PSR: 1660.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:339.00 Steering:-1.000000 R:2.00 DTCP:50.948674 DT:9.209713 CT:0.53 CTCP:1.000000 PSR: 1661.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:338.00 Steering:0.000000 R:2.00 DTCP:50.949169 DT:9.203757 CT:0.53 CTCP:1.000000 PSR: 1662.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:337.00 Steering:0.000000 R:2.00 DTCP:50.948860 DT:9.194242 CT:0.53 CTCP:1.000000 PSR: 1663.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:336.00 Steering:1.000000 R:1.00 DTCP:50.949189 DT:9.188509 CT:0.53 CTCP:0.000000 PSR: 1664.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:335.00 Steering:-1.000000 R:2.00 DTCP:50.948167 DT:9.178687 CT:0.53 CTCP:1.000000 PSR: 1665.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:334.00 Steering:0.000000 R:1.00 DTCP:50.947413 DT:9.170381 CT:0.53 CTCP:0.000000 PSR: 1666.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:333.00 Steering:1.000000 R:1.00 DTCP:50.945161 DT:9.160778 CT:0.53 CTCP:0.000000 PSR: 1667.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:332.00 Steering:-1.000000 R:2.00 DTCP:50.945715 DT:9.153994 CT:0.53 CTCP:1.000000 PSR: 1668.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:331.00 Steering:1.000000 R:1.00 DTCP:50.946903 DT:9.144436 CT:0.54 CTCP:0.000000 PSR: 1669.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:330.00 Steering:-1.000000 R:1.00 DTCP:50.948554 DT:9.134972 CT:0.53 CTCP:0.000000 PSR: 1670.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:329.00 Steering:0.000000 R:1.00 DTCP:50.941589 DT:9.123607 CT:0.53 CTCP:0.000000 PSR: 1671.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:328.00 Steering:0.000000 R:1.00 DTCP:50.944062 DT:9.115582 CT:0.53 CTCP:0.000000 PSR: 1672.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:327.00 Steering:0.000000 R:1.00 DTCP:50.941504 DT:9.107175 CT:0.53 CTCP:0.000000 PSR: 1673.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:326.00 Steering:1.000000 R:2.00 DTCP:50.940558 DT:9.100573 CT:0.53 CTCP:1.000000 PSR: 1674.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:325.00 Steering:-1.000000 R:2.00 DTCP:50.939454 DT:9.092793 CT:0.52 CTCP:1.000000 PSR: 1675.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:324.00 Steering:0.000000 R:1.00 DTCP:50.939785 DT:9.083993 CT:0.54 CTCP:0.000000 PSR: 1676.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:323.00 Steering:1.000000 R:2.00 DTCP:50.938501 DT:9.074353 CT:0.54 CTCP:1.000000 PSR: 1677.000000 IMU: 10.860494
+2020-02-15 03:48:20.972,Step:322.00 Steering:1.000000 R:1.00 DTCP:50.935809 DT:9.064654 CT:0.53 CTCP:0.000000 PSR: 1678.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:364.00 Steering:1.000000 R:1.00 DTCP:50.956505 DT:9.470910 CT:0.52 CTCP:0.000000 PSR: 1636.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:363.00 Steering:-1.000000 R:1.00 DTCP:50.959870 DT:9.463409 CT:0.52 CTCP:0.000000 PSR: 1637.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:362.00 Steering:1.000000 R:1.00 DTCP:50.956265 DT:9.451434 CT:0.53 CTCP:0.000000 PSR: 1638.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:361.00 Steering:-1.000000 R:2.00 DTCP:50.955049 DT:9.438066 CT:0.53 CTCP:1.000000 PSR: 1639.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:360.00 Steering:1.000000 R:2.00 DTCP:50.956649 DT:9.427790 CT:0.52 CTCP:1.000000 PSR: 1640.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:359.00 Steering:-1.000000 R:2.00 DTCP:50.955947 DT:9.418635 CT:0.53 CTCP:1.000000 PSR: 1641.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:358.00 Steering:1.000000 R:2.00 DTCP:50.958088 DT:9.405546 CT:0.52 CTCP:1.000000 PSR: 1642.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:357.00 Steering:-1.000000 R:1.00 DTCP:50.955211 DT:9.389199 CT:0.52 CTCP:0.000000 PSR: 1643.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:356.00 Steering:0.000000 R:1.00 DTCP:50.959150 DT:9.380387 CT:0.52 CTCP:0.000000 PSR: 1644.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:355.00 Steering:0.000000 R:2.00 DTCP:50.956239 DT:9.371909 CT:0.52 CTCP:1.000000 PSR: 1645.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:354.00 Steering:0.000000 R:1.00 DTCP:50.954226 DT:9.363423 CT:0.52 CTCP:0.000000 PSR: 1646.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:353.00 Steering:0.000000 R:1.00 DTCP:50.952901 DT:9.355567 CT:0.53 CTCP:0.000000 PSR: 1647.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:352.00 Steering:0.000000 R:1.00 DTCP:50.953651 DT:9.344090 CT:0.53 CTCP:0.000000 PSR: 1648.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:351.00 Steering:0.000000 R:1.00 DTCP:50.950440 DT:9.331931 CT:0.53 CTCP:0.000000 PSR: 1649.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:350.00 Steering:0.000000 R:2.00 DTCP:50.951111 DT:9.322259 CT:0.53 CTCP:1.000000 PSR: 1650.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:349.00 Steering:1.000000 R:1.00 DTCP:50.950972 DT:9.309036 CT:0.54 CTCP:0.000000 PSR: 1651.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:348.00 Steering:1.000000 R:1.00 DTCP:50.952931 DT:9.296839 CT:0.54 CTCP:0.000000 PSR: 1652.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:347.00 Steering:0.000000 R:1.00 DTCP:50.958229 DT:9.281925 CT:0.52 CTCP:0.000000 PSR: 1653.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:346.00 Steering:0.000000 R:2.00 DTCP:50.954681 DT:9.273394 CT:0.53 CTCP:1.000000 PSR: 1654.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:414.00 Steering:1.000000 R:2.00 DTCP:51.004194 DT:10.015776 CT:0.52 CTCP:1.000000 PSR: 1586.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:413.00 Steering:-1.000000 R:1.00 DTCP:50.999820 DT:10.001483 CT:0.52 CTCP:0.000000 PSR: 1587.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:412.00 Steering:0.000000 R:1.00 DTCP:51.000655 DT:9.986806 CT:0.51 CTCP:0.000000 PSR: 1588.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:411.00 Steering:1.000000 R:1.00 DTCP:50.996917 DT:9.973086 CT:0.51 CTCP:0.000000 PSR: 1589.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:410.00 Steering:0.000000 R:1.00 DTCP:50.997301 DT:9.962546 CT:0.52 CTCP:0.000000 PSR: 1590.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:409.00 Steering:-1.000000 R:1.00 DTCP:50.997053 DT:9.951728 CT:0.52 CTCP:0.000000 PSR: 1591.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:408.00 Steering:-1.000000 R:2.00 DTCP:50.995437 DT:9.942564 CT:0.52 CTCP:1.000000 PSR: 1592.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:407.00 Steering:0.000000 R:1.00 DTCP:50.999415 DT:9.930882 CT:0.51 CTCP:0.000000 PSR: 1593.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:406.00 Steering:0.000000 R:2.00 DTCP:50.996006 DT:9.920835 CT:0.52 CTCP:1.000000 PSR: 1594.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:405.00 Steering:1.000000 R:2.00 DTCP:50.995462 DT:9.912980 CT:0.51 CTCP:1.000000 PSR: 1595.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:404.00 Steering:-1.000000 R:1.00 DTCP:50.991486 DT:9.900856 CT:0.51 CTCP:0.000000 PSR: 1596.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:403.00 Steering:1.000000 R:1.00 DTCP:50.987770 DT:9.888195 CT:0.52 CTCP:0.000000 PSR: 1597.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:402.00 Steering:-1.000000 R:1.00 DTCP:50.982003 DT:9.877397 CT:0.53 CTCP:0.000000 PSR: 1598.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:401.00 Steering:-1.000000 R:1.00 DTCP:50.979636 DT:9.867668 CT:0.53 CTCP:0.000000 PSR: 1599.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:400.00 Steering:-1.000000 R:2.00 DTCP:50.978606 DT:9.858982 CT:0.54 CTCP:1.000000 PSR: 1600.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:399.00 Steering:0.000000 R:2.00 DTCP:50.976812 DT:9.849957 CT:0.53 CTCP:1.000000 PSR: 1601.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:398.00 Steering:-1.000000 R:2.00 DTCP:50.975326 DT:9.838781 CT:0.51 CTCP:1.000000 PSR: 1602.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:397.00 Steering:1.000000 R:1.00 DTCP:50.981903 DT:9.824681 CT:0.51 CTCP:0.000000 PSR: 1603.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:396.00 Steering:0.000000 R:2.00 DTCP:50.978912 DT:9.809882 CT:0.51 CTCP:1.000000 PSR: 1604.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:395.00 Steering:0.000000 R:2.00 DTCP:50.978779 DT:9.803574 CT:0.53 CTCP:1.000000 PSR: 1605.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:394.00 Steering:1.000000 R:1.00 DTCP:50.979675 DT:9.790542 CT:0.52 CTCP:0.000000 PSR: 1606.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:393.00 Steering:-1.000000 R:2.00 DTCP:50.978202 DT:9.779785 CT:0.53 CTCP:1.000000 PSR: 1607.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:392.00 Steering:1.000000 R:2.00 DTCP:50.976959 DT:9.769004 CT:0.53 CTCP:1.000000 PSR: 1608.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:391.00 Steering:1.000000 R:1.00 DTCP:50.977487 DT:9.758440 CT:0.54 CTCP:0.000000 PSR: 1609.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:390.00 Steering:1.000000 R:1.00 DTCP:50.978740 DT:9.746881 CT:0.51 CTCP:0.000000 PSR: 1610.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:389.00 Steering:0.000000 R:2.00 DTCP:50.977885 DT:9.738162 CT:0.53 CTCP:1.000000 PSR: 1611.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:388.00 Steering:-1.000000 R:1.00 DTCP:50.980029 DT:9.729478 CT:0.52 CTCP:0.000000 PSR: 1612.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:387.00 Steering:1.000000 R:1.00 DTCP:50.977516 DT:9.718154 CT:0.53 CTCP:0.000000 PSR: 1613.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:386.00 Steering:-1.000000 R:1.00 DTCP:50.978607 DT:9.705195 CT:0.53 CTCP:0.000000 PSR: 1614.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:385.00 Steering:0.000000 R:1.00 DTCP:50.974501 DT:9.693951 CT:0.51 CTCP:0.000000 PSR: 1615.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:384.00 Steering:-1.000000 R:2.00 DTCP:50.977989 DT:9.684892 CT:0.53 CTCP:1.000000 PSR: 1616.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:383.00 Steering:1.000000 R:2.00 DTCP:50.975924 DT:9.670179 CT:0.51 CTCP:1.000000 PSR: 1617.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:382.00 Steering:1.000000 R:1.00 DTCP:50.974097 DT:9.660688 CT:0.52 CTCP:0.000000 PSR: 1618.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:381.00 Steering:1.000000 R:1.00 DTCP:50.972522 DT:9.649711 CT:0.53 CTCP:0.000000 PSR: 1619.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:380.00 Steering:-1.000000 R:2.00 DTCP:50.968235 DT:9.639185 CT:0.54 CTCP:1.000000 PSR: 1620.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:379.00 Steering:0.000000 R:2.00 DTCP:50.969243 DT:9.631117 CT:0.54 CTCP:1.000000 PSR: 1621.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:378.00 Steering:1.000000 R:2.00 DTCP:50.967404 DT:9.620230 CT:0.53 CTCP:1.000000 PSR: 1622.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:377.00 Steering:1.000000 R:2.00 DTCP:50.965298 DT:9.612356 CT:0.53 CTCP:1.000000 PSR: 1623.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:376.00 Steering:-1.000000 R:1.00 DTCP:50.967036 DT:9.599656 CT:0.53 CTCP:0.000000 PSR: 1624.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:375.00 Steering:-1.000000 R:1.00 DTCP:50.966178 DT:9.588376 CT:0.53 CTCP:0.000000 PSR: 1625.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:374.00 Steering:0.000000 R:2.00 DTCP:50.960897 DT:9.576272 CT:0.53 CTCP:1.000000 PSR: 1626.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:373.00 Steering:-1.000000 R:2.00 DTCP:50.960623 DT:9.560623 CT:0.53 CTCP:1.000000 PSR: 1627.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:372.00 Steering:-1.000000 R:1.00 DTCP:50.959049 DT:9.547568 CT:0.53 CTCP:0.000000 PSR: 1628.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:371.00 Steering:0.000000 R:2.00 DTCP:50.958777 DT:9.537615 CT:0.51 CTCP:1.000000 PSR: 1629.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:370.00 Steering:1.000000 R:1.00 DTCP:50.958860 DT:9.524483 CT:0.53 CTCP:0.000000 PSR: 1630.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:369.00 Steering:-1.000000 R:2.00 DTCP:50.961856 DT:9.516059 CT:0.54 CTCP:1.000000 PSR: 1631.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:368.00 Steering:-1.000000 R:2.00 DTCP:50.959345 DT:9.506532 CT:0.53 CTCP:1.000000 PSR: 1632.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:367.00 Steering:0.000000 R:1.00 DTCP:50.964802 DT:9.493945 CT:0.53 CTCP:0.000000 PSR: 1633.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:366.00 Steering:-1.000000 R:1.00 DTCP:50.962151 DT:9.487592 CT:0.51 CTCP:0.000000 PSR: 1634.000000 IMU: 10.860494
+2020-02-15 03:48:42.640,Step:365.00 Steering:-1.000000 R:2.00 DTCP:50.959219 DT:9.480947 CT:0.53 CTCP:1.000000 PSR: 1635.000000 IMU: 10.860494
+2020-02-15 03:49:04.420,Step:4.00 Steering:1.000000 R:2.00 DTCP:44.820115 DT:0.257381 CT:4.50 CTCP:0.000000 PSR: 1996.000000 IMU: 2.713988
+2020-02-15 03:49:04.420,Step:3.00 Steering:-1.000000 R:2.00 DTCP:44.701929 DT:0.137659 CT:4.50 CTCP:0.000000 PSR: 1997.000000 IMU: 2.713988
+2020-02-15 03:49:04.420,Step:2.00 Steering:0.000000 R:2.00 DTCP:44.636773 DT:0.071789 CT:4.50 CTCP:0.000000 PSR: 1998.000000 IMU: 2.363703
+2020-02-15 03:49:04.420,Step:1.00 Steering:-1.000000 R:2.00 DTCP:44.598267 DT:0.033131 CT:4.43 CTCP:0.000000 PSR: 1999.000000 IMU: 2.363703
+2020-02-15 03:49:04.420,Step:0.00 Steering:0.000000 R:0.00 DTCP:44.579402 DT:0.010521 CT:4.50 CTCP:0.000000 PSR: 2000.000000 IMU: 2.363703
+2020-02-15 03:49:04.420,Total Episodic Reward=630.00 Total Episodic Steps=427.00
+2020-02-15 03:49:04.420,Training - Name: main_level/agent Worker: 0 Episode: 1 Total reward: 630.0 Steps: 427 Training iteration: 0 
+2020-02-15 03:49:04.420,Step:427.00 Steering:1.000000 R:0.00 DTCP:51.034459 DT:10.159177 CT:0.49 CTCP:1.000000 PSR: 1573.000000 IMU: 10.860494
+2020-02-15 03:49:04.420,Rover has sustained sideswipe damage
+2020-02-15 03:49:04.420,Step:426.00 Steering:0.000000 R:1.00 DTCP:51.030804 DT:10.144885 CT:0.50 CTCP:0.000000 PSR: 1574.000000 IMU: 10.860494
+2020-02-15 03:49:04.420,Step:425.00 Steering:1.000000 R:1.00 DTCP:51.030875 DT:10.137420 CT:0.50 CTCP:0.000000 PSR: 1575.000000 IMU: 10.860494
+2020-02-15 03:49:04.420,Step:424.00 Steering:-1.000000 R:1.00 DTCP:51.024382 DT:10.125966 CT:0.50 CTCP:0.000000 PSR: 1576.000000 IMU: 10.860494
+2020-02-15 03:49:04.420,Step:423.00 Steering:-1.000000 R:2.00 DTCP:51.022667 DT:10.113251 CT:0.50 CTCP:1.000000 PSR: 1577.000000 IMU: 10.860494
+2020-02-15 03:49:04.420,Step:422.00 Steering:1.000000 R:1.00 DTCP:51.014268 DT:10.097813 CT:0.51 CTCP:0.000000 PSR: 1578.000000 IMU: 10.860494
+2020-02-15 03:49:04.420,Step:421.00 Steering:-1.000000 R:2.00 DTCP:51.013534 DT:10.089742 CT:0.51 CTCP:1.000000 PSR: 1579.000000 IMU: 10.860494
+2020-02-15 03:49:04.420,Step:420.00 Steering:0.000000 R:1.00 DTCP:51.016483 DT:10.079649 CT:0.51 CTCP:0.000000 PSR: 1580.000000 IMU: 10.860494
+2020-02-15 03:49:04.420,Step:419.00 Steering:0.000000 R:1.00 DTCP:51.012169 DT:10.067581 CT:0.52 CTCP:0.000000 PSR: 1581.000000 IMU: 10.860494
+2020-02-15 03:49:04.420,Step:418.00 Steering:-1.000000 R:1.00 DTCP:51.008336 DT:10.056467 CT:0.52 CTCP:0.000000 PSR: 1582.000000 IMU: 10.860494
+2020-02-15 03:49:04.420,Step:417.00 Steering:1.000000 R:2.00 DTCP:51.009367 DT:10.049031 CT:0.50 CTCP:1.000000 PSR: 1583.000000 IMU: 10.860494
+2020-02-15 03:49:04.420,Step:54.00 Steering:-1.000000 R:1.25 DTCP:51.230490 DT:6.924454 CT:1.34 CTCP:0.000000 PSR: 1946.000000 IMU: 10.573158
+2020-02-15 03:49:04.420,Step:416.00 Steering:-1.000000 R:2.00 DTCP:51.005159 DT:10.036512 CT:0.51 CTCP:1.000000 PSR: 1584.000000 IMU: 10.860494
+2020-02-15 03:49:04.420,Step:53.00 Steering:0.000000 R:1.25 DTCP:51.094249 DT:6.787615 CT:1.34 CTCP:0.000000 PSR: 1947.000000 IMU: 10.573158
+2020-02-15 03:49:04.420,Step:415.00 Steering:-1.000000 R:1.00 DTCP:51.009423 DT:10.026873 CT:0.51 CTCP:0.000000 PSR: 1585.000000 IMU: 10.860494
+2020-02-15 03:49:04.420,Step:52.00 Steering:1.000000 R:1.50 DTCP:50.956594 DT:6.649853 CT:1.50 CTCP:0.000000 PSR: 1948.000000 IMU: 10.573158
+2020-02-15 03:49:04.420,Step:51.00 Steering:-1.000000 R:1.50 DTCP:50.809655 DT:6.502746 CT:1.65 CTCP:0.000000 PSR: 1949.000000 IMU: 10.573158
+2020-02-15 03:49:04.420,Step:50.00 Steering:-1.000000 R:1.50 DTCP:50.689552 DT:6.382178 CT:1.81 CTCP:0.000000 PSR: 1950.000000 IMU: 10.573158
+2020-02-15 03:49:04.420,Step:49.00 Steering:-1.000000 R:1.50 DTCP:50.584444 DT:6.276581 CT:1.81 CTCP:0.000000 PSR: 1951.000000 IMU: 10.573158
+2020-02-15 03:49:04.420,Step:48.00 Steering:0.000000 R:1.50 DTCP:50.484017 DT:6.175812 CT:1.93 CTCP:0.000000 PSR: 1952.000000 IMU: 10.573158
+2020-02-15 03:49:04.420,Step:47.00 Steering:-1.000000 R:2.00 DTCP:50.392917 DT:6.084147 CT:2.03 CTCP:0.000000 PSR: 1953.000000 IMU: 10.573158
+2020-02-15 03:49:04.420,Step:46.00 Steering:0.000000 R:2.00 DTCP:50.274505 DT:5.965534 CT:2.03 CTCP:0.000000 PSR: 1954.000000 IMU: 10.573158
+2020-02-15 03:49:04.420,Step:45.00 Steering:0.000000 R:2.00 DTCP:50.136356 DT:5.827015 CT:2.05 CTCP:0.000000 PSR: 1955.000000 IMU: 10.573158
+2020-02-15 03:49:04.420,Step:44.00 Steering:0.000000 R:2.00 DTCP:50.001756 DT:5.692123 CT:2.13 CTCP:0.000000 PSR: 1956.000000 IMU: 10.573158
+2020-02-15 03:49:04.420,Step:43.00 Steering:-1.000000 R:2.00 DTCP:49.865105 DT:5.555211 CT:2.21 CTCP:0.000000 PSR: 1957.000000 IMU: 10.573158
+2020-02-15 03:49:04.420,Step:42.00 Steering:1.000000 R:2.00 DTCP:49.756849 DT:5.446874 CT:2.21 CTCP:0.000000 PSR: 1958.000000 IMU: 10.573158
+2020-02-15 03:49:04.420,Step:41.00 Steering:-1.000000 R:2.00 DTCP:49.631370 DT:5.321136 CT:2.31 CTCP:0.000000 PSR: 1959.000000 IMU: 10.573158
+2020-02-15 03:49:04.420,Step:40.00 Steering:0.000000 R:2.00 DTCP:49.475141 DT:5.164718 CT:2.39 CTCP:0.000000 PSR: 1960.000000 IMU: 10.573158
+2020-02-15 03:49:04.420,Step:39.00 Steering:0.000000 R:2.00 DTCP:49.354205 DT:5.043679 CT:2.52 CTCP:0.000000 PSR: 1961.000000 IMU: 10.573158
+2020-02-15 03:49:04.420,Step:38.00 Steering:1.000000 R:2.00 DTCP:49.215924 DT:4.904825 CT:2.58 CTCP:0.000000 PSR: 1962.000000 IMU: 10.573158
+2020-02-15 03:49:04.420,Step:37.00 Steering:-1.000000 R:2.00 DTCP:49.095565 DT:4.784138 CT:2.58 CTCP:0.000000 PSR: 1963.000000 IMU: 10.573158
+2020-02-15 03:49:04.420,Step:36.00 Steering:-1.000000 R:2.00 DTCP:48.947512 DT:4.634402 CT:2.68 CTCP:0.000000 PSR: 1964.000000 IMU: 10.573158
+2020-02-15 03:49:04.420,Step:35.00 Steering:-1.000000 R:2.00 DTCP:48.802389 DT:4.486138 CT:2.78 CTCP:0.000000 PSR: 1965.000000 IMU: 10.573158
+2020-02-15 03:49:04.420,Step:34.00 Steering:0.000000 R:2.00 DTCP:48.660267 DT:4.341404 CT:2.90 CTCP:0.000000 PSR: 1966.000000 IMU: 10.573158
+2020-02-15 03:49:04.420,Step:33.00 Steering:0.000000 R:2.00 DTCP:48.501340 DT:4.178888 CT:3.49 CTCP:0.000000 PSR: 1967.000000 IMU: 10.573158
+2020-02-15 03:49:04.420,Step:32.00 Steering:-1.000000 R:2.00 DTCP:48.343892 DT:4.017021 CT:4.00 CTCP:0.000000 PSR: 1968.000000 IMU: 10.573158
+2020-02-15 03:49:04.420,Step:31.00 Steering:-1.000000 R:2.00 DTCP:48.192253 DT:3.856635 CT:3.77 CTCP:0.000000 PSR: 1969.000000 IMU: 10.573158
+2020-02-15 03:49:04.420,Step:30.00 Steering:-1.000000 R:2.00 DTCP:48.039005 DT:3.689083 CT:4.11 CTCP:0.000000 PSR: 1970.000000 IMU: 10.573158
+2020-02-15 03:49:04.420,Step:29.00 Steering:-1.000000 R:2.00 DTCP:47.921750 DT:3.554535 CT:3.95 CTCP:0.000000 PSR: 1971.000000 IMU: 10.573158
+2020-02-15 03:49:04.420,Step:28.00 Steering:-1.000000 R:2.00 DTCP:47.792633 DT:3.402998 CT:3.95 CTCP:0.000000 PSR: 1972.000000 IMU: 10.573158
+2020-02-15 03:49:04.420,Step:27.00 Steering:0.000000 R:2.00 DTCP:47.682723 DT:3.273224 CT:4.03 CTCP:0.000000 PSR: 1973.000000 IMU: 10.573158
+2020-02-15 03:49:04.420,Step:26.00 Steering:-1.000000 R:2.00 DTCP:47.565624 DT:3.136391 CT:4.06 CTCP:0.000000 PSR: 1974.000000 IMU: 10.573158
+2020-02-15 03:49:04.420,Step:25.00 Steering:-1.000000 R:2.00 DTCP:47.437434 DT:2.984261 CT:4.37 CTCP:0.000000 PSR: 1975.000000 IMU: 10.573158
+2020-02-15 03:49:04.420,Step:24.00 Steering:-1.000000 R:2.00 DTCP:47.320976 DT:2.846374 CT:4.44 CTCP:0.000000 PSR: 1976.000000 IMU: 10.573158
+2020-02-15 03:49:04.420,Step:23.00 Steering:-1.000000 R:2.00 DTCP:47.222176 DT:2.729417 CT:4.26 CTCP:0.000000 PSR: 1977.000000 IMU: 10.573158
+2020-02-15 03:49:04.420,Step:22.00 Steering:0.000000 R:2.00 DTCP:47.107679 DT:2.602656 CT:4.26 CTCP:0.000000 PSR: 1978.000000 IMU: 4.176137
+2020-02-15 03:49:04.420,Step:21.00 Steering:0.000000 R:2.00 DTCP:46.990105 DT:2.470342 CT:4.46 CTCP:0.000000 PSR: 1979.000000 IMU: 3.518931
+2020-02-15 03:49:04.420,Step:20.00 Steering:1.000000 R:2.00 DTCP:46.873562 DT:2.341244 CT:4.04 CTCP:0.000000 PSR: 1980.000000 IMU: 3.518931
+2020-02-15 03:49:04.420,Step:19.00 Steering:1.000000 R:2.00 DTCP:46.751884 DT:2.210967 CT:4.50 CTCP:0.000000 PSR: 1981.000000 IMU: 3.518931
+2020-02-15 03:49:04.420,Step:18.00 Steering:1.000000 R:2.00 DTCP:46.639025 DT:2.092838 CT:3.57 CTCP:0.000000 PSR: 1982.000000 IMU: 3.518931
+2020-02-15 03:49:04.420,Step:17.00 Steering:1.000000 R:2.00 DTCP:46.494283 DT:1.944860 CT:3.57 CTCP:0.000000 PSR: 1983.000000 IMU: 3.518931
+2020-02-15 03:49:04.420,Step:16.00 Steering:1.000000 R:2.00 DTCP:46.358542 DT:1.807021 CT:3.45 CTCP:0.000000 PSR: 1984.000000 IMU: 3.518931
+2020-02-15 03:49:04.420,Step:15.00 Steering:0.000000 R:2.00 DTCP:46.238237 DT:1.684765 CT:4.18 CTCP:0.000000 PSR: 1985.000000 IMU: 3.518931
+2020-02-15 03:49:04.420,Step:14.00 Steering:0.000000 R:2.00 DTCP:46.105469 DT:1.550420 CT:4.32 CTCP:0.000000 PSR: 1986.000000 IMU: 3.518931
+2020-02-15 03:49:04.420,Step:13.00 Steering:1.000000 R:2.00 DTCP:45.984539 DT:1.428672 CT:4.50 CTCP:0.000000 PSR: 1987.000000 IMU: 3.518931
+2020-02-15 03:49:04.420,Step:12.00 Steering:1.000000 R:2.00 DTCP:45.872341 DT:1.315597 CT:4.50 CTCP:0.000000 PSR: 1988.000000 IMU: 3.518931
+2020-02-15 03:49:04.420,Step:11.00 Steering:-1.000000 R:2.00 DTCP:45.720858 DT:1.163004 CT:4.50 CTCP:0.000000 PSR: 1989.000000 IMU: 3.518931
+2020-02-15 03:49:04.420,Step:10.00 Steering:0.000000 R:2.00 DTCP:45.616066 DT:1.057137 CT:4.18 CTCP:0.000000 PSR: 1990.000000 IMU: 3.518931
+2020-02-15 03:49:04.420,Step:9.00 Steering:1.000000 R:2.00 DTCP:45.466352 DT:0.907068 CT:4.50 CTCP:0.000000 PSR: 1991.000000 IMU: 3.518931
+2020-02-15 03:49:04.420,Step:8.00 Steering:-1.000000 R:2.00 DTCP:45.326866 DT:0.767088 CT:4.50 CTCP:0.000000 PSR: 1992.000000 IMU: 3.518931
+2020-02-15 03:49:04.420,Step:7.00 Steering:0.000000 R:2.00 DTCP:45.206870 DT:0.646255 CT:4.39 CTCP:0.000000 PSR: 1993.000000 IMU: 3.518931
+2020-02-15 03:49:04.420,Step:6.00 Steering:1.000000 R:2.00 DTCP:45.069962 DT:0.508679 CT:4.27 CTCP:0.000000 PSR: 1994.000000 IMU: 3.518931
+2020-02-15 03:49:04.420,Step:5.00 Steering:-1.000000 R:2.00 DTCP:44.940981 DT:0.379099 CT:4.13 CTCP:0.000000 PSR: 1995.000000 IMU: 3.518931
+2020-02-15 03:49:26.091,Step:5.00 Steering:1.000000 R:2.00 DTCP:44.908992 DT:0.339645 CT:4.49 CTCP:0.000000 PSR: 1995.000000 IMU: 2.178583
+2020-02-15 03:49:26.091,Step:6.00 Steering:-1.000000 R:2.00 DTCP:45.039710 DT:0.471870 CT:4.19 CTCP:0.000000 PSR: 1994.000000 IMU: 3.204116
+2020-02-15 03:49:26.091,Step:7.00 Steering:0.000000 R:2.00 DTCP:45.171311 DT:0.608488 CT:4.15 CTCP:0.000000 PSR: 1993.000000 IMU: 3.204116
+2020-02-15 03:49:26.091,Step:8.00 Steering:0.000000 R:2.00 DTCP:45.306069 DT:0.747539 CT:4.13 CTCP:0.000000 PSR: 1992.000000 IMU: 3.204116
+2020-02-15 03:49:26.091,Step:9.00 Steering:0.000000 R:2.00 DTCP:45.424683 DT:0.871278 CT:4.13 CTCP:0.000000 PSR: 1991.000000 IMU: 3.204116
+2020-02-15 03:49:26.091,Step:10.00 Steering:0.000000 R:2.00 DTCP:45.553045 DT:1.007749 CT:4.50 CTCP:0.000000 PSR: 1990.000000 IMU: 3.204116
+2020-02-15 03:49:26.091,Step:11.00 Steering:1.000000 R:2.00 DTCP:45.699006 DT:1.161857 CT:4.06 CTCP:0.000000 PSR: 1989.000000 IMU: 3.204116
+2020-02-15 03:49:26.091,Step:12.00 Steering:1.000000 R:2.00 DTCP:45.812773 DT:1.280428 CT:3.88 CTCP:0.000000 PSR: 1988.000000 IMU: 3.204116
+2020-02-15 03:49:26.091,Step:13.00 Steering:1.000000 R:2.00 DTCP:45.942521 DT:1.415577 CT:4.34 CTCP:0.000000 PSR: 1987.000000 IMU: 3.204116
+2020-02-15 03:49:26.091,Step:14.00 Steering:-1.000000 R:2.00 DTCP:46.068106 DT:1.547543 CT:4.34 CTCP:0.000000 PSR: 1986.000000 IMU: 3.204116
+2020-02-15 03:49:26.091,Step:15.00 Steering:1.000000 R:2.00 DTCP:46.178167 DT:1.667996 CT:4.50 CTCP:0.000000 PSR: 1985.000000 IMU: 3.204116
+2020-02-15 03:49:26.091,Step:16.00 Steering:-1.000000 R:2.00 DTCP:46.308456 DT:1.817276 CT:4.20 CTCP:0.000000 PSR: 1984.000000 IMU: 3.204116
+2020-02-15 03:49:26.091,Step:17.00 Steering:-1.000000 R:2.00 DTCP:46.416531 DT:1.939299 CT:4.50 CTCP:0.000000 PSR: 1983.000000 IMU: 3.922509
+2020-02-15 03:49:26.091,Step:18.00 Steering:0.000000 R:2.00 DTCP:46.514903 DT:2.050847 CT:4.50 CTCP:0.000000 PSR: 1982.000000 IMU: 5.808958
+2020-02-15 03:49:26.091,Step:19.00 Steering:-1.000000 R:2.00 DTCP:46.649713 DT:2.202218 CT:4.22 CTCP:0.000000 PSR: 1981.000000 IMU: 5.808958
+2020-02-15 03:49:26.091,Step:20.00 Steering:-1.000000 R:2.00 DTCP:46.760902 DT:2.323632 CT:4.50 CTCP:0.000000 PSR: 1980.000000 IMU: 5.808958
+2020-02-15 03:49:26.091,Step:21.00 Steering:-1.000000 R:2.00 DTCP:46.902020 DT:2.479696 CT:4.50 CTCP:0.000000 PSR: 1979.000000 IMU: 5.808958
+2020-02-15 03:49:26.091,Step:22.00 Steering:-1.000000 R:2.00 DTCP:47.027833 DT:2.618122 CT:4.50 CTCP:0.000000 PSR: 1978.000000 IMU: 5.808958
+2020-02-15 03:49:26.091,Step:23.00 Steering:0.000000 R:2.00 DTCP:47.152246 DT:2.754500 CT:4.50 CTCP:0.000000 PSR: 1977.000000 IMU: 5.808958
+2020-02-15 03:49:26.091,Step:24.00 Steering:0.000000 R:2.00 DTCP:47.274951 DT:2.888170 CT:4.50 CTCP:0.000000 PSR: 1976.000000 IMU: 5.808958
+2020-02-15 03:49:26.091,Step:25.00 Steering:-1.000000 R:2.00 DTCP:47.418329 DT:3.043276 CT:4.50 CTCP:0.000000 PSR: 1975.000000 IMU: 5.808958
+2020-02-15 03:49:26.091,Step:26.00 Steering:-1.000000 R:2.00 DTCP:47.577345 DT:3.213576 CT:4.50 CTCP:0.000000 PSR: 1974.000000 IMU: 5.808958
+2020-02-15 03:49:26.091,Step:27.00 Steering:0.000000 R:2.00 DTCP:47.693416 DT:3.332305 CT:4.50 CTCP:0.000000 PSR: 1973.000000 IMU: 5.808958
+2020-02-15 03:49:26.091,Step:28.00 Steering:-1.000000 R:2.00 DTCP:47.838369 DT:3.480220 CT:4.41 CTCP:0.000000 PSR: 1972.000000 IMU: 5.808958
+2020-02-15 03:49:26.091,Step:29.00 Steering:1.000000 R:2.00 DTCP:47.998167 DT:3.642546 CT:4.50 CTCP:0.000000 PSR: 1971.000000 IMU: 5.808958
+2020-02-15 03:49:26.091,Step:30.00 Steering:1.000000 R:2.00 DTCP:48.148908 DT:3.793591 CT:4.07 CTCP:0.000000 PSR: 1970.000000 IMU: 5.808958
+2020-02-15 03:49:26.091,Step:31.00 Steering:1.000000 R:2.00 DTCP:48.287139 DT:3.931948 CT:3.90 CTCP:0.000000 PSR: 1969.000000 IMU: 5.808958
+2020-02-15 03:49:26.091,Step:32.00 Steering:-1.000000 R:2.00 DTCP:48.460764 DT:4.105675 CT:2.99 CTCP:0.000000 PSR: 1968.000000 IMU: 5.808958
+2020-02-15 03:49:26.091,Step:33.00 Steering:1.000000 R:2.00 DTCP:48.604507 DT:4.249611 CT:2.99 CTCP:0.000000 PSR: 1967.000000 IMU: 5.808958
+2020-02-15 03:49:26.091,Step:34.00 Steering:0.000000 R:2.00 DTCP:48.775664 DT:4.421202 CT:2.87 CTCP:0.000000 PSR: 1966.000000 IMU: 5.808958
+2020-02-15 03:49:26.091,Step:55.00 Steering:-1.000000 R:1.25 DTCP:51.350627 DT:7.045729 CT:1.22 CTCP:0.000000 PSR: 1945.000000 IMU: 10.573158
+2020-02-15 03:49:26.091,Step:56.00 Steering:-1.000000 R:1.25 DTCP:51.500917 DT:7.197294 CT:1.04 CTCP:0.000000 PSR: 1944.000000 IMU: 10.573158
+2020-02-15 03:49:26.091,Step:57.00 Steering:1.000000 R:1.00 DTCP:51.619510 DT:7.317924 CT:0.91 CTCP:0.000000 PSR: 1943.000000 IMU: 10.573158
+2020-02-15 03:49:26.091,Step:58.00 Steering:1.000000 R:1.00 DTCP:51.770353 DT:7.471443 CT:0.73 CTCP:0.000000 PSR: 1942.000000 IMU: 10.573158
+2020-02-15 03:49:26.091,Step:59.00 Steering:1.000000 R:1.00 DTCP:51.899337 DT:7.602685 CT:0.73 CTCP:0.000000 PSR: 1941.000000 IMU: 10.573158
+2020-02-15 03:49:26.091,Step:60.00 Steering:1.000000 R:1.00 DTCP:51.991595 DT:7.714628 CT:0.61 CTCP:0.000000 PSR: 1940.000000 IMU: 10.573158
+2020-02-15 03:49:26.091,Step:61.00 Steering:0.000000 R:1.00 DTCP:52.018847 DT:7.788627 CT:0.51 CTCP:0.000000 PSR: 1939.000000 IMU: 10.573158
+2020-02-15 03:49:26.091,Step:62.00 Steering:-1.000000 R:1.00 DTCP:52.038856 DT:7.820072 CT:0.51 CTCP:0.000000 PSR: 1938.000000 IMU: 10.573158
+2020-02-15 03:49:26.091,Step:63.00 Steering:1.000000 R:2.00 DTCP:52.039394 DT:7.830385 CT:0.51 CTCP:1.000000 PSR: 1937.000000 IMU: 10.573158
+2020-02-15 03:49:26.091,Step:64.00 Steering:1.000000 R:2.00 DTCP:52.030974 DT:7.848280 CT:0.50 CTCP:1.000000 PSR: 1936.000000 IMU: 10.573158
+2020-02-15 03:49:26.091,Step:65.00 Steering:1.000000 R:2.00 DTCP:52.002943 DT:7.885802 CT:0.50 CTCP:1.000000 PSR: 1935.000000 IMU: 10.573158
+2020-02-15 03:49:26.091,Step:66.00 Steering:-1.000000 R:2.00 DTCP:51.978227 DT:7.922858 CT:0.55 CTCP:1.000000 PSR: 1934.000000 IMU: 10.573158
+2020-02-15 03:49:26.091,Step:67.00 Steering:1.000000 R:1.00 DTCP:51.975020 DT:7.936595 CT:0.55 CTCP:0.000000 PSR: 1933.000000 IMU: 10.573158
+2020-02-15 03:49:26.091,Step:68.00 Steering:1.000000 R:2.00 DTCP:51.973113 DT:7.944736 CT:0.55 CTCP:1.000000 PSR: 1932.000000 IMU: 10.573158
+2020-02-15 03:49:26.091,Step:69.00 Steering:0.000000 R:2.00 DTCP:51.974519 DT:7.957851 CT:0.54 CTCP:1.000000 PSR: 1931.000000 IMU: 10.573158
+2020-02-15 03:49:26.091,Step:70.00 Steering:0.000000 R:1.00 DTCP:51.986394 DT:7.978292 CT:0.52 CTCP:0.000000 PSR: 1930.000000 IMU: 10.573158
+2020-02-15 03:49:26.091,Step:71.00 Steering:1.000000 R:1.00 DTCP:51.998743 DT:7.996748 CT:0.52 CTCP:0.000000 PSR: 1929.000000 IMU: 10.573158
+2020-02-15 03:49:26.091,Step:72.00 Steering:1.000000 R:1.00 DTCP:52.007576 DT:8.012430 CT:0.50 CTCP:0.000000 PSR: 1928.000000 IMU: 10.573158
+2020-02-15 03:49:26.091,Step:73.00 Steering:-1.000000 R:1.00 DTCP:52.014161 DT:8.027814 CT:0.50 CTCP:0.000000 PSR: 1927.000000 IMU: 10.573158
+2020-02-15 03:49:26.091,Step:74.00 Steering:1.000000 R:2.00 DTCP:52.017392 DT:8.039556 CT:0.50 CTCP:1.000000 PSR: 1926.000000 IMU: 10.573158
+2020-02-15 03:49:26.091,Rover has sustained sideswipe damage
+2020-02-15 03:49:26.091,Step:75.00 Steering:-1.000000 R:0.00 DTCP:52.009735 DT:8.048838 CT:0.49 CTCP:1.000000 PSR: 1925.000000 IMU: 10.573158
+2020-02-15 03:49:26.091,Training - Name: main_level/agent Worker: 0 Episode: 2 Total reward: 131.5 Steps: 502 Training iteration: 0 
+2020-02-15 03:49:26.091,Total Episodic Reward=131.50 Total Episodic Steps=75.00
+2020-02-15 03:49:26.091,Step:0.00 Steering:0.000000 R:0.00 DTCP:44.579284 DT:0.003010 CT:3.23 CTCP:1.000000 PSR: 2000.000000 IMU: 0.926720
+2020-02-15 03:49:26.091,Step:1.00 Steering:0.000000 R:2.00 DTCP:44.584955 DT:0.014259 CT:4.01 CTCP:0.000000 PSR: 1999.000000 IMU: 0.926720
+2020-02-15 03:49:26.091,Step:2.00 Steering:-1.000000 R:2.00 DTCP:44.621606 DT:0.051015 CT:4.24 CTCP:0.000000 PSR: 1998.000000 IMU: 2.178583
+2020-02-15 03:49:26.091,Step:3.00 Steering:1.000000 R:2.00 DTCP:44.714584 DT:0.144185 CT:4.14 CTCP:0.000000 PSR: 1997.000000 IMU: 2.178583
+2020-02-15 03:49:26.091,Step:4.00 Steering:1.000000 R:2.00 DTCP:44.799278 DT:0.228996 CT:4.14 CTCP:0.000000 PSR: 1996.000000 IMU: 2.178583
+2020-02-15 03:49:26.091,Step:35.00 Steering:-1.000000 R:2.00 DTCP:48.898743 DT:4.544999 CT:2.70 CTCP:0.000000 PSR: 1965.000000 IMU: 5.808958
+2020-02-15 03:49:26.091,Step:36.00 Steering:0.000000 R:2.00 DTCP:49.053474 DT:4.701202 CT:2.60 CTCP:0.000000 PSR: 1964.000000 IMU: 5.808958
+2020-02-15 03:49:26.091,Step:37.00 Steering:-1.000000 R:2.00 DTCP:49.193771 DT:4.842257 CT:2.51 CTCP:0.000000 PSR: 1963.000000 IMU: 5.808958
+2020-02-15 03:49:26.091,Step:38.00 Steering:0.000000 R:2.00 DTCP:49.327009 DT:4.978056 CT:2.43 CTCP:0.000000 PSR: 1962.000000 IMU: 5.808958
+2020-02-15 03:49:26.091,Step:39.00 Steering:1.000000 R:2.00 DTCP:49.448696 DT:5.100969 CT:2.31 CTCP:0.000000 PSR: 1961.000000 IMU: 5.808958
+2020-02-15 03:49:26.091,Step:40.00 Steering:1.000000 R:2.00 DTCP:49.582758 DT:5.235646 CT:2.31 CTCP:0.000000 PSR: 1960.000000 IMU: 5.808958
+2020-02-15 03:49:26.091,Step:41.00 Steering:0.000000 R:2.00 DTCP:49.717321 DT:5.371508 CT:2.21 CTCP:0.000000 PSR: 1959.000000 IMU: 5.808958
+2020-02-15 03:49:26.091,Step:42.00 Steering:1.000000 R:2.00 DTCP:49.838539 DT:5.494192 CT:2.14 CTCP:0.000000 PSR: 1958.000000 IMU: 5.808958
+2020-02-15 03:49:26.091,Step:43.00 Steering:-1.000000 R:2.00 DTCP:49.974912 DT:5.632689 CT:2.08 CTCP:0.000000 PSR: 1957.000000 IMU: 5.808958
+2020-02-15 03:49:26.091,Step:44.00 Steering:0.000000 R:2.00 DTCP:50.094094 DT:5.753972 CT:2.08 CTCP:0.000000 PSR: 1956.000000 IMU: 5.808958
+2020-02-15 03:49:26.091,Step:45.00 Steering:-1.000000 R:2.00 DTCP:50.223747 DT:5.886222 CT:2.14 CTCP:0.000000 PSR: 1955.000000 IMU: 5.808958
+2020-02-15 03:49:26.091,Step:46.00 Steering:0.000000 R:2.00 DTCP:50.342620 DT:6.007967 CT:2.07 CTCP:0.000000 PSR: 1954.000000 IMU: 5.808958
+2020-02-15 03:49:47.869,Step:73.00 Steering:0.000000 R:2.00 DTCP:52.338764 DT:8.271274 CT:0.81 CTCP:1.000000 PSR: 1927.000000 IMU: 6.045032
+2020-02-15 03:49:47.869,Step:72.00 Steering:1.000000 R:2.00 DTCP:52.343170 DT:8.256813 CT:0.73 CTCP:1.000000 PSR: 1928.000000 IMU: 6.045032
+2020-02-15 03:49:47.869,Step:71.00 Steering:-1.000000 R:1.00 DTCP:52.334247 DT:8.236666 CT:0.72 CTCP:0.000000 PSR: 1929.000000 IMU: 6.045032
+2020-02-15 03:49:47.869,Step:70.00 Steering:0.000000 R:1.00 DTCP:52.318488 DT:8.215744 CT:0.70 CTCP:0.000000 PSR: 1930.000000 IMU: 5.808958
+2020-02-15 03:49:47.869,Step:69.00 Steering:-1.000000 R:1.00 DTCP:52.308491 DT:8.200772 CT:0.70 CTCP:0.000000 PSR: 1931.000000 IMU: 5.808958
+2020-02-15 03:49:47.869,Step:68.00 Steering:0.000000 R:1.00 DTCP:52.272411 DT:8.152413 CT:0.72 CTCP:0.000000 PSR: 1932.000000 IMU: 5.808958
+2020-02-15 03:49:47.869,Step:67.00 Steering:-1.000000 R:1.00 DTCP:52.232085 DT:8.107897 CT:0.76 CTCP:0.000000 PSR: 1933.000000 IMU: 5.808958
+2020-02-15 03:49:47.869,Step:66.00 Steering:1.000000 R:1.00 DTCP:52.203090 DT:8.063681 CT:0.73 CTCP:0.000000 PSR: 1934.000000 IMU: 5.808958
+2020-02-15 03:49:47.869,Step:65.00 Steering:0.000000 R:1.00 DTCP:52.181321 DT:8.027726 CT:0.76 CTCP:0.000000 PSR: 1935.000000 IMU: 5.808958
+2020-02-15 03:49:47.869,Step:64.00 Steering:-1.000000 R:1.00 DTCP:52.152271 DT:7.994945 CT:0.76 CTCP:0.000000 PSR: 1936.000000 IMU: 5.808958
+2020-02-15 03:49:47.869,Step:63.00 Steering:0.000000 R:1.00 DTCP:52.128180 DT:7.964460 CT:0.76 CTCP:0.000000 PSR: 1937.000000 IMU: 5.808958
+2020-02-15 03:49:47.869,Step:62.00 Steering:-1.000000 R:1.00 DTCP:52.106663 DT:7.926429 CT:0.87 CTCP:0.000000 PSR: 1938.000000 IMU: 5.808958
+2020-02-15 03:49:47.869,Step:61.00 Steering:-1.000000 R:1.00 DTCP:52.090722 DT:7.883304 CT:0.88 CTCP:0.000000 PSR: 1939.000000 IMU: 5.808958
+2020-02-15 03:49:47.869,Step:60.00 Steering:0.000000 R:2.00 DTCP:52.089620 DT:7.814898 CT:0.73 CTCP:1.000000 PSR: 1940.000000 IMU: 5.808958
+2020-02-15 03:49:47.869,Step:59.00 Steering:0.000000 R:1.00 DTCP:52.055875 DT:7.751070 CT:0.80 CTCP:0.000000 PSR: 1941.000000 IMU: 5.808958
+2020-02-15 03:49:47.869,Step:58.00 Steering:0.000000 R:1.00 DTCP:51.935360 DT:7.626568 CT:0.80 CTCP:0.000000 PSR: 1942.000000 IMU: 5.808958
+2020-02-15 03:49:47.869,Step:57.00 Steering:0.000000 R:1.00 DTCP:51.802783 DT:7.491945 CT:0.89 CTCP:0.000000 PSR: 1943.000000 IMU: 5.808958
+2020-02-15 03:49:47.869,Step:56.00 Steering:-1.000000 R:1.00 DTCP:51.667714 DT:7.355198 CT:1.00 CTCP:0.000000 PSR: 1944.000000 IMU: 5.808958
+2020-02-15 03:49:47.869,Step:55.00 Steering:0.000000 R:1.25 DTCP:51.536314 DT:7.221226 CT:1.12 CTCP:0.000000 PSR: 1945.000000 IMU: 5.808958
+2020-02-15 03:49:47.869,Step:54.00 Steering:1.000000 R:1.25 DTCP:51.398969 DT:7.082039 CT:1.25 CTCP:0.000000 PSR: 1946.000000 IMU: 5.808958
+2020-02-15 03:49:47.869,Step:53.00 Steering:-1.000000 R:1.25 DTCP:51.267667 DT:6.948039 CT:1.25 CTCP:0.000000 PSR: 1947.000000 IMU: 5.808958
+2020-02-15 03:49:47.869,Step:52.00 Steering:-1.000000 R:1.25 DTCP:51.147162 DT:6.825435 CT:1.35 CTCP:0.000000 PSR: 1948.000000 IMU: 5.808958
+2020-02-15 03:49:47.869,Step:51.00 Steering:1.000000 R:1.50 DTCP:51.009696 DT:6.686717 CT:1.52 CTCP:0.000000 PSR: 1949.000000 IMU: 5.808958
+2020-02-15 03:49:47.869,Step:50.00 Steering:1.000000 R:1.50 DTCP:50.858490 DT:6.533132 CT:1.62 CTCP:0.000000 PSR: 1950.000000 IMU: 5.808958
+2020-02-15 03:49:47.869,Step:49.00 Steering:-1.000000 R:1.50 DTCP:50.737779 DT:6.410393 CT:1.81 CTCP:0.000000 PSR: 1951.000000 IMU: 5.808958
+2020-02-15 03:49:47.869,Step:48.00 Steering:0.000000 R:1.50 DTCP:50.612718 DT:6.284031 CT:1.81 CTCP:0.000000 PSR: 1952.000000 IMU: 5.808958
