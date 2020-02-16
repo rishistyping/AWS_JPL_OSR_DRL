@@ -521,7 +521,6 @@ class MarsEnv(gym.Env):
                     # Cut the multiplier in half
                     multiplier = multiplier/2  # tried * -1 , but not much difference
                     
-             
             print('LCT:%.2f' % self.last_collision_threshold,   # Last Collision Threshold
               'X:%.2f' % self.x,                                # X
               'Y:%.2f' % self.y,                                # Y 
