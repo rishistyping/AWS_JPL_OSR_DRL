@@ -368,11 +368,11 @@ class MarsEnv(gym.Env):
         STAGE_X_MAX = 15.0
         STAGE_Y_MAX = 22.0
         
-        # checkpoint -44,-4
+        # checkpoint -44.25,-4
         
         GUIDERAILS_X_MIN = -48
         GUIDERAILS_X_MAX = 1
-        GUIDERAILS_Y_MIN = -8
+        GUIDERAILS_Y_MIN = -20  #was -8
         GUIDERAILS_Y_MAX = 4
         
         
@@ -420,27 +420,7 @@ class MarsEnv(gym.Env):
             if self.collision:
                 print("Rover has collided with an object")
                 return 0, True # No reward
-            
-            """
-            # Get average Imu reading
-            if self.max_lin_accel_x > 0 or self.max_lin_accel_y > 0 or self.max_lin_accel_z > 0:
-                avg_imu = (self.max_lin_accel_x + self.max_lin_accel_y + self.max_lin_accel_y) / 3
-            else:
-                avg_imu = 0
                 
-            #if the IMU show too much impact but less than a collision
-            if self.distance_travelled <5:
-                prev_imu = 0
-            
-                
-            if avg_imu - prev_imu > 1.5 and prev_imu != 0:
-                print('Rover hit rough terrain : Prev imu: %f' % prev_imu,'Avg imu: %f' % avg_imu)
-                return 0, True # No Reward
-                
-            prev_imu = avg_imu
-            """   
-                
-           
             # Has the rover reached the max steps
             if self.power_supply_range < 1:
                 print("Rover's power supply has been drained (MAX Steps reached")
@@ -483,7 +463,7 @@ class MarsEnv(gym.Env):
                     multiplier = 1 
                     reward = (WAYPOINT_2_REWARD * multiplier)/ self.steps # <-- incentivize to reach way-point in fewest steps
                     return reward, False
-                    
+                       
             if self.last_position_x <= WAYPOINT_3_X and self.last_position_y >= WAYPOINT_3_Y: # Rover is past the midpoint
                 # Determine if Rover already received one time reward for reaching this waypoint
                 if not self.reached_waypoint_3:  
@@ -498,11 +478,11 @@ class MarsEnv(gym.Env):
                
             # multiply the reward based on the Rover's proximity to the Checkpoint
                 
-             #Get the next destination
+            #Get the next destination  -- start with 3 but still went to one????
             next_point_x = WAYPOINT_1_X
             next_point_y = WAYPOINT_1_Y
             multiplier = 1
-            
+           
             if self.reached_waypoint_1:
                 multiplier = 2
                 next_point_x = WAYPOINT_2_X
@@ -527,51 +507,30 @@ class MarsEnv(gym.Env):
                 multiplier = multiplier + .25
             else:
                 multiplier = multiplier # probably going to hit something and get a zero reward 
-                
-            #If we pull away from an object, that should be an extra reward
-            #last collision threshold is not changing
-            # if self.collision_threshold > self.last_collision_threshold :
-            #    multiplier = multiplier + 1
-            
-            # Incentize the rover to move towards the Checkpoint and not away from the checkpoint
-            # original  did a 3 hr run Feb 8 12:47pm
-            # if not self.closer_to_checkpoint:
-            #    if multiplier > 0:
-            #        # Cut the multiplier in half
-            #        multiplier = multiplier/2
            
             dist_next_point = math.sqrt((self.x - next_point_x)**2 + (self.y - next_point_y)**2)
             prevdist_next_point = math.sqrt((self.last_position_x - next_point_x)**2 + (self.last_position_y - next_point_y)**2)
             
+            #try a smoothing function
+            multiplier = ( multiplier * 10) / (dist_next_point * dist_next_point)
+            
             #Should be getting closer to way point and checkpoints
-            # Test Sat Feb 8 - 3 hour run 3:00pm
-            if prevdist_next_point > dist_next_point:
+            #
+            if prevdist_next_point < dist_next_point:
                 if multiplier > 0:
                     # Cut the multiplier in half
-                    multiplier = multiplier/2
+                    multiplier = multiplier/2  # tried * -1 , but not much difference
                     
-                    
-            # Reward for being pointed in the correct direction
-            # current heading 
-            current_heading = math.atan2(self.y - self.last_position_y, self.x - self.last_position_x)*180/math.pi
-            # nextpoint heading 
-            nextpoint_heading = math.atan2(next_point_x - self.y, next_point_y - self.x)*180/math.pi
-            # Delta between Heading and Destination in degrees
-            bearing = round((nextpoint_heading - current_heading),4)
-            
-           
-
+             
             print('LCT:%.2f' % self.last_collision_threshold,   # Last Collision Threshold
               'X:%.2f' % self.x,                                # X
               'Y:%.2f' % self.y,                                # Y 
               'LX:%.2f' % self.last_position_x,                 # Previous X
               'LY:%.2f' % self.last_position_y,                 # Previous 
               'DI:%.2f' % dist_increment,                       # Distance Increment
-              'CD:%.4f' % current_heading,                      # Current Heading
-              'CHKD:%.4f' % nextpoint_heading,                  # Next point Heading (Waypoint 1,2,3 Checkpoint)
-              'BE:%.4f' % bearing,                              # Bearing in Degrees
-              'DNP:%.2f' % dist_next_point,                   # distance to next destination
-              'PNP:%.2f' % prevdist_next_point,               # previous distance to next destination x
+              'MULT:%.2f' % multiplier,                         # Multiplier
+              'DNP:%.2f' % dist_next_point,                     # distance to next destination
+              'PNP:%.2f' % prevdist_next_point,                # previous distance to next destination x
               'NP_X:%.2f' % next_point_x,                       # next destination x
               'NP_Y:%.2f' % next_point_y                        # next destination y
               )
@@ -580,7 +539,7 @@ class MarsEnv(gym.Env):
             # self.last_position_y = self.y
             self.last_collision_threshold = self.collision_threshold
             
-            reward = base_reward * multiplier # * power_reward  # * heading_reward  # * imu_reward
+            reward = base_reward * multiplier 
             
             gc.collect()
             
