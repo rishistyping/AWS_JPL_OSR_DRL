@@ -44,6 +44,9 @@ MAX_STEPS = 2000
 CHECKPOINT_X = -44.25
 CHECKPOINT_Y = -4
 
+PREVIOUS_IMU = 0
+AVG_IMU = 0
+
 # Initial position of the robot
 INITIAL_POS_X = -0.170505086911
 INITIAL_POS_Y = 0.114341186761
@@ -320,13 +323,15 @@ class MarsEnv(gym.Env):
         # Accumulate reward for the episode
         self.reward_in_episode += reward
 
+        global PREVIOUS_IMU
+        
         # Get average Imu reading
         if self.max_lin_accel_x > 0 or self.max_lin_accel_y > 0 or self.max_lin_accel_z > 0:
             avg_imu = (self.max_lin_accel_x + self.max_lin_accel_y + self.max_lin_accel_y) / 3
         else:
             avg_imu = 0
         
-    
+        """
         print('Step:%.2f' % self.steps,
               'Steering:%f' % action[0],
               'R:%.4f' % reward,                                # Reward
@@ -338,13 +343,29 @@ class MarsEnv(gym.Env):
               'CTCP:%f' % self.closer_to_checkpoint,            # Is closer to checkpoint
               'PSR: %f' % self.power_supply_range,              # Steps remaining in Episode
               'IMU: %f' % avg_imu)
+        """
+        
+        print('%.2f' % self.steps,
+              ',%f' % action[0],
+              ',%.4f' % reward,                                # Reward
+              ',%f' % self.current_distance_to_checkpoint,  # Distance to Check Point
+              ',%.2f' % self.x,                                # X
+              ',%.2f' % self.y,                                # Y 
+              ',%f' % self.distance_travelled,                # Distance Travelled
+              ',%.2f' % self.collision_threshold,             # Collision Threshold
+              ',%.2f' % self.last_collision_threshold,        # Collision Threshold
+              ',%f' % self.closer_to_checkpoint,              # Is closer to checkpoint
+              ',%f' % self.power_supply_range,                # Steps remaining in Episode
+              ',%f' % PREVIOUS_IMU,
+              ',%f' % avg_imu)
 
         self.reward = reward
         self.done = done
 
         self.last_position_x = self.x
         self.last_position_y = self.y
-        # self.last_collision_threshold = self.collision_threshold
+        self.last_collision_threshold = self.collision_threshold
+        PREVIOUS_IMU = avg_imu
 
 
 
@@ -400,6 +421,8 @@ class MarsEnv(gym.Env):
         distance = math.sqrt((self.x - self.last_position_x)**2 + (self.y - self.last_position_y)**2)
         dist_increment = round(distance,2)
         
+        global PREVIOUS_IMU
+        
         
         if self.steps > 0:
             
@@ -421,24 +444,10 @@ class MarsEnv(gym.Env):
                 print("Rover has collided with an object")
                 return 0, True # No reward
             
-            """
-            # Get average Imu reading
-            if self.max_lin_accel_x > 0 or self.max_lin_accel_y > 0 or self.max_lin_accel_z > 0:
-                avg_imu = (self.max_lin_accel_x + self.max_lin_accel_y + self.max_lin_accel_y) / 3
-            else:
-                avg_imu = 0
-                
-            #if the IMU show too much impact but less than a collision
-            if self.distance_travelled <5:
-                prev_imu = 0
-            
-                
-            if avg_imu - prev_imu > 1.5 and prev_imu != 0:
-                print('Rover hit rough terrain : Prev imu: %f' % prev_imu,'Avg imu: %f' % avg_imu)
-                return 0, True # No Reward
-                
-            prev_imu = avg_imu
-            """   
+            # too much change in terrain
+            if PREVIOUS_IMU > 9.0 :
+                print("Rover encountered extreme change in terrain")
+                return 0, True # No reward
                 
             # Has the rover reached the max steps
             if self.power_supply_range < 1:
@@ -482,7 +491,8 @@ class MarsEnv(gym.Env):
                     multiplier = 1 
                     reward = (WAYPOINT_2_REWARD * multiplier)/ self.steps # <-- incentivize to reach way-point in fewest steps
                     return reward, False
-                       
+            
+            """
             if self.last_position_x <= WAYPOINT_3_X and self.last_position_y >= WAYPOINT_3_Y: # Rover is past the midpoint
                 # Determine if Rover already received one time reward for reaching this waypoint
                 if not self.reached_waypoint_3:  
@@ -491,6 +501,7 @@ class MarsEnv(gym.Env):
                     multiplier = 1 
                     reward = (WAYPOINT_3_REWARD * multiplier)/ self.steps # <-- incentivize to reach way-point in fewest steps
                     return reward, False
+            """
                     
             
             # To reach this point in the function the Rover has either not yet reached the way-points OR has already gotten the one time reward for reaching the waypoint(s)
@@ -500,23 +511,13 @@ class MarsEnv(gym.Env):
             # Add up total segments
             dist_segment_one = math.sqrt((WAYPOINT_1_X)**2 + (WAYPOINT_1_Y)**2) #distance from origin
             dist_segment_two = math.sqrt((WAYPOINT_2_X - WAYPOINT_1_X)**2 + (WAYPOINT_2_Y - WAYPOINT_1_X)**2) 
-            dist_segment_three = math.sqrt((WAYPOINT_3_X - WAYPOINT_2_X)**2 + (WAYPOINT_3_Y - WAYPOINT_2_X)**2) 
-            dist_segment_four = math.sqrt((CHECKPOINT_X - WAYPOINT_3_X)**2 + (CHECKPOINT_Y - WAYPOINT_3_X)**2) 
+            #dist_segment_three = math.sqrt((WAYPOINT_3_X - WAYPOINT_2_X)**2 + (WAYPOINT_3_Y - WAYPOINT_2_X)**2) 
+            dist_segment_four = math.sqrt((CHECKPOINT_X - WAYPOINT_2_X)**2 + (CHECKPOINT_Y - WAYPOINT_2_X)**2) 
             
-            total_distance = dist_segment_one + dist_segment_two + dist_segment_three +dist_segment_four
+            total_distance = dist_segment_one + dist_segment_two  +dist_segment_four
             
-            # Incentize the rover to move towards the Checkpoint and not away from the checkpoint
-            # original  did a 3 hr run Feb 8 12:47pm
-            # if not self.closer_to_checkpoint:
-            #    if multiplier > 0:
-            #        # Cut the multiplier in half
-            #        multiplier = multiplier/2
-                    
-            # Power Remaing Reward Discount   
-            power_reward  = self.power_supply_range/MAX_STEPS  # or should these be 1 - powerratio ^0.4
-           
-            #Get the next destination
->>>>>>> Stashed changes
+                
+            #Get the next destination 
             next_point_x = WAYPOINT_1_X
             next_point_y = WAYPOINT_1_Y
             multiplier = 1
@@ -533,63 +534,68 @@ class MarsEnv(gym.Env):
             if self.reached_waypoint_2:
                 multiplier = 3
                 rover_odometer = rover_odometer + dist_segment_two
-                segment_total = dist_segment_three 
-                next_point_x = WAYPOINT_3_X
-                next_point_y = WAYPOINT_3_Y
-                
+                segment_total = dist_segment_four 
+                next_point_x = CHECKPOINT_X
+                next_point_y = CHECKPOINT_Y
+              
+            """
             if self.reached_waypoint_3:
                 multiplier = 4
                 rover_odometer = rover_odometer + dist_segment_three
                 segment_total = dist_segment_four 
                 next_point_x = CHECKPOINT_X
                 next_point_y = CHECKPOINT_Y
+            """
                 
+            
+             # Incentivize the rover to stay away from objects
+            if self.collision_threshold >= 2.0:      # very safe distance
+                multiplier = multiplier + 1  
+            elif self.collision_threshold < 2.0 and self.collision_threshold >= 1.5: # pretty safe
+                multiplier = multiplier + .5
+            elif self.collision_threshold < 1.5 and self.collision_threshold >= 1.0: # just enough time to turn
+                multiplier = multiplier + .25
+            else:
+                multiplier = multiplier # probably going to hit something and get a zero reward 
+           
             dist_next_point = math.sqrt((self.x - next_point_x)**2 + (self.y - next_point_y)**2)
             prevdist_next_point = math.sqrt((self.last_position_x - next_point_x)**2 + (self.last_position_y - next_point_y)**2)
             
-            #Should be getting closer to way point and checkpoints
-            # Test Sat Feb 8 - 3 hour run 3:00pm
-            if prevdist_next_point > dist_next_point:
-                if multiplier > 0:
-                    # Cut the multiplier in half
-                    multiplier = multiplier/2
-                    
-                    
-            # Reward for being pointed in the correct direction
-            # current heading 
-            current_heading = math.atan2(self.y - self.last_position_y, self.x - self.last_position_x)*180/math.pi
-            # nextpoint heading 
-            nextpoint_heading = math.atan2(next_point_x - self.y, next_point_y - self.x)*180/math.pi
-            # Delta between Heading and Destination in degrees
-            bearing = round((nextpoint_heading - current_heading),4)
+            #try a smoothing function - avoid sparse rewards 
+            # multiplier = ( multiplier * 1000) / (total_distance - rover_odometer- (segment_total-dist_next_point))**2 
             
-            #If heading in wrong direction , slice the muliplier
-            #if (abs(bearing) > 90):
+            
+            x = (total_distance*2 - rover_odometer- (segment_total-dist_next_point))
+            
+            
+            multiplier = ( multiplier * x * x)
+            
+            # was (dist_next_point)**2
+            
+            #Penalize to going away from destination - is this the wrong 
+            #if dist_next_point > prevdist_next_point:
             #    multiplier = multiplier / 2
-            
-            
-
-            print('LCT:%.2f' % self.last_collision_threshold,   # Last Collision Threshold
+                   
+            """print('LCT:%.2f' % self.last_collision_threshold,   # Last Collision Threshold
               'X:%.2f' % self.x,                                # X
               'Y:%.2f' % self.y,                                # Y 
               'LX:%.2f' % self.last_position_x,                 # Previous X
               'LY:%.2f' % self.last_position_y,                 # Previous 
               'DI:%.2f' % dist_increment,                       # Distance Increment
-              'CD:%.4f' % current_heading,                      # Current Heading
-              'CHKD:%.4f' % nextpoint_heading,                  # Next point Heading (Waypoint 1,2,3 Checkpoint)
-              'BE:%.4f' % bearing,                              # Bearing in Degrees
-              'DNP:%.2f' % dist_next_point,                   # distance to next destination
-              'PNP:%.2f' % prevdist_next_point,               # previous distance to next destination x
+              'TD:%.2f' % total_distance,                       # Total Distance
+              'RO:%.2f' % rover_odometer,                       # Rover Odometer Segments
+              'MULT:%.4f' % multiplier,                         # Multiplier
+              'DNP:%.2f' % dist_next_point,                     # distance to next destination
+              'PNP:%.2f' % prevdist_next_point,                # previous distance to next destination x
               'NP_X:%.2f' % next_point_x,                       # next destination x
               'NP_Y:%.2f' % next_point_y                        # next destination y
-              )
+              )"""
               
             # self.last_position_x = self.x
             # self.last_position_y = self.y
-            self.last_collision_threshold = self.collision_threshold
+            # self.last_collision_threshold = self.collision_threshold
             
-            reward = base_reward * multiplier # * power_reward  # * heading_reward  # * imu_reward
->>>>>>> Stashed changes
+            reward = (base_reward * multiplier )/self.steps
             
             gc.collect()
             
@@ -743,3 +749,4 @@ class MarsDiscreteEnv(MarsEnv):
         continuous_action = [steering, throttle]
 
         return super().step(continuous_action)
+
