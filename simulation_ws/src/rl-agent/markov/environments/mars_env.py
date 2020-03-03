@@ -568,7 +568,7 @@ class MarsEnv(gym.Env):
             x = (total_distance*2 - rover_odometer- (segment_total-dist_next_point))
             
             
-            multiplier = ( multiplier * x * x)
+            multiplier = ( multiplier ) / x * x  #try inverted
             
             # was (dist_next_point)**2
             
