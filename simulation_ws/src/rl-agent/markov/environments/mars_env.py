@@ -331,7 +331,7 @@ class MarsEnv(gym.Env):
         else:
             avg_imu = 0
         
-        """
+
         print('Step:%.2f' % self.steps,
               'Steering:%f' % action[0],
               'R:%.4f' % reward,                                # Reward
@@ -343,8 +343,8 @@ class MarsEnv(gym.Env):
               'CTCP:%f' % self.closer_to_checkpoint,            # Is closer to checkpoint
               'PSR: %f' % self.power_supply_range,              # Steps remaining in Episode
               'IMU: %f' % avg_imu)
+
         """
-        
         print('%.2f' % self.steps,
               ',%f' % action[0],
               ',%.4f' % reward,                                # Reward
@@ -358,7 +358,8 @@ class MarsEnv(gym.Env):
               ',%f' % self.power_supply_range,                # Steps remaining in Episode
               ',%f' % PREVIOUS_IMU,
               ',%f' % avg_imu)
-
+        """
+        
         self.reward = reward
         self.done = done
 
@@ -401,8 +402,8 @@ class MarsEnv(gym.Env):
         WAYPOINT_1_X = -10
         WAYPOINT_1_Y = -4
         
-        WAYPOINT_2_X = -17
-        WAYPOINT_2_Y = 3
+        WAYPOINT_2_X = -34 #-17
+        WAYPOINT_2_Y = -3   #3
         
         WAYPOINT_3_X = -34
         WAYPOINT_3_Y = 3
@@ -445,7 +446,7 @@ class MarsEnv(gym.Env):
                 return 0, True # No reward
             
             # too much change in terrain
-            if PREVIOUS_IMU > 9.0 :
+            if PREVIOUS_IMU > 8.0 :     #start low to encourage staying on smooth terrain or should this be a deduction like 1/2
                 print("Rover encountered extreme change in terrain")
                 return 0, True # No reward
                 
@@ -482,8 +483,8 @@ class MarsEnv(gym.Env):
                     multiplier = 1 
                     reward = (WAYPOINT_1_REWARD * multiplier)/ self.steps # <-- incentivize to reach way-point in fewest steps
                     return reward, False
-            
-            if self.last_position_x <= WAYPOINT_2_X and self.last_position_y >= WAYPOINT_2_Y: # Rover is past the midpoint
+            """
+            if self.last_position_x <= WAYPOINT_2_X and self.last_position_y <= WAYPOINT_2_Y: # Rover is past the midpoint
                 # Determine if Rover already received one time reward for reaching this waypoint
                 if not self.reached_waypoint_2:  
                     self.reached_waypoint_2 = True
@@ -491,8 +492,7 @@ class MarsEnv(gym.Env):
                     multiplier = 1 
                     reward = (WAYPOINT_2_REWARD * multiplier)/ self.steps # <-- incentivize to reach way-point in fewest steps
                     return reward, False
-            
-            """
+
             if self.last_position_x <= WAYPOINT_3_X and self.last_position_y >= WAYPOINT_3_Y: # Rover is past the midpoint
                 # Determine if Rover already received one time reward for reaching this waypoint
                 if not self.reached_waypoint_3:  
@@ -510,11 +510,11 @@ class MarsEnv(gym.Env):
             
             # Add up total segments
             dist_segment_one = math.sqrt((WAYPOINT_1_X)**2 + (WAYPOINT_1_Y)**2) #distance from origin
-            dist_segment_two = math.sqrt((WAYPOINT_2_X - WAYPOINT_1_X)**2 + (WAYPOINT_2_Y - WAYPOINT_1_X)**2) 
+            #dist_segment_two = math.sqrt((WAYPOINT_2_X - WAYPOINT_1_X)**2 + (WAYPOINT_2_Y - WAYPOINT_1_Y)**2) 
             #dist_segment_three = math.sqrt((WAYPOINT_3_X - WAYPOINT_2_X)**2 + (WAYPOINT_3_Y - WAYPOINT_2_X)**2) 
-            dist_segment_four = math.sqrt((CHECKPOINT_X - WAYPOINT_2_X)**2 + (CHECKPOINT_Y - WAYPOINT_2_X)**2) 
+            dist_segment_four = math.sqrt((CHECKPOINT_X - WAYPOINT_1_X)**2 + (CHECKPOINT_Y - WAYPOINT_1_Y)**2) 
             
-            total_distance = dist_segment_one + dist_segment_two  +dist_segment_four
+            total_distance = dist_segment_one + dist_segment_four
             
                 
             #Get the next destination 
@@ -527,10 +527,11 @@ class MarsEnv(gym.Env):
             if self.reached_waypoint_1:
                 multiplier = 2
                 rover_odometer = rover_odometer + dist_segment_one
-                segment_total = dist_segment_two  
-                next_point_x = WAYPOINT_2_X
-                next_point_y = WAYPOINT_2_Y
-                
+                segment_total = dist_segment_four
+                next_point_x = CHECKPOINT_X
+                next_point_y = CHECKPOINT_Y
+             
+            """ 
             if self.reached_waypoint_2:
                 multiplier = 3
                 rover_odometer = rover_odometer + dist_segment_two
@@ -538,7 +539,7 @@ class MarsEnv(gym.Env):
                 next_point_x = CHECKPOINT_X
                 next_point_y = CHECKPOINT_Y
               
-            """
+
             if self.reached_waypoint_3:
                 multiplier = 4
                 rover_odometer = rover_odometer + dist_segment_three
@@ -547,7 +548,7 @@ class MarsEnv(gym.Env):
                 next_point_y = CHECKPOINT_Y
             """
                 
-            
+            """
              # Incentivize the rover to stay away from objects
             if self.collision_threshold >= 2.0:      # very safe distance
                 multiplier = multiplier + 1  
@@ -557,26 +558,30 @@ class MarsEnv(gym.Env):
                 multiplier = multiplier + .25
             else:
                 multiplier = multiplier # probably going to hit something and get a zero reward 
+            """
+           
+            # less sparse collision threshold:
+            multiplier = multiplier + (self.collision_threshold / 2.0)
            
             dist_next_point = math.sqrt((self.x - next_point_x)**2 + (self.y - next_point_y)**2)
             prevdist_next_point = math.sqrt((self.last_position_x - next_point_x)**2 + (self.last_position_y - next_point_y)**2)
             
             #try a smoothing function - avoid sparse rewards 
-            # multiplier = ( multiplier * 1000) / (total_distance - rover_odometer- (segment_total-dist_next_point))**2 
+            multiplier = ( multiplier * 1000) / (total_distance - rover_odometer- (segment_total-dist_next_point))**2 
             
             
-            x = (total_distance*2 - rover_odometer- (segment_total-dist_next_point))
+            # x = (total_distance*2 - rover_odometer- (segment_total-dist_next_point))
             
             
-            multiplier = ( multiplier ) / x * x  #try inverted
+            # multiplier = ( multiplier * x * x) # (self.current_distance_to_checkpoint) **2  #pure distance to checkpoint squared
             
             # was (dist_next_point)**2
             
             #Penalize to going away from destination - is this the wrong 
-            #if dist_next_point > prevdist_next_point:
-            #    multiplier = multiplier / 2
+            if (dist_next_point > prevdist_next_point) or (self.closer_to_checkpoint == False):
+                multiplier = multiplier / 2
                    
-            """print('LCT:%.2f' % self.last_collision_threshold,   # Last Collision Threshold
+            print('LCT:%.2f' % self.last_collision_threshold,   # Last Collision Threshold
               'X:%.2f' % self.x,                                # X
               'Y:%.2f' % self.y,                                # Y 
               'LX:%.2f' % self.last_position_x,                 # Previous X
@@ -589,7 +594,7 @@ class MarsEnv(gym.Env):
               'PNP:%.2f' % prevdist_next_point,                # previous distance to next destination x
               'NP_X:%.2f' % next_point_x,                       # next destination x
               'NP_Y:%.2f' % next_point_y                        # next destination y
-              )"""
+              )
               
             # self.last_position_x = self.x
             # self.last_position_y = self.y
