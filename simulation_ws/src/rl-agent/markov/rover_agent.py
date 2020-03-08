@@ -29,6 +29,9 @@ def start_graph(graph_manager: 'GraphManager', task_parameters: 'TaskParameters'
     # save randomly initialized graph
     graph_manager.save_checkpoint()
 
+    # restore last saved checkpoint
+    # graph_manager.restore_checkpoint()
+    
     # Start the training
     graph_manager.improve()
 
