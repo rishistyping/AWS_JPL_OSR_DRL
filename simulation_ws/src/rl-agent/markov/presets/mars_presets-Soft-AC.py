@@ -1,4 +1,4 @@
-from rl_coach.agents.clipped_ppo_agent import ClippedPPOAgentParameters
+from rl_coach.agents.soft_actor_critic_agent import SoftActorCriticAlgorithmParameters
 from rl_coach.base_parameters import VisualizationParameters, PresetValidationParameters, TaskParameters, Frameworks
 from rl_coach.core_types import TrainingSteps, EnvironmentEpisodes, EnvironmentSteps, RunPhase
 from rl_coach.environments.gym_environment import GymVectorEnvironment
@@ -24,7 +24,7 @@ schedule_params.heatup_steps = EnvironmentSteps(0)
 #########
 # Agent #
 #########
-agent_params = ClippedPPOAgentParameters()
+agent_params = SoftActorCriticAlgorithmParameters()
 
 agent_params.network_wrappers['main'].learning_rate = 0.0003
 agent_params.network_wrappers['main'].input_embedders_parameters['observation'].activation_function = 'relu'
@@ -40,7 +40,7 @@ agent_params.algorithm.gae_lambda = 0.95
 agent_params.algorithm.discount = 0.999
 agent_params.algorithm.optimization_epochs = 10
 agent_params.algorithm.estimate_state_value_using_gae = True
-agent_params.algorithm.num_steps_between_copying_online_weights_to_target = EnvironmentEpisodes(20)
+agent_params.algorithm.num_steps_between_copying_online_weights_to_target = EnvironmentEpisodes(20) #SAC
 agent_params.algorithm.num_consecutive_playing_steps = EnvironmentEpisodes(20)
 agent_params.exploration = CategoricalParameters()
 agent_params.memory.max_size = (MemoryGranularity.Transitions, 10**5)
