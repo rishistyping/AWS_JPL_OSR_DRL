@@ -440,20 +440,10 @@ class MarsEnv(gym.Env):
             
             # too much change in terrain
             # start low to encourage staying on smooth terrain - 8.0 too low 
-            if PREVIOUS_IMU > 11.0 :
-                print("Rover encountered rough terrain")
-                return 0, True # No reward
+            #if PREVIOUS_IMU > 11.0 :
+            #    print("Rover encountered rough terrain")
+            #    return 0, True # No reward
              
-            """   commenting this out improved performance
-            # big delta in terrain
-            print('-Previous IMU: %f' % PREVIOUS_IMU,
-                'Current IMU: %f' % AVG_IMU)
-                
-            if abs(PREVIOUS_IMU - AVG_IMU) > 0.9 and self.distance_travelled > 10 :
-                print("Rover encounted extreme change in terrain")
-                return 0, True # No Reward
-            """
-                
             # Has the rover reached the max steps
             if self.power_supply_range < 1:
                 print("Rover's power supply has been drained (MAX Steps reached")
@@ -477,11 +467,11 @@ class MarsEnv(gym.Env):
                 return 0, True
             
 
-            # No Episode ending events - continue to calculate reward - general waypoints not helpful
-            # smooth reward with no waypoints
+            # No Episode ending events - continue to calculate reward 
+            # smooth reward based on distance
             multiplier = 1 - (self.current_distance_to_checkpoint/INITIAL_DISTANCE_TO_CHECKPOINT)**4
             
-            """
+            #waypoints
             progress = INITIAL_DISTANCE_TO_CHECKPOINT / self.current_distance_to_checkpoint
             
             if progress >=1.3 and progress <1.7:
@@ -529,10 +519,8 @@ class MarsEnv(gym.Env):
                     reward = (WAYPOINT_5_REWARD * multiplier)/ self.steps # <-- incentivize to reach way-point in fewest steps
                     return reward, False
             
-            """
             # To reach this point in the function the Rover has either not yet reached the way-points OR has already gotten the one time reward for reaching the waypoint(s)
-            # multiplier = multiplier  / (self.current_distance_to_checkpoint ) ** 2
-          
+           
             """
              # Incentivize the rover to stay away from objects
             if self.collision_threshold >= 2.0:      # very safe distance
@@ -548,9 +536,7 @@ class MarsEnv(gym.Env):
             # less sparse collision threshold:
             multiplier = multiplier + (self.collision_threshold / 2.0)
             
-
             # Incentivize the rover to stay on smooth surfaces from objects - helps with smoother drive
-            """ comment out for smooth reward test
             if PREVIOUS_IMU  < 5.0:      
                 multiplier = multiplier + 1  
             elif PREVIOUS_IMU < 8.0 and PREVIOUS_IMU >= 5.0: # pretty safe
@@ -559,9 +545,8 @@ class MarsEnv(gym.Env):
                 multiplier = multiplier + .25
             else:
                 multiplier = multiplier # rough terrain
-            """
+
         
-            
             #Penalize heavily for  going away from destination or going over rough terrain
             if (self.closer_to_checkpoint == False):
                 multiplier = multiplier / 2
