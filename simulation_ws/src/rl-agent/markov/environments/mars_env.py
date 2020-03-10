@@ -99,6 +99,8 @@ class MarsEnv(gym.Env):
         self.reached_waypoint_1 = False
         self.reached_waypoint_2 = False
         self.reached_waypoint_3 = False
+        self.reached_waypoint_4 = False
+        self.reached_waypoint_5 = False
 
 
         # action space -> steering angle, throttle
@@ -401,6 +403,8 @@ class MarsEnv(gym.Env):
         WAYPOINT_1_REWARD = 1000
         WAYPOINT_2_REWARD = 2000
         WAYPOINT_3_REWARD = 3000
+        WAYPOINT_4_REWARD = 4000
+        WAYPOINT_5_REWARD = 5000
 
         reward = 0
         base_reward = 2
@@ -501,6 +505,24 @@ class MarsEnv(gym.Env):
                     print("Congratulations! The rover has reached waypoint 3!")
                     multiplier = 1 
                     reward = (WAYPOINT_3_REWARD * multiplier)/ self.steps # <-- incentivize to reach way-point in fewest steps
+                    return reward, False
+                    
+            if progress >=3 and progress <4:
+                # Determine if Rover already received one time reward for reaching this waypoint
+                if not self.reached_waypoint_4:  
+                    self.reached_waypoint_4 = True
+                    print("Congratulations! The rover has reached waypoint 4!")
+                    multiplier = 1 
+                    reward = (WAYPOINT_4_REWARD * multiplier)/ self.steps # <-- incentivize to reach way-point in fewest steps
+                    return reward, False
+            
+            if progress >=4 and progress <5:
+                # Determine if Rover already received one time reward for reaching this waypoint
+                if not self.reached_waypoint_5:  
+                    self.reached_waypoint_5 = True
+                    print("Congratulations! The rover has reached waypoint 5!")
+                    multiplier = 1 
+                    reward = (WAYPOINT_5_REWARD * multiplier)/ self.steps # <-- incentivize to reach way-point in fewest steps
                     return reward, False
             
 
