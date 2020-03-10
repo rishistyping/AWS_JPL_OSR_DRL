@@ -478,6 +478,10 @@ class MarsEnv(gym.Env):
             
 
             # No Episode ending events - continue to calculate reward - general waypoints not helpful
+            # smooth reward with no waypoints
+            multiplier = 1 - (self.current_distance_to_checkpoint/INITIAL_DISTANCE_TO_CHECKPOINT)**4
+            
+            """
             progress = INITIAL_DISTANCE_TO_CHECKPOINT / self.current_distance_to_checkpoint
             
             if progress >=1.3 and progress <1.7:
@@ -525,7 +529,7 @@ class MarsEnv(gym.Env):
                     reward = (WAYPOINT_5_REWARD * multiplier)/ self.steps # <-- incentivize to reach way-point in fewest steps
                     return reward, False
             
-
+            """
             # To reach this point in the function the Rover has either not yet reached the way-points OR has already gotten the one time reward for reaching the waypoint(s)
             # multiplier = multiplier  / (self.current_distance_to_checkpoint ) ** 2
           
@@ -545,7 +549,8 @@ class MarsEnv(gym.Env):
             multiplier = multiplier + (self.collision_threshold / 2.0)
             
 
-             # Incentivize the rover to stay on smooth surfaces from objects - helps with smoother drive
+            # Incentivize the rover to stay on smooth surfaces from objects - helps with smoother drive
+            """ comment out for smooth reward test
             if PREVIOUS_IMU  < 5.0:      
                 multiplier = multiplier + 1  
             elif PREVIOUS_IMU < 8.0 and PREVIOUS_IMU >= 5.0: # pretty safe
@@ -554,9 +559,8 @@ class MarsEnv(gym.Env):
                 multiplier = multiplier + .25
             else:
                 multiplier = multiplier # rough terrain
-                
-
-            
+            """
+        
             
             #Penalize heavily for  going away from destination or going over rough terrain
             if (self.closer_to_checkpoint == False):
