@@ -439,7 +439,8 @@ class MarsEnv(gym.Env):
             if PREVIOUS_IMU > 11.0 :
                 print("Rover encountered rough terrain")
                 return 0, True # No reward
-                
+             
+            """   commenting this out improved performance
             # big delta in terrain
             print('-Previous IMU: %f' % PREVIOUS_IMU,
                 'Current IMU: %f' % AVG_IMU)
@@ -447,6 +448,7 @@ class MarsEnv(gym.Env):
             if abs(PREVIOUS_IMU - AVG_IMU) > 0.9 and self.distance_travelled > 10 :
                 print("Rover encounted extreme change in terrain")
                 return 0, True # No Reward
+            """
                 
             # Has the rover reached the max steps
             if self.power_supply_range < 1:
@@ -471,7 +473,7 @@ class MarsEnv(gym.Env):
                 return 0, True
             
 
-            # No Episode ending events - continue to calculate reward
+            # No Episode ending events - continue to calculate reward - general waypoints not helpful
             progress = INITIAL_DISTANCE_TO_CHECKPOINT / self.current_distance_to_checkpoint
             
             if progress >=1.3 and progress <1.7:
@@ -521,7 +523,7 @@ class MarsEnv(gym.Env):
             multiplier = multiplier + (self.collision_threshold / 2.0)
             
 
-             # Incentivize the rover to stay on smooth surfaces from objects
+             # Incentivize the rover to stay on smooth surfaces from objects - helps with smoother drive
             if PREVIOUS_IMU  < 5.0:      
                 multiplier = multiplier + 1  
             elif PREVIOUS_IMU < 8.0 and PREVIOUS_IMU >= 5.0: # pretty safe
