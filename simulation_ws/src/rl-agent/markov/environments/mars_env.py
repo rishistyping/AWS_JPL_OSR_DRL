@@ -484,8 +484,7 @@ class MarsEnv(gym.Env):
             """
             progress = INITIAL_DISTANCE_TO_CHECKPOINT / self.current_distance_to_checkpoint
             
-            if progress >=1.3 and progress <1.7:
-                # Determine if Rover already received one time reward for reaching this waypoint
+            if progress >=1.3 and progress <1.7: # Determine if Rover already received one time reward for reaching this waypoint
                 if not self.reached_waypoint_1:  
                     self.reached_waypoint_1 = True
                     print("Congratulations! The rover has reached waypoint 1!")
