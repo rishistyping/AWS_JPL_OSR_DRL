@@ -525,6 +525,7 @@ class MarsEnv(gym.Env):
             multiplier = multiplier + (self.collision_threshold / 2.0)
             
             # Incentivize the rover to stay on smooth surfaces from objects - helps with smoother drive
+            """
             if PREVIOUS_IMU  < 5.0:      
                 multiplier = multiplier + 1  
             elif PREVIOUS_IMU < 8.0 and PREVIOUS_IMU >= 5.0: # pretty safe
@@ -533,6 +534,7 @@ class MarsEnv(gym.Env):
                 multiplier = multiplier + .25
             else:
                 multiplier = multiplier # rough terrain
+            """
 
             #Penalize heavily for  going away from destination or going over rough terrain
             if (self.closer_to_checkpoint == False):
