@@ -424,7 +424,7 @@ class MarsEnv(gym.Env):
             # ###########################################
             
             # Has LIDAR registered a hit
-            if self.collision_threshold <= CRASH_DISTANCE:   # Eliminates the stuck wheel episodes  < 0.99 
+            if self.collision_threshold <= CRASH_DISTANCE + 0.50:   # Eliminates the stuck wheel episodes  < 0.99 
                 print("Rover has sustained sideswipe damage")
                 return 0, True # No reward
             
