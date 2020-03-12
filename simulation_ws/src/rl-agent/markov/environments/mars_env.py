@@ -537,7 +537,7 @@ class MarsEnv(gym.Env):
             # To reach this point in the function the Rover has either not yet reached the way-points OR has already gotten the one time reward for reaching the waypoint(s)
            
             # less sparse collision threshold:
-            multiplier = multiplier + (self.collision_threshold / 2.0)
+            multiplier = multiplier + (self.collision_threshold / 2.0) - 0.5
             
             # Incentivize the rover to stay on smooth surfaces from objects - helps with smoother drive
             if PREVIOUS_IMU  < 5.0:      
