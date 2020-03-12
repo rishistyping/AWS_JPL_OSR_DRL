@@ -324,9 +324,6 @@ class MarsEnv(gym.Env):
         # reduce power supply range
         self.power_supply_range = MAX_STEPS - self.steps
         
-        global PREVIOUS_IMU
-        global AVG_IMU
-        
         # Get average Imu reading
         if self.max_lin_accel_x > 0 or self.max_lin_accel_y > 0 or self.max_lin_accel_z > 0:
             avg_imu = (self.max_lin_accel_x + self.max_lin_accel_y + self.max_lin_accel_y) / 3
@@ -343,7 +340,6 @@ class MarsEnv(gym.Env):
         print('Step:%.2f' % self.steps,
               'Steering:%f' % action[0],
               'R:%.4f' % reward,                                # Reward
-              'INIT:%.f' % INITIAL_DISTANCE_TO_CHECKPOINT,       # Initial Distance
               'DTCP:%f' % self.current_distance_to_checkpoint,  # Distance to Check Point
               'X:%.2f' % self.x,                                # X
               'Y:%.2f' % self.y,                                # Y 
@@ -351,7 +347,6 @@ class MarsEnv(gym.Env):
               'CT:%.2f' % self.collision_threshold,             # Collision Threshold
               'CTCP:%f' % self.closer_to_checkpoint,            # Is closer to checkpoint
               'PSR: %f' % self.power_supply_range,              # Steps remaining in Episode
-              'PrevIMU: %f' % PREVIOUS_IMU,                     # Previous IMU
               'IMU: %f' % avg_imu)
 
         
@@ -361,9 +356,6 @@ class MarsEnv(gym.Env):
         self.last_position_x = self.x
         self.last_position_y = self.y
         self.last_collision_threshold = self.collision_threshold
-        PREVIOUS_IMU = avg_imu
-
-
 
     '''
     EDIT - but do not change the function signature. 
@@ -420,9 +412,6 @@ class MarsEnv(gym.Env):
         distance = math.sqrt((self.x - self.last_position_x)**2 + (self.y - self.last_position_y)**2)
         dist_increment = round(distance,2)
         
-        global PREVIOUS_IMU
-        global AVG_IMU
-        
         
         if self.steps > 0:
             
@@ -443,12 +432,7 @@ class MarsEnv(gym.Env):
             if self.collision:
                 print("Rover has collided with an object")
                 return 0, True # No reward
-            
-            # too much change in terrain
-            # start low to encourage staying on smooth terrain - 8.0 too low 
-            #if PREVIOUS_IMU > 11.0 :
-            #    print("Rover encountered rough terrain")
-            #    return 0, True # No reward
+        
              
             # Has the rover reached the max steps
             if self.power_supply_range < 1:
@@ -480,13 +464,14 @@ class MarsEnv(gym.Env):
             #waypoints
             progress = INITIAL_DISTANCE_TO_CHECKPOINT / self.current_distance_to_checkpoint
             
+            
             if progress >=1.3 and progress <1.7:
                 # Determine if Rover already received one time reward for reaching this waypoint
                 if not self.reached_waypoint_1:  
                     self.reached_waypoint_1 = True
                     print("Congratulations! The rover has reached waypoint 1!")
                     multiplier = 1 
-                    reward = (WAYPOINT_1_REWARD * multiplier) / self.steps # <-- incentivize to reach way-point in fewest steps
+                    reward = (WAYPOINT_1_REWARD * multiplier * 10) / self.steps # <-- incentivize to reach way-point in fewest steps
                     return reward, False
                     
             if progress >=1.7 and progress <2:
@@ -495,7 +480,7 @@ class MarsEnv(gym.Env):
                     self.reached_waypoint_2 = True
                     print("Congratulations! The rover has reached waypoint 2!")
                     multiplier = 1 
-                    reward = (WAYPOINT_2_REWARD * multiplier) / self.steps # <-- incentivize to reach way-point in fewest steps
+                    reward = (WAYPOINT_2_REWARD * multiplier * 10) / self.steps # <-- incentivize to reach way-point in fewest steps
                     return reward, False
                     
             if progress >=2 and progress <3:
@@ -504,7 +489,7 @@ class MarsEnv(gym.Env):
                     self.reached_waypoint_3 = True
                     print("Congratulations! The rover has reached waypoint 3!")
                     multiplier = 1 
-                    reward = (WAYPOINT_3_REWARD * multiplier) / self.steps # <-- incentivize to reach way-point in fewest steps
+                    reward = (WAYPOINT_3_REWARD * multiplier * 10) / self.steps # <-- incentivize to reach way-point in fewest steps
                     return reward, False
                     
             if progress >=3 and progress <4:
@@ -513,7 +498,7 @@ class MarsEnv(gym.Env):
                     self.reached_waypoint_4 = True
                     print("Congratulations! The rover has reached waypoint 4!") 
                     multiplier = 1 
-                    reward = (WAYPOINT_4_REWARD * multiplier) / self.steps # <-- incentivize to reach way-point in fewest steps
+                    reward = (WAYPOINT_4_REWARD * multiplier * 10) / self.steps # <-- incentivize to reach way-point in fewest steps
                     return reward, False
             
             if progress >=4 and progress <5:
@@ -522,7 +507,7 @@ class MarsEnv(gym.Env):
                     self.reached_waypoint_5 = True
                     print("Congratulations! The rover has reached waypoint 5!")
                     multiplier = 1 
-                    reward = (WAYPOINT_5_REWARD * multiplier)  / self.steps # <-- incentivize to reach way-point in fewest steps
+                    reward = (WAYPOINT_5_REWARD * multiplier * 10)  / self.steps # <-- incentivize to reach way-point in fewest steps
                     return reward, False
             
             if progress >=7 and progress <8:
@@ -539,12 +524,18 @@ class MarsEnv(gym.Env):
             # less sparse collision threshold:
             multiplier = multiplier + (self.collision_threshold / 2.0) - 0.5
             
+            # Get average Imu reading
+            if self.max_lin_accel_x > 0 or self.max_lin_accel_y > 0 or self.max_lin_accel_z > 0:
+                avg_imu = (self.max_lin_accel_x + self.max_lin_accel_y + self.max_lin_accel_y) / 3
+            else:
+                avg_imu = 0
+            
             # Incentivize the rover to stay on smooth surfaces from objects - helps with smoother drive
-            if PREVIOUS_IMU  < 5.0:      
+            if avg_imu  < 5.0:      
                 multiplier = multiplier + 1  
-            elif PREVIOUS_IMU < 8.0 and PREVIOUS_IMU >= 5.0: # pretty safe
+            elif avg_imu < 8.0 and avg_imu >= 5.0: # pretty safe
                 multiplier = multiplier + .5
-            elif PREVIOUS_IMU < 9.0 and PREVIOUS_IMU >= 8.0: # just enough time to turn
+            elif avg_imu < 9.0 and avg_imu >= 8.0: # just enough time to turn
                 multiplier = multiplier + .25
             else:
                 multiplier = multiplier # rough terrain
@@ -552,7 +543,8 @@ class MarsEnv(gym.Env):
 
             #Penalize heavily for  going away from destination or going over rough terrain
             if (self.closer_to_checkpoint == False):
-                multiplier = multiplier / 2
+                if multiplier > 0:
+                    multiplier = multiplier / 2
                    
             print('LCT:%.2f' % self.last_collision_threshold,   # Last Collision Threshold
               'X:%.2f' % self.x,                                # X
@@ -560,7 +552,8 @@ class MarsEnv(gym.Env):
               'LX:%.2f' % self.last_position_x,                 # Previous X
               'LY:%.2f' % self.last_position_y,                 # Previous 
               'DI:%.2f' % dist_increment,                       # Distance Increment
-              'MULT:%.4f' % multiplier                         # Multiplier
+              'MULT:%.4f' % multiplier                          # Multiplier
+              'AVG IMU:%.4f' % avg_imu                          # Average IMU
        
               )
          
