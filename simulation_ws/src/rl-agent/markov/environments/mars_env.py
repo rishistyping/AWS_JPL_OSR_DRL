@@ -394,8 +394,8 @@ class MarsEnv(gym.Env):
         
         
         # WayPoints to checkpoint
-        WAYPOINT_1_X = self.current_distance_to_checkpoint / 5
-        WAYPOINT_1_Y = self.current_distance_to_checkpoint / 5
+        WAYPOINT_1_X = -10
+        WAYPOINT_1_Y = -4
         
         WAYPOINT_2_X = -34 #-17
         WAYPOINT_2_Y = -3   #3
@@ -718,4 +718,3 @@ class MarsDiscreteEnv(MarsEnv):
         continuous_action = [steering, throttle]
 
         return super().step(continuous_action)
-
