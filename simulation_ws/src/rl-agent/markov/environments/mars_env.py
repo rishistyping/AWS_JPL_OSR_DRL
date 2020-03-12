@@ -718,4 +718,3 @@ class MarsDiscreteEnv(MarsEnv):
         continuous_action = [steering, throttle]
 
         return super().step(continuous_action)
-
