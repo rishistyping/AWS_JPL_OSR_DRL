@@ -26,7 +26,7 @@ schedule_params.heatup_steps = EnvironmentSteps(0)
 #########
 agent_params = ClippedPPOAgentParameters()
 
-agent_params.network_wrappers['main'].learning_rate = 0.0003
+agent_params.network_wrappers['main'].learning_rate = 0.0006
 agent_params.network_wrappers['main'].input_embedders_parameters['observation'].activation_function = 'relu'
 agent_params.network_wrappers['main'].middleware_parameters.activation_function = 'relu'
 agent_params.network_wrappers['main'].batch_size = 64

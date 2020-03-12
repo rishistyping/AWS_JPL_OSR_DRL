@@ -486,7 +486,7 @@ class MarsEnv(gym.Env):
                     self.reached_waypoint_1 = True
                     print("Congratulations! The rover has reached waypoint 1!")
                     multiplier = 1 
-                    reward = (WAYPOINT_1_REWARD * multiplier) #/ self.steps # <-- incentivize to reach way-point in fewest steps
+                    reward = (WAYPOINT_1_REWARD * multiplier) / self.steps # <-- incentivize to reach way-point in fewest steps
                     return reward, False
                     
             if progress >=1.7 and progress <2:
