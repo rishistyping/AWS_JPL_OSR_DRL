@@ -464,7 +464,6 @@ class MarsEnv(gym.Env):
             #waypoints
             progress = INITIAL_DISTANCE_TO_CHECKPOINT / self.current_distance_to_checkpoint
             
-            
             if progress >=1.3 and progress <1.7:
                 # Determine if Rover already received one time reward for reaching this waypoint
                 if not self.reached_waypoint_1:  
@@ -516,7 +515,7 @@ class MarsEnv(gym.Env):
                     self.reached_waypoint_6 = True
                     print("Congratulations! The rover has reached waypoint 6!")
                     multiplier = 1 
-                    reward = (WAYPOINT_6_REWARD * multiplier)  / self.steps # <-- incentivize to reach way-point in fewest steps
+                    reward = (WAYPOINT_6_REWARD * multiplier * 10)  / self.steps # <-- incentivize to reach way-point in fewest steps
                     return reward, False
                     
             # To reach this point in the function the Rover has either not yet reached the way-points OR has already gotten the one time reward for reaching the waypoint(s)
@@ -552,7 +551,7 @@ class MarsEnv(gym.Env):
               'LX:%.2f' % self.last_position_x,                 # Previous X
               'LY:%.2f' % self.last_position_y,                 # Previous 
               'DI:%.2f' % dist_increment,                       # Distance Increment
-              'MULT:%.4f' % multiplier                          # Multiplier
+              'MULT:%.4f' % multiplier,                          # Multiplier
               'AVG IMU:%.4f' % avg_imu                          # Average IMU
        
               )
