@@ -478,9 +478,9 @@ class MarsEnv(gym.Env):
             
 
             # No Episode ending events - continue to calculate reward - general waypoints not helpful
-           """ # smooth reward with no waypoints
+            # smooth reward with no waypoints
             multiplier = 1 - (self.current_distance_to_checkpoint/INITIAL_DISTANCE_TO_CHECKPOINT)**4
-            """
+            
             """
             progress = INITIAL_DISTANCE_TO_CHECKPOINT / self.current_distance_to_checkpoint
             
