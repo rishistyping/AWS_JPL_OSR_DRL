@@ -413,6 +413,11 @@ class MarsEnv(gym.Env):
         distance = math.sqrt((self.x - self.last_position_x)**2 + (self.y - self.last_position_y)**2)
         dist_increment = round(distance,2)
 
+        def reset_progress():
+            reached_waypoint_4 = False
+            reached_waypoint_5 = False
+            reached_waypoint_6 = False
+            
 
         if self.steps > 0:
 
@@ -463,7 +468,6 @@ class MarsEnv(gym.Env):
             #waypoints
             progress = INITIAL_DISTANCE_TO_CHECKPOINT / self.current_distance_to_checkpoint
 
-
             if progress >=1.3 and progress <1.7:
                 # Determine if Rover already received one time reward for reaching this waypoint
                 if not self.reached_waypoint_1:  
@@ -471,6 +475,7 @@ class MarsEnv(gym.Env):
                     print("Congratulations! The rover has reached waypoint 1!")
                     multiplier = 1 
                     reward = (WAYPOINT_1_REWARD * multiplier * 10) / self.steps # <-- incentivize to reach way-point in fewest steps
+                    reset_progress()  #reset other later progress meters after first waypoint
                     return reward, False
                     
             if progress >=1.7 and progress <2:
@@ -515,7 +520,7 @@ class MarsEnv(gym.Env):
                     reached_waypoint_6 = True
                     print("Congratulations! The rover has reached waypoint 6!")
                     multiplier = 1 
-                    reward = (WAYPOINT_6_REWARD * multiplier)  / self.steps # <-- incentivize to reach way-point in fewest steps
+                    reward = (WAYPOINT_6_REWARD * multiplier * 10 )  / self.steps # <-- incentivize to reach way-point in fewest steps
                     return reward, False
 
             # To reach this point in the function the Rover has either not yet reached the way-points OR has already gotten the one time reward for reaching the waypoint(s)
