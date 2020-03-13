@@ -474,7 +474,7 @@ class MarsEnv(gym.Env):
                     reward = (WAYPOINT_2_REWARD * multiplier * 10) / self.steps # <-- incentivize to reach way-point in fewest steps
                     return reward, False
 
-            if progress >=4.3 and progress <5.0:
+            if progress >=7.0 and progress <8.0:
                 # Determine if Rover already received one time reward for reaching this waypoint
                 if not self.reached_waypoint_3:
                     self.reached_waypoint_3 = True
