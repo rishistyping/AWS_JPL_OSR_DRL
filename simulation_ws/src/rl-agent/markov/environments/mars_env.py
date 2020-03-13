@@ -68,6 +68,11 @@ SLEEP_AFTER_RESET_TIME_IN_SECOND = 0.3
 SLEEP_BETWEEN_ACTION_AND_REWARD_CALCULATION_TIME_IN_SECOND = 0.3 # LIDAR Scan is 5 FPS (0.2sec).
 SLEEP_WAITING_FOR_IMAGE_TIME_IN_SECOND = 0.01
 
+#Custom Global variables
+reached_waypoint_4 = False
+reached_waypoint_5 = False
+reached_waypoint_6 = False
+
 
 class MarsEnv(gym.Env):
     def __init__(self):
@@ -362,7 +367,11 @@ class MarsEnv(gym.Env):
         :return: reward as float
                  done as boolean
         '''
-
+        #Keep track of waypoint progress
+        global reached_waypoint_4
+        global reached_waypoint_5
+        global reached_waypoint_6
+        
         # Corner boundaries of the world (in Meters)
         STAGE_X_MIN = -47.0
         STAGE_Y_MIN = -25.0
@@ -425,7 +434,6 @@ class MarsEnv(gym.Env):
                 print("Rover has collided with an object")
                 return 0, True # No reward
 
-
             # Has the rover reached the max steps
             if self.power_supply_range < 1:
                 print("Rover's power supply has been drained (MAX Steps reached")
@@ -448,7 +456,6 @@ class MarsEnv(gym.Env):
                 print("Rover has left the mission map!")
                 return 0, True
 
-
             # No Episode ending events - continue to calculate reward
             # smooth reward based on distance
             multiplier = (1 - (self.current_distance_to_checkpoint/INITIAL_DISTANCE_TO_CHECKPOINT)**4 ) * 5
@@ -456,33 +463,60 @@ class MarsEnv(gym.Env):
             #waypoints
             progress = INITIAL_DISTANCE_TO_CHECKPOINT / self.current_distance_to_checkpoint
 
-            if progress >=1.4 and progress <1.5:
+
+            if progress >=1.3 and progress <1.7:
                 # Determine if Rover already received one time reward for reaching this waypoint
-                if not self.reached_waypoint_1:
+                if not self.reached_waypoint_1:  
                     self.reached_waypoint_1 = True
                     print("Congratulations! The rover has reached waypoint 1!")
-                    multiplier = 1
+                    multiplier = 1 
                     reward = (WAYPOINT_1_REWARD * multiplier * 10) / self.steps # <-- incentivize to reach way-point in fewest steps
                     return reward, False
-
-            if progress >=2.9 and progress <3.0:
+                    
+            if progress >=1.7 and progress <2:
                 # Determine if Rover already received one time reward for reaching this waypoint
-                if not self.reached_waypoint_2:
+                if not self.reached_waypoint_2:  
                     self.reached_waypoint_2 = True
                     print("Congratulations! The rover has reached waypoint 2!")
-                    multiplier = 1
+                    multiplier = 1 
                     reward = (WAYPOINT_2_REWARD * multiplier * 10) / self.steps # <-- incentivize to reach way-point in fewest steps
                     return reward, False
-
-            if progress >=7.0 and progress <8.0:
+                    
+            if progress >=2 and progress <3:
                 # Determine if Rover already received one time reward for reaching this waypoint
-                if not self.reached_waypoint_3:
+                if not self.reached_waypoint_3:  
                     self.reached_waypoint_3 = True
                     print("Congratulations! The rover has reached waypoint 3!")
-                    multiplier = 1
+                    multiplier = 1 
                     reward = (WAYPOINT_3_REWARD * multiplier * 10) / self.steps # <-- incentivize to reach way-point in fewest steps
                     return reward, False
-
+                    
+            if progress >=3 and progress <4:
+                # Determine if Rover already received one time reward for reaching this waypoint
+                if not reached_waypoint_4:
+                    reached_waypoint_4 = True
+                    print("Congratulations! The rover has reached waypoint 4!") 
+                    multiplier = 1 
+                    reward = (WAYPOINT_4_REWARD * multiplier * 10) / self.steps # <-- incentivize to reach way-point in fewest steps
+                    return reward, False
+            
+            if progress >=4 and progress <5:
+                # Determine if Rover already received one time reward for reaching this waypoint
+                if not reached_waypoint_5:
+                    self.reached_waypoint_5 = True
+                    print("Congratulations! The rover has reached waypoint 5!")
+                    multiplier = 1 
+                    reward = (WAYPOINT_5_REWARD * multiplier * 10)  / self.steps # <-- incentivize to reach way-point in fewest steps
+                    return reward, False
+            
+            if progress >=7 and progress <8:
+                # Determine if Rover already received one time reward for reaching this waypoint
+                if  not reached_waypoint_6:
+                    reached_waypoint_6 = True
+                    print("Congratulations! The rover has reached waypoint 6!")
+                    multiplier = 1 
+                    reward = (WAYPOINT_6_REWARD * multiplier)  / self.steps # <-- incentivize to reach way-point in fewest steps
+                    return reward, False
 
             # To reach this point in the function the Rover has either not yet reached the way-points OR has already gotten the one time reward for reaching the waypoint(s)
 
@@ -519,7 +553,6 @@ class MarsEnv(gym.Env):
               'DI:%.2f' % dist_increment,                       # Distance Increment
               'MULT:%.4f' % multiplier,                          # Multiplier
               'AVG IMU:%.4f' % avg_imu                          # Average IMU
-
               )
 
             reward = (base_reward * multiplier )
