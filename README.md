@@ -212,6 +212,49 @@ If you believe they are warranted, you are free to add additional global variabl
    these are episodic values, or values that reset after each episode. You will need to write additional code to reset those values within the 
    reward_function method once you have determined the episode should end.
 
+##RESOURCES AND REFERENCES
+
+[AWS Train a robot with reinforcement learning](https://aws.amazon.com/robomaker/resources/train-a-robot-using-reinforcement-learning-project/3/)
+
+[AWS RoboMaker Dockerized Simulations](https://github.com/joebarbere/aws-robomaker-docker)
+
+[AWS RoboMaker - Beginner's Guide to Robot Simulation](https://devopstar.com/2019/09/12/aws-robomaker-beginners-guide-to-robot-simulation)
+
+[How to Run DeepRacer Locally to Save your Wallet](https://medium.com/@autonomousracecarclub/how-to-run-deepracer-locally-to-save-your-wallet-13ccc878687)
+
+[Reinforcement Learning Coach by Intel AI Lab](https://github.com/NervanaSystems/coach)
+
+[AWS RoboMaker resources](https://aws.amazon.com/robomaker/resources/)
+
+[Robomaker Setings template](https://github.com/EXYNOS-999/AWS_JPL_OSR_DRL/blob/edwin/RoboSettingsTemplate.pdf)
+
+[Reinforcement Learning with Goal-Distance Gradient](https://arxiv.org/pdf/2001.00127.pdf)
+
+[Using Jupyter Notebook for analysing DeepRacer's logs](https://codelikeamother.uk/using-jupyter-notebook-for-analysing-deepracer-s-logs)
+
+[DeepRacer Log Analysis by Chris Thompson](https://github.com/cdthompson/deepracer-training-2019/blob/master/log_analysis/DeepRacer%20Log%20Analysis.ipynb)
+
+[PPO Hyperparameters and Ranges](https://medium.com/aureliantactics/ppo-hyperparameters-and-ranges-6fc2d29bccbe)
+
+[Deep Reinforcement Learning](https://simoninithomas.github.io/Deep_reinforcement_learning_Course/)
+
+[Autonomous car with Reinforcement Learning —Track Following](https://medium.com/@sdeleers/autonomous-car-with-reinforcement-learning-part-2-track-following-4ffbf7aa33d1)
+
+[Easing functions](https://easings.net/en)
+
+
+[Maximum Entropy Policies in Reinforcement Learning & Everyday Life](https://medium.com/@awjuliani/maximum-entropy-policies-in-reinforcement-learning-everyday-life-f5a1cc18d32d)
+
+[Soft Actor-Critic](https://nervanasystems.github.io/coach/components/agents/policy_optimization/sac.html)
+
+[An intro to Advantage Actor Critic methods: let’s play Sonic the Hedgehog!](https://www.freecodecamp.org/news/an-intro-to-advantage-actor-critic-methods-lets-play-sonic-the-hedgehog-86d6240171d/)
+
+
+
+
+
+
+
 ## <a name="help">Help and Support</a>
 
 slack channel:  [awsjplroverchallenge.slack.com](https://awsjplroverchallenge.slack.com/)
