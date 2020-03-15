@@ -1,5 +1,6 @@
 ![header image](images/2.png)
 
+TEAM MEMBERS: @wakeuplearn 
 
 ## Welcome to the AWS-JPL Open Source Rover Challenge repository.
 
