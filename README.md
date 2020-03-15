@@ -1,6 +1,9 @@
 ![header image](images/2.png)
 
-TEAM MEMBERS: @wakeuplearn 
+TEAM MEMBERS: [Edwin M.](https://github.com/wakeuplearn)
+		[Liam Arbuckle](https://github.com/IrisDroidology)
+		[Mikhail Asavkin](https://github.com/ejm2000)
+		[Rishabh Chakrabarty](https://github.com/EXYNOS-999)
 
 ## Welcome to the AWS-JPL Open Source Rover Challenge repository.
 
