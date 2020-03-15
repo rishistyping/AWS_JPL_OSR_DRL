@@ -212,7 +212,7 @@ If you believe they are warranted, you are free to add additional global variabl
    these are episodic values, or values that reset after each episode. You will need to write additional code to reset those values within the 
    reward_function method once you have determined the episode should end.
 
-##RESOURCES AND REFERENCES
+**RESOURCES AND REFERENCES**
 
 [AWS Train a robot with reinforcement learning](https://aws.amazon.com/robomaker/resources/train-a-robot-using-reinforcement-learning-project/3/)
 
