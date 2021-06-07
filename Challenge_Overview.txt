@@ -1,0 +1,168 @@
+AWS-JPL Open Source Rover Challenge Overview @  https://www.youtube.com/watch?v=fK6Qsc01YHA
+
+THREE MAIN COMPONENTS:
+
+-RoboMaker 
+-Rover ROS Node 
+-Mars World Gazebo simulator 
+-RL agaent and PPO
+
+!-This is a Challenge
+!-Help w/ technical questions only on th setup no answers on RL Theory and implementation.
+!-No AWS crwdits offered 
+
+
+-25H simulation unites Robo-Maker 
+
+-------------------------c9.AWS ROBOMAKER-------------------------------------
+
+-Locally for fast itereation 
+-Cloud for training 
+
+v.
+-Ubuntu 18.04.3 
+-18.04 Bionic AWS running for evaluation 
+
+EXYNOS v.
+
+Distributor ID:	Zorin
+Description:	Zorin OS 15.1
+Release:	15
+Codename:	bionic
+
+NAME="Zorin OS"
+VERSION="15.1"
+ID=zorin
+ID_LIKE=ubuntu
+PRETTY_NAME="Zorin OS 15.1"
+VERSION_ID="15"
+VERSION_CODENAME=bionic  #18.XX Family
+UBUNTU_CODENAME=bionic
+
+
+@Liam add your version details as well.
+
+@IrisDroidology - PC Specs
+AMD Ryzen 5 2600 Six-Core Processor - 3.4 GHZ
+16 GB DDR4 RAM
+Windows 10 Home (OS)
+256 GB Seagate SSD; 1TB Samsung HDD
+Nvidea 1050ti Graphics
+
+-Proveide version info/config file while asking for help in the channel 
+-They are using RL-Coach 
+
+Pre-requisites 
+-Familiarity
+    -Python 3.X.X
+    -Code compilation 
+    -AWS core Services and Priveledges IAM rules and access control
+    -ROS 
+
+AWS RUNNING 
+
+ROS_melodic 
+v.  1.14.3
+
+(!!!)Not to use ROS Kinetic/ROS 2 
+
+Gazebo 
+    -250*250 
+
+
+
+
+Scoring Mechanism
+
+
+
+
+Challenge Submision 
+
+-Robomaker Simulation
+
+
+Not Used in final submission
+    -Rover 
+    -Gazebo code 
+
+Submission 
+    -RL agent code 
+
+
+Setup Config:
+    m4.large                10c/hour 
+    default VPC subnet 1a(ref:subnet in Official Repositiory)
+
+-Environment has to be in the parent dir 
+-after setting up env----> execute rm -rf *  #clean environment c9
+-rm -rf .c9
+
+STEPS 
+-Clone GitHub Repositiory
+-git clone https://github.com/Christopheraburns/AWS-JPL-OSR-Challenge.git .     #(dot) keep in root dir 
+-robomaker settings config.json             # https://index.ros.org/doc/ros2/Tutorials/Colcon-Tutorial/
+Run configuration provided when c9 env setup from RoboMaker 
+
+colcon-bundle ---> bundles packages and ships of to s3(acts as substrate)
+
+Workflow-->BUILD+BUNDLE+LAUNCH SIMULATION
+
+-"feature behaviour":    "Continue"          #keps acccess to the instance to debug if simulation fails 
+-IAM roles 
+-subnet uniqe to environment setup 
+-cross verify sg in robomaker_settings_config.json 
+-Building and bundling only when variables/Policy changed else just launch 
+
+-simulation details diffreent section to view details 
+-checkpointing w/ tensorflow 
+
+
+
+
+
+
+
+
+
+Rules
+
+To enter the competition, you will need to submit your path_optimizer ros package along with the RL model you are using in the simulation. You can package this up as a tar or zip file and upload it via the hackathon.io portal.
+
+Your application:
+
+    Must use the simulation packages (rover_description and rover_gazebo) provided with the sample application kit.
+    Must not use any pre-created maps for navigation. The robot must run  autonomously in the Gazebo world provided.
+    Must use the RL environment provided.
+
+
+IDEAL TEAM SIZE:    5   (Reference:Angel Hack Submissions page)
+
+    
+
+A collection of resources regarding the interplay between ODEs, dynamical systems and neural networks 
+
+
+Judging Criteria
+
+We will publish a formula that will be used to evaluate your reinforcement learning (RL) model. The formula provides a single score for your model and will be based on the rover’s ability to:
+
+    Reach destination points 
+    Reach destination points in the least amount of time 
+    Reach destination points with least amount of power consumed 
+    Reach destination points with the correct rover orientation
+    Reach destination points with the lowest total acceleration / “jerk” to the body of the rover
+
+
+
+Submission Requirements
+
+To enter the competition, you will need to submit your path_optimizer ros package along with the RL model you are using in the simulation. You can package this up as a tar or zip file and upload it via the hackathon.io portal.
+
+Your application:
+
+    Must use the simulation packages (rover_description and rover_gazebo) provided with the sample application kit.
+    Must not use any pre-created maps for navigation. The robot must run  autonomously in the Gazebo world provided.
+    Must use the RL environment provided.
+
+
